@@ -1,4 +1,9 @@
-.hero {
+  .cover{
+    display: flex;
+    justify-content: center;
+  }
+  
+  .hero {
   display: block;
   justify-content: center;
   align-items: center;
