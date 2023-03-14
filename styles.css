@@ -1,8 +1,10 @@
+@import '~bootstrap/dist/css/bootstrap.css';
+  
   .cover{
     display: flex;
     justify-content: center;
   }
-  
+
   .hero {
   display: block;
   justify-content: center;
@@ -14,6 +16,7 @@
   .hero img {
   max-width: 100%;
   height: auto;
+  justify-content: center;
   }
   
   body {
@@ -30,8 +33,9 @@
   }
   
   header img {
-  height: 100px;
-  width: 200px;
+  height: auto;
+  width: 20%;
+  justify-content: left;
   }
   
   main {
@@ -107,3 +111,4 @@
   .sub-links a:hover {
   background-color: #444;
   }
+
