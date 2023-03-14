@@ -37,23 +37,21 @@
   }
   
   .buttons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 50px;
-  flex-direction: row;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
   }
   
-  
   .box {
-  background-color: #f35858;
-  border-radius: 20px;
-  cursor: pointer;
-  height: 200px;
-  margin: 20px;
-  overflow: hidden;
-  position: relative;
-  width: 200px;
+    background-color: #f35858;
+    border-radius: 20px;
+    cursor: pointer;
+    height: 200px;
+    margin: 20px;
+    overflow: hidden;
+    position: relative;
+    width: 200px;
   }
   
   .box img {
