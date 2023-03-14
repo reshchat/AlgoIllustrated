@@ -14,4 +14,5 @@ app.listen(port, () => {            //server starts listening for any attempts f
 });
 
 //change this directory
-app.use(express.static("C:/Users/user/AlgoIllustrated"));
+//app.use(express.static("C:/Users/user/AlgoIllustrated"));
+app.use(express.static('./'));
