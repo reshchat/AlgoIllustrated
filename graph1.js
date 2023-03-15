@@ -44,12 +44,19 @@ function run_graph(){
 
   // Initialize the nodes
   var node = svg
-  .selectAll("circle")
-  .data(data.nodes)
-  .enter()
-  .append("circle")
-  .attr("r", 20)
-  .style("fill", "#69b3a2")
+      .selectAll("circle")
+      .data(data.nodes)
+      .enter()
+      .append("g") // use a group element to hold circle and text elements
+      .attr("class", "node")
+
+  node.append("circle")
+        .attr("r", 20)
+        .style("fill", "#69b3a2")
+
+  node.append("text")
+        .text(function(d) { return d.id; }) // set the text to node id
+        .style("font-size", "12px") // set font size
 
   // Let's list the force we wanna apply on the network
   var simulation = d3.forceSimulation(data.nodes)                 // Force algorithm is applied to data.nodes
@@ -70,8 +77,7 @@ function run_graph(){
     .attr("y2", function(d) { return d.target.y; });
 
   node
-    .attr("cx", function (d) { return d.x+6; })
-    .attr("cy", function(d) { return d.y-6; });
+    .attr("transform", d => `translate(${d.x+6},${d.y-6})`);
   }
 }
 
@@ -92,7 +98,26 @@ function add_node(){
     "target": node_ctr
   }
   data.links.push(new_link);
-  
+  d3.select("svg").remove();
+  run_graph();
+  console.log(data.nodes), console.log(data.links);
+}
+
+function add_edge(){
+  node_ctr += 1;
+  source_num = Math.floor(Math.random() * (node_ctr-2)) + 1;
+  var new_node = {
+    "id": node_ctr,
+    "name": "K"
+  }
+  console.log(data.nodes);
+  data.nodes.push(new_node);
+  var new_link = {
+    "source": source_num,
+    "target": node_ctr
+  }
+  data.links.push(new_link);
+
   d3.select("svg").remove();
   run_graph();
   console.log(data.nodes), console.log(data.links);
