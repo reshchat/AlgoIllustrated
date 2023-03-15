@@ -18,6 +18,9 @@ var data = {
   ]
 };
 
+var edge_click=false;
+var selected_nodes=[];
+
 function run_graph(){
   // set the dimensions and margins of the graph
   var margin = {top: 10, right: 30, bottom: 30, left: 40},
@@ -42,6 +45,13 @@ function run_graph(){
   .append("line")
   .style("stroke", "#aaa")
 
+  link.on("click", function(d) {
+    console.log(d)
+    if(edge_click==true){
+      console.log(d)
+    }
+  })
+
   // Initialize the nodes
   var node = svg
       .selectAll("circle")
@@ -49,6 +59,8 @@ function run_graph(){
       .enter()
       .append("g") // use a group element to hold circle and text elements
       .attr("class", "node")
+      .attr("id", function(d) { return d.id; })
+
 
   node.append("circle")
         .attr("r", 20)
@@ -58,6 +70,26 @@ function run_graph(){
         .text(function(d) { return d.id; }) // set the text to node id
         .style("font-size", "12px") // set font size
 
+  node.on("click", function(d) {
+    console.log(d)
+    if(edge_click==true){
+      if(selected_nodes.length==1){
+        var new_link = {
+          "source": d.id,
+          "target": selected_nodes.pop()
+        }
+        data.links.push(new_link);
+
+        d3.select("svg").remove();
+        run_graph();
+        console.log(data.nodes), console.log(data.links);
+        edge_click=false;
+      }
+      else{
+        selected_nodes.push(d.id);
+      }
+    }
+  })
   // Let's list the force we wanna apply on the network
   var simulation = d3.forceSimulation(data.nodes)                 // Force algorithm is applied to data.nodes
   .force("link", d3.forceLink()                               // This force provides links between nodes
@@ -93,32 +125,13 @@ function add_node(){
   }
   console.log(data.nodes);
   data.nodes.push(new_node);
-  var new_link = {
-    "source": source_num,
-    "target": node_ctr
-  }
-  data.links.push(new_link);
+
   d3.select("svg").remove();
   run_graph();
   console.log(data.nodes), console.log(data.links);
 }
 
 function add_edge(){
-  node_ctr += 1;
-  source_num = Math.floor(Math.random() * (node_ctr-2)) + 1;
-  var new_node = {
-    "id": node_ctr,
-    "name": "K"
-  }
-  console.log(data.nodes);
-  data.nodes.push(new_node);
-  var new_link = {
-    "source": source_num,
-    "target": node_ctr
-  }
-  data.links.push(new_link);
+  edge_click=true
 
-  d3.select("svg").remove();
-  run_graph();
-  console.log(data.nodes), console.log(data.links);
 }
