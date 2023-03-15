@@ -19,6 +19,8 @@ var data = {
 };
 
 var edge_click=false;
+var edge_del=false;
+var node_del=false;
 var selected_nodes=[];
 
 function run_graph(){
@@ -72,6 +74,29 @@ function run_graph(){
 
   node.on("click", function(d) {
     console.log(d)
+    if(node_del==true){
+
+        var links = [];
+        for(var i = 0; i<data.nodes.length; i++){
+          if (i != d.index) {
+            links.push(data.nodes[i])
+          }
+        }
+        data.nodes = links
+
+      links = [];
+      for(var i = 0; i<data.links.length; i++){
+        if (d.id != data.links[i].source.id && d.id != data.links[i].target.id) {
+          links.push(data.links[i])
+        }
+      }
+      data.links = links
+
+
+      d3.select("svg").remove();
+      run_graph();
+      node_del=false;
+    }
     if(edge_click==true){
       if(selected_nodes.length==1){
         var new_link = {
@@ -90,6 +115,23 @@ function run_graph(){
       }
     }
   })
+
+  link.on("click", function(d) {
+    console.log(d)
+    if(edge_del==true){
+      var links = [];
+      for(var i = 0; i<data.links.length; i++){
+        if (i != d.index) {
+          links.push(data.links[i])
+        }
+      }
+      data.links = links
+    }
+    d3.select("svg").remove();
+    run_graph();
+    edge_del=false;
+  })
+
   // Let's list the force we wanna apply on the network
   var simulation = d3.forceSimulation(data.nodes)                 // Force algorithm is applied to data.nodes
   .force("link", d3.forceLink()                               // This force provides links between nodes
@@ -134,4 +176,12 @@ function add_node(){
 function add_edge(){
   edge_click=true
 
+}
+
+function del_edge(){
+  edge_del=true
+}
+
+function del_node(){
+  node_del=true
 }
