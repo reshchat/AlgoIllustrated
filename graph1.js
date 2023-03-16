@@ -55,6 +55,7 @@ var edge_del=false;
 var node_del=false;
 var bfs_en = false;
 var selected_nodes=[];
+var bfs_indices=[];
 
 function run_graph(){
   // set the dimensions and margins of the graph
@@ -214,59 +215,6 @@ function run_graph(){
     edge_del=false;
   })
 
-  // node.on("click", function(d) {
-  //   console.log(d)
-  //   if(bfs_en==true){
-  //     if (cur.length == 0){
-  //       console.log("0000000000000000")
-  //       prev.push(d.id)
-  //       for(var i = 0; i<data.links.length; i++){
-  //         if (d.id == data.links[i].source.id) {
-  //           cur.push(data.links[i].target.id)
-  //         }
-  //         if (d.id == data.links[i].target.id) {
-  //           cur.push(data.links[i].source.id)
-  //         }
-  //       }
-  //     }
-  //     else{
-  //       console.log("1111111111111")
-  //       if (cur.indexOf(d.id) == -1){
-  //         console.log('ERROR')
-  //       }
-  //       else{
-  //         console.log("222222")
-  //         var temp = []
-  //         for(var i = 0; i<cur.length; i++){
-  //           if (d.id != cur[i]) {
-  //             temp.push(cur[i])
-  //           }
-  //         }
-  //         cur = temp
-  //         prev.push(d.id)
-  //         for(var i = 0; i<data.links.length; i++){
-  //           if (d.id == data.links[i].source.id && prev.indexOf(data.links[i].target.id) == -1) {
-  //             next.push(data.links[i].target.id)
-  //           }
-  //           if (d.id == data.links[i].target.id && prev.indexOf(data.links[i].source.id) == -1) {
-  //             next.push(data.links[i].source.id)
-  //           }
-  //         }
-  //       }
-  //     }
-  //     if(cur.length == 0 && next.length > 0){
-  //       console.log("33")
-  //       cur = next
-  //       next = []
-  //     }
-  //     if(cur.length == 0 && next.length == 0){
-  //       console.log("444")
-  //       bfs_en = false
-  //       console.log('SUCCESS')
-  //     }
-  //   }
-  // })
-
   // Let's list the force we wanna apply on the network
   var simulation = d3.forceSimulation(data.nodes)                 // Force algorithm is applied to data.nodes
   .force("link", d3.forceLink()                               // This force provides links between nodes
@@ -323,6 +271,64 @@ function del_node(){
 
 function bfs(){
   bfs_en = true
+
+}
+class Queue {
+  constructor() {
+    this.items = {}
+    this.frontIndex = 0
+    this.backIndex = 0
+  }
+  leng(){
+    return this.items.length
+  }
+  enqueue(item) {
+    this.items[this.backIndex] = item
+    this.backIndex++
+    return item + ' inserted'
+  }
+  dequeue() {
+    const item = this.items[this.frontIndex]
+    delete this.items[this.frontIndex]
+    this.frontIndex++
+    return item
+  }
+  peek() {
+    return this.items[this.frontIndex]
+  }
+  printQueue() {
+    return this.items;
+  }
+}
+const q = new Queue()
+function sim_bfs(){
+  //console.log(Object.keys(q.items).length)
+ if (Object.keys(q.items).length===0){
+
+   for (var i=0; i<data.nodes.length; i++){
+     if(bfs_indices.indexOf(data.nodes[i].id)==-1){
+       //console.log(data.nodes[i].id)
+       q.enqueue(data.nodes[i].id)
+       break
+     }
+   }
+ }
+ else {
+   var p=q.dequeue();
+   bfs_indices.push(p)
+   for(var i = 0; i<data.links.length; i++){
+     if (p == data.links[i].source.id && bfs_indices.indexOf(data.links[i].target.id) == -1) {
+       q.enqueue(data.links[i].target.id)
+     }
+     if (p == data.links[i].target.id && bfs_indices.indexOf(data.links[i].source.id) == -1) {
+       q.enqueue(data.links[i].source.id )
+     }
+   }
+ }
+ console.log("bfs indices")
+  console.log(bfs_indices);
+  console.log("qq")
+ console.log(q.printQueue());
 }
 
 var prev = [] //Visited
