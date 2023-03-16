@@ -7,6 +7,22 @@ var data = {
     {
       "id": 2,
       "name": "B"
+    },
+    {
+      "id": 3,
+      "name": "C"
+    },
+    {
+      "id": 4,
+      "name": "D"
+    },
+    {
+      "id": 5,
+      "name": "E"
+    },
+    {
+      "id": 6,
+      "name": "E"
     }
   ],
   "links": [
@@ -14,6 +30,22 @@ var data = {
     {
       "source": 1,
       "target": 2
+    },
+    {
+      "source": 2,
+      "target": 3
+    },
+    {
+      "source": 4,
+      "target": 2
+    },
+    {
+      "source": 3,
+      "target": 5
+    },
+    {
+      "source": 1,
+      "target": 6
     }
   ]
 };
@@ -21,6 +53,7 @@ var data = {
 var edge_click=false;
 var edge_del=false;
 var node_del=false;
+var bfs_en = false;
 var selected_nodes=[];
 
 function run_graph(){
@@ -114,6 +147,55 @@ function run_graph(){
         selected_nodes.push(d.id);
       }
     }
+    if(bfs_en==true){
+      if (cur.length == 0){
+        console.log("0000000000000000")
+        prev.push(d.id)
+        for(var i = 0; i<data.links.length; i++){
+          if (d.id == data.links[i].source.id) {
+            cur.push(data.links[i].target.id)
+          }
+          if (d.id == data.links[i].target.id) {
+            cur.push(data.links[i].source.id)
+          }
+        }
+      }
+      else{
+        console.log("1111111111111")
+        if (cur.indexOf(d.id) == -1){
+          console.log('ERROR')
+        }
+        else{
+          console.log("222222")
+          var temp = []
+          for(var i = 0; i<cur.length; i++){
+            if (d.id != cur[i]) {
+              temp.push(cur[i])
+            }
+          }
+          cur = temp
+          prev.push(d.id)
+          for(var i = 0; i<data.links.length; i++){
+            if (d.id == data.links[i].source.id && prev.indexOf(data.links[i].target.id) == -1) {
+              next.push(data.links[i].target.id)
+            }
+            if (d.id == data.links[i].target.id && prev.indexOf(data.links[i].source.id) == -1) {
+              next.push(data.links[i].source.id)
+            }
+          }
+        }
+      }
+      if(cur.length == 0 && next.length > 0){
+        console.log("33")
+        cur = next
+        next = []
+      }
+      if(cur.length == 0 && next.length == 0){
+        console.log("444")
+        bfs_en = false
+        console.log('SUCCESS')
+      }
+    }
   })
 
   link.on("click", function(d) {
@@ -131,6 +213,59 @@ function run_graph(){
     run_graph();
     edge_del=false;
   })
+
+  // node.on("click", function(d) {
+  //   console.log(d)
+  //   if(bfs_en==true){
+  //     if (cur.length == 0){
+  //       console.log("0000000000000000")
+  //       prev.push(d.id)
+  //       for(var i = 0; i<data.links.length; i++){
+  //         if (d.id == data.links[i].source.id) {
+  //           cur.push(data.links[i].target.id)
+  //         }
+  //         if (d.id == data.links[i].target.id) {
+  //           cur.push(data.links[i].source.id)
+  //         }
+  //       }
+  //     }
+  //     else{
+  //       console.log("1111111111111")
+  //       if (cur.indexOf(d.id) == -1){
+  //         console.log('ERROR')
+  //       }
+  //       else{
+  //         console.log("222222")
+  //         var temp = []
+  //         for(var i = 0; i<cur.length; i++){
+  //           if (d.id != cur[i]) {
+  //             temp.push(cur[i])
+  //           }
+  //         }
+  //         cur = temp
+  //         prev.push(d.id)
+  //         for(var i = 0; i<data.links.length; i++){
+  //           if (d.id == data.links[i].source.id && prev.indexOf(data.links[i].target.id) == -1) {
+  //             next.push(data.links[i].target.id)
+  //           }
+  //           if (d.id == data.links[i].target.id && prev.indexOf(data.links[i].source.id) == -1) {
+  //             next.push(data.links[i].source.id)
+  //           }
+  //         }
+  //       }
+  //     }
+  //     if(cur.length == 0 && next.length > 0){
+  //       console.log("33")
+  //       cur = next
+  //       next = []
+  //     }
+  //     if(cur.length == 0 && next.length == 0){
+  //       console.log("444")
+  //       bfs_en = false
+  //       console.log('SUCCESS')
+  //     }
+  //   }
+  // })
 
   // Let's list the force we wanna apply on the network
   var simulation = d3.forceSimulation(data.nodes)                 // Force algorithm is applied to data.nodes
@@ -156,7 +291,7 @@ function run_graph(){
 }
 
 run_graph();
-node_ctr = 2;
+var node_ctr = data.nodes.at(data.nodes.length-1).id;
 
 function add_node(){
   node_ctr += 1;
@@ -185,3 +320,11 @@ function del_edge(){
 function del_node(){
   node_del=true
 }
+
+function bfs(){
+  bfs_en = true
+}
+
+var prev = [] //Visited
+var cur = []
+var next = []
