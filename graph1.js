@@ -136,19 +136,26 @@ function run_graph(){
     }
     if(edge_click==true){
       if(selected_nodes.length==1){
-        node.filter(function(s) { return s.id == d.id; })
-            .select("circle").style("fill", "red");
+        var tar =selected_nodes.pop()
+        if (tar != d.id) {
 
-        var new_link = {
-          "source": d.id,
-          "target": selected_nodes.pop()
+
+          node.filter(function (s) {
+            return s.id == d.id;
+          })
+              .select("circle").style("fill", "red");
+
+          var new_link = {
+            "source": d.id,
+            "target": tar
+          }
+          data.links.push(new_link);
+
+          d3.select("svg").remove();
+          run_graph();
+          console.log(data.nodes), console.log(data.links);
+          edge_click = false;
         }
-        data.links.push(new_link);
-
-        d3.select("svg").remove();
-        run_graph();
-        console.log(data.nodes), console.log(data.links);
-        edge_click=false;
       }
       else{
         selected_nodes.push(d.id);
@@ -298,9 +305,6 @@ class Queue {
     this.items = {}
     this.frontIndex = 0
     this.backIndex = 0
-  }
-  leng(){
-    return this.items.length
   }
   enqueue(item) {
     this.items[this.backIndex] = item
