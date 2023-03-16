@@ -5,7 +5,7 @@ const port = 3030;                  //port number where server will be listening
 
 //expression in express to route and respond to a client request
 app.get('/', (req, res) => {        //get requests to the root ("/") will route here
-    res.sendFile('home.html', {root: __dirname});      //server responds by sending the index.html file to the client's browser
+    res.sendFile('index.html', {root: __dirname});      //server responds by sending the index.html file to the client's browser
                                                         //the .sendFile method needs the absolute path to the file 
 });
 
