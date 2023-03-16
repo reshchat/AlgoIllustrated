@@ -157,7 +157,11 @@ function run_graph(){
       }
     }
     if(bfs_en==true){
-      if (cur.length == 0){
+      if (prev.indexOf(d.id) != -1){
+        console.log("-1-1-1")
+        console.log('ERROR')
+      }
+      else if (cur.length == 0){
         console.log("0000000000000000")
         node.filter(function(s) { return s.id == d.id; })
             .select("circle").style("fill", "red");
@@ -204,9 +208,11 @@ function run_graph(){
         next = []
       }
       if(cur.length == 0 && next.length == 0){
-        console.log("444")
-        bfs_en = false
-        console.log('SUCCESS')
+        if(prev.length == data.nodes.length){
+          console.log("444")
+          bfs_en = false
+          console.log('SUCCESS')
+        }
       }
     }
   })
