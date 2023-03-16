@@ -147,26 +147,6 @@ function run_graph(){
         selected_nodes.push(d.id);
       }
     }
-  })
-
-  link.on("click", function(d) {
-    console.log(d)
-    if(edge_del==true){
-      var links = [];
-      for(var i = 0; i<data.links.length; i++){
-        if (i != d.index) {
-          links.push(data.links[i])
-        }
-      }
-      data.links = links
-    }
-    d3.select("svg").remove();
-    run_graph();
-    edge_del=false;
-  })
-
-  node.on("click", function(d) {
-    console.log(d)
     if(bfs_en==true){
       if (cur.length == 0){
         console.log("0000000000000000")
@@ -218,6 +198,75 @@ function run_graph(){
     }
   })
 
+  link.on("click", function(d) {
+    console.log(d)
+    if(edge_del==true){
+      var links = [];
+      for(var i = 0; i<data.links.length; i++){
+        if (i != d.index) {
+          links.push(data.links[i])
+        }
+      }
+      data.links = links
+    }
+    d3.select("svg").remove();
+    run_graph();
+    edge_del=false;
+  })
+
+  // node.on("click", function(d) {
+  //   console.log(d)
+  //   if(bfs_en==true){
+  //     if (cur.length == 0){
+  //       console.log("0000000000000000")
+  //       prev.push(d.id)
+  //       for(var i = 0; i<data.links.length; i++){
+  //         if (d.id == data.links[i].source.id) {
+  //           cur.push(data.links[i].target.id)
+  //         }
+  //         if (d.id == data.links[i].target.id) {
+  //           cur.push(data.links[i].source.id)
+  //         }
+  //       }
+  //     }
+  //     else{
+  //       console.log("1111111111111")
+  //       if (cur.indexOf(d.id) == -1){
+  //         console.log('ERROR')
+  //       }
+  //       else{
+  //         console.log("222222")
+  //         var temp = []
+  //         for(var i = 0; i<cur.length; i++){
+  //           if (d.id != cur[i]) {
+  //             temp.push(cur[i])
+  //           }
+  //         }
+  //         cur = temp
+  //         prev.push(d.id)
+  //         for(var i = 0; i<data.links.length; i++){
+  //           if (d.id == data.links[i].source.id && prev.indexOf(data.links[i].target.id) == -1) {
+  //             next.push(data.links[i].target.id)
+  //           }
+  //           if (d.id == data.links[i].target.id && prev.indexOf(data.links[i].source.id) == -1) {
+  //             next.push(data.links[i].source.id)
+  //           }
+  //         }
+  //       }
+  //     }
+  //     if(cur.length == 0 && next.length > 0){
+  //       console.log("33")
+  //       cur = next
+  //       next = []
+  //     }
+  //     if(cur.length == 0 && next.length == 0){
+  //       console.log("444")
+  //       bfs_en = false
+  //       console.log('SUCCESS')
+  //     }
+  //   }
+  // })
+
   // Let's list the force we wanna apply on the network
   var simulation = d3.forceSimulation(data.nodes)                 // Force algorithm is applied to data.nodes
   .force("link", d3.forceLink()                               // This force provides links between nodes
@@ -242,7 +291,7 @@ function run_graph(){
 }
 
 run_graph();
-var node_ctr = 2;
+var node_ctr = data.nodes.at(data.nodes.length-1).id;
 
 function add_node(){
   node_ctr += 1;
