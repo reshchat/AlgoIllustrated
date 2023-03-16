@@ -233,6 +233,8 @@ function run_graph(){
     edge_del=false;
   })
 
+  node.filter(function(s) { return  bfs_indices.indexOf(s.id)!=-1; })
+      .select("circle").style("fill", "blue");//s.id == d.id
   // Let's list the force we wanna apply on the network
   var simulation = d3.forceSimulation(data.nodes)                 // Force algorithm is applied to data.nodes
   .force("link", d3.forceLink()                               // This force provides links between nodes
@@ -347,6 +349,8 @@ function sim_bfs(){
   console.log(bfs_indices);
   console.log("qq")
  console.log(q.printQueue());
+  d3.select("svg").remove();
+  run_graph();
 }
 
 var prev = [] //Visited
