@@ -59,8 +59,8 @@ var selected_nodes=[];
 function run_graph(){
   // set the dimensions and margins of the graph
   var margin = {top: 10, right: 30, bottom: 30, left: 40},
-  width = 1000 - margin.left - margin.right,
-  height = 1000 - margin.top - margin.bottom;
+  width = 800 - margin.left - margin.right,
+  height = 600 - margin.top - margin.bottom;
 
   // append the svg object to the body of the page
   var gp = document.getElementById("my_dataviz")
@@ -68,6 +68,7 @@ function run_graph(){
   .append("svg")
   .attr("width", width + margin.left + margin.right)
   .attr("height", height + margin.top + margin.bottom)
+  .attr("orient", "auto")
   .append("g")
   .attr("transform",
         "translate(" + margin.left + "," + margin.top + ")");
@@ -108,6 +109,8 @@ function run_graph(){
   node.on("click", function(d) {
     console.log(d)
     if(node_del==true){
+      node.filter(function(s) { return s.id == d.id; })
+            .select("circle").style("fill", "red");
 
         var links = [];
         for(var i = 0; i<data.nodes.length; i++){
@@ -132,6 +135,9 @@ function run_graph(){
     }
     if(edge_click==true){
       if(selected_nodes.length==1){
+        node.filter(function(s) { return s.id == d.id; })
+            .select("circle").style("fill", "red");
+
         var new_link = {
           "source": d.id,
           "target": selected_nodes.pop()
@@ -145,11 +151,15 @@ function run_graph(){
       }
       else{
         selected_nodes.push(d.id);
+        node.filter(function(s) { return s.id == d.id; })
+            .select("circle").style("fill", "red");
       }
     }
     if(bfs_en==true){
       if (cur.length == 0){
         console.log("0000000000000000")
+        node.filter(function(s) { return s.id == d.id; })
+            .select("circle").style("fill", "red");
         prev.push(d.id)
         for(var i = 0; i<data.links.length; i++){
           if (d.id == data.links[i].source.id) {
@@ -174,6 +184,8 @@ function run_graph(){
             }
           }
           cur = temp
+          node.filter(function(s) { return s.id == d.id; })
+              .select("circle").style("fill", "red");
           prev.push(d.id)
           for(var i = 0; i<data.links.length; i++){
             if (d.id == data.links[i].source.id && prev.indexOf(data.links[i].target.id) == -1) {
