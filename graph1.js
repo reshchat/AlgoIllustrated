@@ -56,6 +56,7 @@ var node_del=false;
 var bfs_en = false;
 var selected_nodes=[];
 var bfs_indices=[];
+var bfs_i=0;
 
 function run_graph(){
   // set the dimensions and margins of the graph
@@ -240,7 +241,7 @@ function run_graph(){
     edge_del=false;
   })
 
-  node.filter(function(s) { return  bfs_indices.indexOf(s.id)!=-1; })
+  node.filter(function(s) { return  bfs_indices.slice(0,bfs_i).indexOf(s.id)!=-1; })
       .select("circle").style("fill", "blue");//s.id == d.id
   // Let's list the force we wanna apply on the network
   var simulation = d3.forceSimulation(data.nodes)                 // Force algorithm is applied to data.nodes
@@ -326,37 +327,56 @@ class Queue {
 }
 const q = new Queue()
 function sim_bfs(){
-  //console.log(Object.keys(q.items).length)
- if (Object.keys(q.items).length===0){
+  console.log(Object.keys(q.items).length)
+ while(bfs_indices.length<data.nodes.length) {
+   console.log(Object.keys(q.items).length)
+   if (Object.keys(q.items).length === 0) {
 
-   for (var i=0; i<data.nodes.length; i++){
-     if(bfs_indices.indexOf(data.nodes[i].id)==-1){
-       //console.log(data.nodes[i].id)
-       q.enqueue(data.nodes[i].id)
-       break
+     for (var i = 0; i < data.nodes.length; i++) {
+       if (bfs_indices.indexOf(data.nodes[i].id) == -1) {
+         //console.log(data.nodes[i].id)
+         q.enqueue(data.nodes[i].id)
+         break
+       }
+     }
+   } else {
+     var p = q.dequeue();
+     bfs_indices.push(p)
+     for (var i = 0; i < data.links.length; i++) {
+       if (p == data.links[i].source.id && bfs_indices.indexOf(data.links[i].target.id) == -1) {
+         q.enqueue(data.links[i].target.id)
+       }
+       if (p == data.links[i].target.id && bfs_indices.indexOf(data.links[i].source.id) == -1) {
+         q.enqueue(data.links[i].source.id)
+       }
      }
    }
  }
- else {
-   var p=q.dequeue();
-   bfs_indices.push(p)
-   for(var i = 0; i<data.links.length; i++){
-     if (p == data.links[i].source.id && bfs_indices.indexOf(data.links[i].target.id) == -1) {
-       q.enqueue(data.links[i].target.id)
-     }
-     if (p == data.links[i].target.id && bfs_indices.indexOf(data.links[i].source.id) == -1) {
-       q.enqueue(data.links[i].source.id )
-     }
-   }
- }
+ /*
  console.log("bfs indices")
   console.log(bfs_indices);
   console.log("qq")
  console.log(q.printQueue());
   d3.select("svg").remove();
   run_graph();
-}
 
+  */
+}
+function prev_bfs(){
+  if(bfs_i>0){
+    bfs_i=bfs_i-1
+    d3.select("svg").remove();
+    run_graph();
+  }
+
+}
+function next_bfs1(){
+  if(bfs_i<bfs_indices.length){
+    bfs_i=bfs_i+1
+    d3.select("svg").remove();
+    run_graph();
+  }
+}
 var prev = [] //Visited
 var cur = []
 var next = []
