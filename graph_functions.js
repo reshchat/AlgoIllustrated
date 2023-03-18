@@ -9,19 +9,17 @@ var bfs_i = 0;
 
 var add_node = function add_node() {
 	node_ctr += 1;
-	source_num = Math.floor(Math.random() * (node_ctr - 2)) + 1;
 	var new_node = {
 		id: node_ctr,
 		name: "K",
 	};
 	console.log(data.nodes);
 	data.nodes.push(new_node);
-	// d3.select("svg").remove();
-	// run_graph();
+	d3.select("svg").remove();
+	run_graph();
 };
 
 var del_node = function del_node() {
-	console.log("del_node");
 	node_del = true;
 };
 var add_edge = function add_edge() {
