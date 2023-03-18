@@ -28,6 +28,10 @@ var add_edge = function add_edge() {
 var del_edge = function del_edge() {
 	edge_del = true;
 };
+var clear = function clear() {
+    console.log("clear")
+    d3.selectAll("svg").remove();
+};
 var bfs = function bfs() {
 	bfs_en = true;
 };
