@@ -2,6 +2,7 @@ function run_graph() {
 	// set the dimensions and margins of the graph
 	var width = 1000;
 	var height = 450;
+  var radius = 20;
 
 	// append the svg object to the body of the page
 	var svg = d3
@@ -17,13 +18,14 @@ function run_graph() {
 	var simulation = d3
 		.forceSimulation(data.nodes)
 		.force("center", d3.forceCenter(width / 2, height / 2)) // Attraction to the center of the svg area
-		.force("charge", d3.forceManyBody().strength(-0.5)) // Nodes are attracted one each other of value is > 0
+		.force("charge", d3.forceManyBody().strength(-50)) // Nodes are attracted one each other of value is > 0
 		.force("collide", d3.forceCollide().strength(0.1).radius(30).iterations(1)) // Force that avoids circle overlapping
 		.force(
 			"link",
 			d3.forceLink(data.links).id((d) => d.id)
 		)
 		.on("tick", ticked);
+
 	var link = svg
 		.append("g")
 		.selectAll("line")
@@ -46,7 +48,7 @@ function run_graph() {
 		.data(data.nodes)
 		.enter()
 		.append("circle")
-		.attr("r", 25)
+		.attr("r", radius)
 		.attr("cx", width / 2)
 		.attr("cy", height / 2)
 		.style("fill", "#A5EEDB")
@@ -70,15 +72,16 @@ function run_graph() {
 		.data(data.nodes)
 		.enter()
 		.append("text")
-		.text((d) => d.id);
-	// .attr("x", d => d.x)
-	// .attr("y", d => d.y)
-	// .attr("text-anchor", "middle")
-	// .attr("alignment-baseline", "middle")
+    .text((d) => d.id)
+    .attr("x", d => d.x)
+    .attr("y", d => d.y)
+    .attr("text-anchor", "middle")
+    .attr("alignment-baseline", "middle")
 	// .attr("font-size", "12px")
 	// .attr("fill", "black")
 	// .attr("font-family", "sans-serif")
 	// .attr("font-weight", "bold")
+  ;
 
 	var drag = d3
 		.drag()
@@ -110,8 +113,9 @@ function run_graph() {
 			})
 			.attr("cy", function (d) {
 				return d.y;
-			});
-		// nodes.attr("transform", (d) => `translate(${d.x + 6},${d.y - 6})`);
+			})
+      .attr("cx", d => Math.max(radius, Math.min(width - radius, d.x)))
+      .attr("cy", d => Math.max(radius, Math.min(height - radius, d.y)));
 	}
 
 	// What happens when a circle is dragged?
