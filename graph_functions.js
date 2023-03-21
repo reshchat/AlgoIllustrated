@@ -24,6 +24,7 @@ var del_node = function del_node() {
 };
 var add_edge = function add_edge() {
 	edge_click = true;
+	console.log("ADDDDDDDDDDDDDDDDD")
 };
 var del_edge = function del_edge() {
 	edge_del = true;
@@ -69,6 +70,7 @@ class Queue {
 
 const q = new Queue();
 var sim_bfs = function sim_bfs() {
+	bfs_indices=[]
 	console.log(Object.keys(q.items).length);
 	while (bfs_indices.length < data.nodes.length) {
 		console.log(Object.keys(q.items).length);
@@ -82,7 +84,8 @@ var sim_bfs = function sim_bfs() {
 			}
 		} else {
 			var p = q.dequeue();
-			bfs_indices.push(p);
+			if (bfs_indices.indexOf(p) == -1){
+				bfs_indices.push(p);
 			for (var i = 0; i < data.links.length; i++) {
 				if (
 					p == data.links[i].source.id &&
@@ -98,7 +101,9 @@ var sim_bfs = function sim_bfs() {
 				}
 			}
 		}
+		}
 	}
+	console.log(bfs_indices);
 };
 var prev_bfs = function prev_bfs() {
 	if (bfs_i > 0) {
@@ -106,11 +111,11 @@ var prev_bfs = function prev_bfs() {
 		d3.select("svg").remove();
 		run_graph();
 	}
-};
-var next_bfs = function next_bfs() {
+}
+var next_bfs1 = function next_bfs1() {
 	if (bfs_i < bfs_indices.length) {
 		bfs_i = bfs_i + 1;
 		d3.select("svg").remove();
 		run_graph();
 	}
-};
+}

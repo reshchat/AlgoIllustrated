@@ -44,6 +44,7 @@ function run_graph() {
 	// Initialize the circle: all located at the center of the svg area
 	var node = svg
 		.append("g")
+		.attr("class", "node")
 		.selectAll("circle")
 		.data(data.nodes)
 		.enter()
@@ -145,12 +146,17 @@ function run_graph() {
 
 	node.on("click", function (d) {
 		console.log(d);
+		// node
+		// 	.filter(function (s) {
+		// 		return s.id == d.id;
+		// 	})
+		// 	.style("fill", "red");
+
 		if (node_del == true) {
 			node
 				.filter(function (s) {
 					return s.id == d.id;
 				})
-				.select("circle")
 				.style("fill", "red");
 
 			var links = [];
@@ -177,14 +183,16 @@ function run_graph() {
 			node_del = false;
 		}
 		if (edge_click == true) {
+			console.log("Adding Edges")
 			if (selected_nodes.length == 1) {
 				var tar = selected_nodes.pop();
 				if (tar != d.id) {
 					node
 						.filter(function (s) {
+							console.log(s.id)
+							console.log(d.id)
 							return s.id == d.id;
 						})
-						.select("circle")
 						.style("fill", "red");
 
 					var new_link = {
@@ -202,9 +210,10 @@ function run_graph() {
 				selected_nodes.push(d.id);
 				node
 					.filter(function (s) {
+						console.log(s.id)
+						console.log(d.id)
 						return s.id == d.id;
 					})
-					.select("circle")
 					.style("fill", "red");
 			}
 		}

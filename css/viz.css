@@ -115,6 +115,11 @@ html { overflow-y: auto; } /*override common.css*/
 		left: 50%;
 		margin-left: -205px; /*20px space*/
 	}
+#start-bfs {
+	bottom: 10px;
+	left: 50%;
+	margin-left: -150px; /*20px space*/
+}
 	#next {
 		bottom: 10px;
 		left: 50%;

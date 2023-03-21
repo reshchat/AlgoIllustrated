@@ -76,12 +76,18 @@
 <div id="media-controls">
 	<div id="speed-control">slow<div id="speed-input"></div>fast</div>
 	<span id="go-to-beginning" class="media-control-button" title="go to beginning" onclick=goToBeginning()><span class="material-symbols-outlined" bottom="5px" style="color:rgb(255, 255, 255)">first_page</span></span>
-	<span id="previous" class="media-control-button" title="step backward" onclick=stepBackward()><span class="material-symbols-outlined" bottom="5px" style="color:rgb(255, 255, 255)">arrow_back_ios</span></span>
+	<!--<span id="previous" class="media-control-button" title="step backward" onclick=stepBackward()><span class="material-symbols-outlined" bottom="5px" style="color:rgb(255, 255, 255)">arrow_back_ios</span></span>
+    -->
+    <span id="previous" class="media-control-button" title="step backward" onclick=prev_bfs()><span class="material-symbols-outlined" bottom="5px" style="color:rgb(255, 255, 255)">arrow_back_ios</span></span>
     <!-- <span id="pause" class="media-control-button" title="pause" onclick=pause()><span class="material-symbols-outlined" bottom="5px" style="color:rgb(255, 255, 255)">pause</span></span> -->
     <span id="play" class="media-control-button" title="play" onclick=play()><span class="material-symbols-outlined" bottom="5px" style="color:rgb(255, 255, 255)">play_arrow</span></span>
     <!-- <span id="play" class="media-control-button" title="play" onclick=play()><span class="material-symbols-outlined" bottom="5px" style="color:rgb(255, 255, 255)">play_pause</span></span> -->
-	<span id="next" class="media-control-button" title="step forward" onclick=stepForward()><span class="material-symbols-outlined" bottom="5px" style="color:rgb(255, 255, 255)">arrow_forward_ios</span></span>
+	<span id="next" class="media-control-button" title="step forward" onclick=next_bfs1()><span class="material-symbols-outlined" bottom="5px" style="color:rgb(255, 255, 255)">arrow_forward_ios</span></span>
+    <!--<span id="next" class="media-control-button" title="step forward" onclick=stepForward()><span class="material-symbols-outlined" bottom="5px" style="color:rgb(255, 255, 255)">arrow_forward_ios</span></span>
+-->
     <span id="go-to-end" class="media-control-button" title="go to end" onclick=goToEnd()><span class="material-symbols-outlined" bottom="5px" style="color:rgb(255, 255, 255)">last_page</span></span>
+    <span id="start-bfs" class="media-control-button" title="start bfs" onclick=sim_bfs()><span class="material-symbols-outlined" bottom="5px" style="color:rgb(255, 255, 255)">sim_bfs</span></span>
+
     <div id="progress-bar" class="media-control-button"></div>
 </div>
 
