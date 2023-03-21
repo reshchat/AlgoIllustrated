@@ -309,7 +309,6 @@ function run_graph() {
 		.filter(function (s) {
 			return bfs_indices.slice(0, bfs_i).indexOf(s.id) != -1;
 		})
-		.select("circle")
 		.style("fill", "blue"); //s.id == d.id
 }
 
