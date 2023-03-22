@@ -35,10 +35,10 @@
 <div id="top-bar">
 	<a id="home" href="index.html"><img src="./media/logo2.png" alt="AlgoIllustrated" style="height:40px;width: auto;" class="logo me-auto me-lg-0"></a>
     <div id="mode-menu">
-    	<div id="mode-button">Interaction Mode</div>
-        <div id="other-modes">
+    	<div id="mode-button">Simulation Mode</div>
+        <!-- <div id="other-modes">
             <a href="#">Simulation Mode</a>
-        </div>
+        </div> -->
     </div>
 </div>
 
@@ -50,11 +50,11 @@
     
     <div id="actions" class="panel">
 		<p id="search"><b>Edit Menu</b></p>
-        <p id="search" class="execAction" onclick="add_node()">Add Node</p>
-		<p id="remove" class="execAction" onclick="del_node()">Delete Node</p>
-		<p id="search" class="execAction" onclick="add_edge()">Add Edge</p>
-		<p id="remove" class="execAction" onclick="del_edge()">Delete Edge</p>
-		<p id="search" class="execAction" onclick="clear()">Clear</p>
+        <p id="search" class="execAction" onclick=add_node()>Add Node</p>
+		<p id="remove" class="execAction" onclick=del_node()>Delete Node</p>
+		<p id="search" class="execAction" onclick=add_edge()>Add Edge</p>
+		<p id="remove" class="execAction" onclick=del_edge()>Delete Edge</p>
+		<p id="search" class="execAction" onclick=clear()>Clear</p>
     </div>
 
 	<div id="menu-hide" class="panel-hide"><span class="material-symbols-outlined">menu</span></div>
@@ -68,28 +68,14 @@
 
 <div id="left-bar"></div>
 <div id="right-bar"></div>
-<div id="selection-bar"></div>
+<div id="selection-bar">
+	<div id="start-bfs" class="media-control-button" title="start bfs" onclick=bfs()><span class="material-symbols-outlined">BFS</span></div>
+</div>
 <div id="bottom-bar"></div>
 
 <div id="graphsvg"></div>
 
-<div id="media-controls">
-	<div id="speed-control">slow<div id="speed-input"></div>fast</div>
-	<span id="go-to-beginning" class="media-control-button" title="go to beginning" onclick=goToBeginning()><span class="material-symbols-outlined" bottom="5px" style="color:rgb(255, 255, 255)">first_page</span></span>
-	<!--<span id="previous" class="media-control-button" title="step backward" onclick=stepBackward()><span class="material-symbols-outlined" bottom="5px" style="color:rgb(255, 255, 255)">arrow_back_ios</span></span>
-    -->
-    <span id="previous" class="media-control-button" title="step backward" onclick=prev_bfs()><span class="material-symbols-outlined" bottom="5px" style="color:rgb(255, 255, 255)">arrow_back_ios</span></span>
-    <!-- <span id="pause" class="media-control-button" title="pause" onclick=pause()><span class="material-symbols-outlined" bottom="5px" style="color:rgb(255, 255, 255)">pause</span></span> -->
-    <span id="play" class="media-control-button" title="play" onclick=play()><span class="material-symbols-outlined" bottom="5px" style="color:rgb(255, 255, 255)">play_arrow</span></span>
-    <!-- <span id="play" class="media-control-button" title="play" onclick=play()><span class="material-symbols-outlined" bottom="5px" style="color:rgb(255, 255, 255)">play_pause</span></span> -->
-	<span id="next" class="media-control-button" title="step forward" onclick=next_bfs1()><span class="material-symbols-outlined" bottom="5px" style="color:rgb(255, 255, 255)">arrow_forward_ios</span></span>
-    <!--<span id="next" class="media-control-button" title="step forward" onclick=stepForward()><span class="material-symbols-outlined" bottom="5px" style="color:rgb(255, 255, 255)">arrow_forward_ios</span></span>
--->
-    <span id="go-to-end" class="media-control-button" title="go to end" onclick=goToEnd()><span class="material-symbols-outlined" bottom="5px" style="color:rgb(255, 255, 255)">last_page</span></span>
-    <span id="start-bfs" class="media-control-button" title="start bfs" onclick=sim_bfs()><span class="material-symbols-outlined" bottom="5px" style="color:rgb(255, 255, 255)">sim_bfs</span></span>
 
-    <div id="progress-bar" class="media-control-button"></div>
-</div>
 
 <!-- <script src="js/graph_library/constant.js"></script>
 <script src="js/graph_library/properties.js"></script>
@@ -202,11 +188,9 @@
 	
 </script>
 
-<!-- <script src="graph_data.js"></script> -->
-<script src="tempfile.js"></script>
+<script src="graph_data.js"></script>
 <script src="graph_functions.js"></script>
-<!-- <script src="graphvis.js"></script> -->
-<script src="stack.js"></script>
+<script src="graphvis.js"></script>
 
 </body>
 </html>
