@@ -214,7 +214,7 @@ function run_graph() {
 						console.log(d.id)
 						return s.id == d.id;
 					})
-					.style("fill", "red");
+					.style("fill", "#F88379");
 			}
 		}
 		if (bfs_en == true) {

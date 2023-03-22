@@ -11,7 +11,7 @@ html { overflow-y: auto; } /*override common.css*/
 	width: 160px;
 	position: relative;
 }
-	#mode-button { cursor: pointer; padding: 11px 15px; }
+	#mode-button { cursor: pointer; padding: 15px 15px; background: black;}
 		#mode-button img { /*down arrow*/
 			position: absolute;
 			top: 18px;
@@ -116,9 +116,13 @@ html { overflow-y: auto; } /*override common.css*/
 		margin-left: -205px; /*20px space*/
 	}
 #start-bfs {
-	bottom: 10px;
-	left: 50%;
-	margin-left: -150px; /*20px space*/
+	bottom: 55px;
+	left: 300px;
+	cursor: pointer; 
+	/* padding: 15px 15px; */
+	/* margin-left: -150px; 20px space */
+	font-family: 'Courier New', Courier, monospace;
+	font-size: 20px;
 }
 	#next {
 		bottom: 10px;
