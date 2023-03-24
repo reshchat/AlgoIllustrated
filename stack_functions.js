@@ -21,7 +21,7 @@ var push = function push(){
 		id: node_ctr,
 		name: inp,
 	};
-	if(node_ctr > 0){
+	if(node_ctr > 1){
 		data.next[data.next.length-1].target = node_ctr
 	}
 	data.next.push({source: node_ctr, target: null})
