@@ -28,12 +28,19 @@ var add_edge = function add_edge() {
 var del_edge = function del_edge() {
 	edge_del = true;
 };
-var clear = function clear() {
-    console.log("clear")
-    d3.selectAll("svg").remove();
-};
 var bfs = function bfs() {
 	bfs_en = true;
+};
+var clear_scr = function clear_scr() {
+    console.log("clear")
+	data = {
+		nodes: [],
+		links: []
+	}
+	node_ctr = 0
+    d3.selectAll("graphsvg").remove();
+	$("#graphsvg").empty();
+	// $("#graphsvg").selectAll("*").remove();
 };
 
 // BFS
