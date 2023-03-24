@@ -24,7 +24,6 @@ var del_node = function del_node() {
 };
 var add_edge = function add_edge() {
 	edge_click = true;
-	console.log("ADDDDDDDDDDDDDDDDD")
 };
 var del_edge = function del_edge() {
 	edge_del = true;

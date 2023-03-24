@@ -227,7 +227,6 @@ function run_graph() {
 					.filter(function (s) {
 						return s.id == d.id;
 					})
-					.select("circle")
 					.style("fill", "red");
 				prev.push(d.id);
 				for (var i = 0; i < data.links.length; i++) {
@@ -255,7 +254,6 @@ function run_graph() {
 						.filter(function (s) {
 							return s.id == d.id;
 						})
-						.select("circle")
 						.style("fill", "red");
 					prev.push(d.id);
 					for (var i = 0; i < data.links.length; i++) {
