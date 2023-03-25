@@ -67,8 +67,10 @@ html {
 #instruction-bar {
 	position: fixed;
 	top: 50px;
+	left: 50px;
 	width: 100%;
-	height: 50px;
+	height: 20px;
+	padding: 15px;
 	background: rgb(100, 136, 156);
 	z-index: -35;
 }

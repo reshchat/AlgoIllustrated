@@ -51,13 +51,30 @@
     <div id="actions" class="panel">
 		<p id="search"><b>Edit Menu</b></p>
 		<p id="search" class="execAction" onclick=push()>Push</p>
-		<p id="search"><form><input type="text" id="push_val"></form></p>
+		<p id="search"><form><input type="text" id="push_val" placeholder="Value to push"></form></p>
 		<p id="search" class="execAction" onclick=pop()>Pop</p>
 		<p id="search" class="execAction" onclick=peek()>Peek</p>
 		<p id="search" class="execAction" onclick=clear_scr()>Clear</p>
     </div>
 
-	<div id="menu-hide" class="panel-hide"><span class="material-symbols-outlined">menu</span></div>
+	<div id="menu-hide" class="panel-hide" onclick="openNav()"><span class="material-symbols-outlined" style="color:rgb(255, 255, 255)">menu</span></div>
+	
+	<div id="myNav" class="overlay">
+		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+		<div class="overlay-content">
+			<p class="menu-title">Data Structures</p>
+			<ul>
+				<li><a href="graph_simulation.html" class="menu-item">Graphs</a></li>
+				<li><a href="stacks.html" class="menu-item">Stacks</a></li>
+			</ul>
+			<p class="menu-title">Algorithms</p>
+			<ul>
+				<li><a href="#" class="menu-item">Dynamic Programming</a></li>
+				<li><a href="#" class="menu-item">Sorting</a></li>
+			</ul>
+		</div>
+	</div>
+	
 	<div id="audio-hide" class="panel-hide"><span class="material-symbols-outlined">volume_up</span></div>
 	<div id="guide-hide" class="panel-hide"><span class="material-symbols-outlined">menu_book</span></div>
     <div id="actions-hide" class="panel-hide"><span class="material-symbols-outlined">edit</span></div>    
@@ -68,9 +85,7 @@
 
 <div id="left-bar"></div>
 <div id="right-bar"></div>
-<div id="instruction-bar">
-	<div id="instruction" class="media-control-button" title="start bfs" onclick=sim_bfs()>..........................Instruction: Click this do that </div>
-</div>
+<div id="instruction-bar">Use the edit menu on the right to PUSH, POP, PEEK and CLEAR.</div>
 <div id="selection-bar"></div>
 <!-- <div id="selection-bar" class="btn-group" style="grid-auto-flow: column;">
 	<button id="start-bfs" data-inline="true" class="media-control-button" title="start bfs" style="width: 50%" onclick=clear_scr()>Clear</button>
