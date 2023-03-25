@@ -57,8 +57,25 @@
 		<p id="search" class="execAction" onclick=clear_scr()>Clear</p>
     </div>
 
-	<div id="menu-hide" class="panel-hide"><span class="material-symbols-outlined">menu</span></div>
-	<div id="audio-hide" class="panel-hide"><span class="material-symbols-outlined">volume_up</span></div>
+	<div id="menu-hide" class="panel-hide" onclick="openNav()"><span class="material-symbols-outlined" style="color:rgb(255, 255, 255)">menu</span></div>
+	
+	<div id="myNav" class="overlay">
+		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+		<div class="overlay-content">
+			<p class="menu-title">Data Structures</p>
+			<ul>
+				<li><a href="graph_simulation.html" class="menu-item">Graphs</a></li>
+				<li><a href="stacks.html" class="menu-item">Stacks</a></li>
+			</ul>
+			<p class="menu-title">Algorithms</p>
+			<ul>
+				<li><a href="#" class="menu-item">Dynamic Programming</a></li>
+				<li><a href="#" class="menu-item">Sorting</a></li>
+			</ul>
+		</div>
+	</div>
+    
+    <div id="audio-hide" class="panel-hide"><span class="material-symbols-outlined">volume_up</span></div>
 	<div id="guide-hide" class="panel-hide"><span class="material-symbols-outlined">menu_book</span></div>
     <div id="actions-hide" class="panel-hide"><span class="material-symbols-outlined">edit</span></div>    
     <div id="status" class="panel"><p></p></div>
