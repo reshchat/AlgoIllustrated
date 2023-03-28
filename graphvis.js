@@ -203,6 +203,7 @@ function run_graph() {
 
 					d3.select("svg").remove();
 					run_graph();
+					highlight_edge(new_link);
 					console.log(data.nodes), console.log(data.links);
 					edge_click = false;
 				}
@@ -288,7 +289,7 @@ function run_graph() {
 	});
 
 	link.on("click", function (d) {
-		console.log(d);
+		console.log("d", d);
 		if (edge_del == true) {
 			var links = [];
 			for (var i = 0; i < data.links.length; i++) {
@@ -300,6 +301,7 @@ function run_graph() {
 		}
 		d3.select("svg").remove();
 		run_graph();
+		highlight_edge(d);
 		edge_del = false;
 	});
 
