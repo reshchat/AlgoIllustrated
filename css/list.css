@@ -104,61 +104,6 @@
 	#search-peek-back p { padding: 5px 8px; }
 	#search-go p { padding: 5px 8px; }
 	#search-err { padding: 5px 0px; } /* currently unused*/
-		
-.insert { bottom: 92px; }
-	#insert-head p { padding: 5px 8px; }
-	#insert-tail p { padding: 5px 8px; }
-	#insert-kth p { padding: 5px 8px; }
-	#insert-input-kth input {
-		width: 50px;
-		padding: 6px 8px 5px;
-	}
-	#insert-input input {
-		width: 140px;
-		padding: 6px 8px 5px;
-	}
-	#insert-go p { padding: 5px 8px; }
-	#insert-err { padding: 5px 0px; }
-	#pushtop-input input{
-		width: 25px;
-		padding: 6px 8px 5px;
-	}
-	#pushtop-go p { padding: 5px 8px; }
-	#pushtop-err { padding: 5px 0px; }
-	#enqueueback-input input{
-		width: 25px;
-		padding: 6px 8px 5px;
-	}
-	#enqueueback-go p { padding: 5px 8px; }
-	#enqueueback-err { padding: 5px 0px; }
-
-	#insert-deque-input input{
-		width: 25px;
-		padding: 6px 8px 5px;
-	}
-	#insert-deque-front p { padding: 5px 8px; }
-	#insert-deque-back { padding: 5px 8px; }
-	#insert-deque-err { padding: 5px 0px; }
-		
-.remove { bottom: 65px; }
-	#remove-head p { padding: 5px 8px; }
-	#remove-tail p { padding: 5px 8px; }
-	#remove-kth p { padding: 5px 8px; }
-	#remove-input-kth input {
-		width: 50px;
-		padding: 6px 8px 5px;
-	}
-	#remove-input input {
-		width: 140px;
-		padding: 6px 8px 5px;
-	}
-	#remove-deque-front p { padding: 5px 8px; }
-	#remove-deque-back p { padding: 5px 8px; }
-	#remove-go p { padding: 5px 8px; } /* currently unused*/ 
-	#remove-err { padding: 5px 0px; } /* currently unused*/ 
-
-.inorder { bottom: 60px; }
-	#inorder-err { padding: 8px 0px 7px; } /* currently unused*/
 	
 /*all tutorial stuff here*/
 #list-tutorial-1 {

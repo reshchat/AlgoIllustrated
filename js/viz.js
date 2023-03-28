@@ -18,13 +18,13 @@ function highlightLine(lineNumbers) {  /* lineNumbers can be an array or a singl
 var isPlaying = false;
 //Opening and closing panels
 var isActionsOpen = true;
+var isGuideOpen = false;
 var isStatusOpen = false;
 var isCodetraceOpen = false;
 
 //vars actionsWidth and statusCodetraceWidth must be defined in the specific vizname_actions.js file
 function showActionsPanel() {
 	if(!isActionsOpen) {
-		$('#actions-hide img').removeClass('rotateLeft').addClass('rotateRight');
 		$('#actions').animate({
 			width: "+="+actionsWidth,
 		});
@@ -33,7 +33,6 @@ function showActionsPanel() {
 }
 function hideActionsPanel() {
 	if(isActionsOpen) {
-		$('#actions-hide img').removeClass('rotateRight').addClass('rotateLeft');
 		$('#actions').animate({
 			width: "-="+actionsWidth,
 		});
@@ -42,7 +41,6 @@ function hideActionsPanel() {
 }
 function showStatusPanel() {
 	if(!isStatusOpen) {
-		$('#status-hide img').removeClass('rotateLeft').addClass('rotateRight');
 		$('#current-action').show();
 		$('#status').animate({
 			width: "+="+statusCodetraceWidth,
@@ -52,7 +50,6 @@ function showStatusPanel() {
 }
 function hideStatusPanel() {
 	if(isStatusOpen) {
-		$('#status-hide img').removeClass('rotateRight').addClass('rotateLeft');
 		$('#current-action').hide();
 		$('#status').animate({
 			width: "-="+statusCodetraceWidth,
@@ -62,7 +59,6 @@ function hideStatusPanel() {
 }
 function showCodetracePanel() {
 	if(!isCodetraceOpen) {
-		$('#codetrace-hide img').removeClass('rotateLeft').addClass('rotateRight');
 		$('#codetrace').animate({
 			width: "+="+statusCodetraceWidth,
 		});
@@ -71,17 +67,33 @@ function showCodetracePanel() {
 }
 function hideCodetracePanel() {
 	if(isCodetraceOpen) {
-		$('#codetrace-hide img').removeClass('rotateRight').addClass('rotateLeft');
 		$('#codetrace').animate({
 			width: "-="+statusCodetraceWidth,
 		});
 		isCodetraceOpen = false;
 	}
 }
+function showGuidePanel() {
+	if(!isGuideOpen) {
+		$('#guide').animate({
+			width: "+="+statusCodetraceWidth,
+		});
+		isGuideOpen = true;
+	}
+}
+function hideGuidePanel() {
+	if(isGuideOpen) {
+		$('#guide').animate({
+			width: "-="+statusCodetraceWidth,
+		});
+		isGuideOpen = false;
+	}
+}
 function triggerRightPanels() {
 	hideEntireActionsPanel();
 	showStatusPanel();
 	showCodetracePanel();
+	showGuidePanel();
 }
 
 function extractQnGraph(graph) {
@@ -100,17 +112,8 @@ function extractQnGraph(graph) {
 	return graph;
 }
 
-$( document ).ready(function() {
-	var actionsHeight = ($('#actions p').length)*27 + 10;
-	$('#actions').css('height', actionsHeight);
-	$('#actions').css('width', actionsWidth);
-	var actionsHideTop = Math.floor((actionsHeight - 16)/2);
-	var actionsHideBottom = (actionsHeight - 16) - actionsHideTop;
-	$('#actions-hide').css('padding-top', actionsHideTop);
-	$('#actions-hide').css('padding-bottom', actionsHideBottom);
-	
+$( document ).ready(function() {	
 	$('#current-action').hide();
-	$('#actions-hide img').addClass('rotateRight');
 	
 	//surpriseColour stuff
 	$('.tutorial-next').css("background-color", surpriseColour);
@@ -120,33 +123,31 @@ $( document ).ready(function() {
 	}
 	$('#progress-bar .ui-slider-range').css("background-color", surpriseColour);
 	
-	$('#actions').css("background-color", colourTheSecond);
-	$('#actions-hide').css("background-color", colourTheSecond);
-	$('.action-menu-pullout').css('left', actionsWidth+43+'px');
-	$('.action-menu-pullout').children().css('float','left');
-	$('.coloured-menu-option').css("background-color", colourTheSecond).css('color','white');
-	if(colourTheSecond == '#fec515' || colourTheSecond == '#a7d41e') {
-		$('#actions p').css('color', 'black');
-		$('#actions p').hover(function() { $(this).css('color', 'white');}, function() {$(this).css('color', 'black');});
-		$('.coloured-menu-option').css('color', 'black');
-		$('.coloured-menu-option').hover(function() { $(this).css('color', 'white');}, function() {$(this).css('color', 'black');});
-		$('#actions-hide img').attr('src', 'img/arrow_black_right.png');
-	}
-	
-	$('#codetrace').css("background-color", colourTheThird);
-	$('#codetrace-hide').css("background-color", colourTheThird);
-	if(colourTheThird == '#fec515' || colourTheThird == '#a7d41e') {
-		$('#codetrace').css('color', 'black');
-		$('#codetrace-hide img').attr('src', 'img/arrow_black_right.png');
-		codetraceColor = 'black';
-	}
-	
-	$('#status').css("background-color", colourTheFourth);
-	$('#status-hide').css("background-color", colourTheFourth);
-	if(colourTheFourth == '#fec515' || colourTheFourth == '#a7d41e') {
-		$('#status').css('color', 'black');
-		$('#status-hide img').attr('src', 'img/arrow_black_right.png');
-	}
+	// $('#actions').css("background-color", colourTheSecond);
+	// $('#actions-hide').css("background-color", colourTheSecond);
+	// $('.action-menu-pullout').css('left', actionsWidth+43+'px');
+	// $('.action-menu-pullout').children().css('float','left');
+	// $('.coloured-menu-option').css("background-color", colourTheSecond).css('color','white');
+	// if(colourTheSecond == '#fec515' || colourTheSecond == '#a7d41e') {
+	// 	$('#actions p').css('color', 'black');
+	// 	$('#actions p').hover(function() { $(this).css('color', 'white');}, function() {$(this).css('color', 'black');});
+	// 	$('.coloured-menu-option').css('color', 'black');
+	// 	$('.coloured-menu-option').hover(function() { $(this).css('color', 'white');}, function() {$(this).css('color', 'black');});
+	// 	$('#actions-hide img').attr('src', 'img/arrow_black_right.png');
+	// }
+	// $('#codetrace').css("background-color", colourTheThird);
+	// $('#codetrace-hide').css("background-color", colourTheThird);
+	// if(colourTheThird == '#fec515' || colourTheThird == '#a7d41e') {
+	// 	$('#codetrace').css('color', 'black');
+	// 	$('#codetrace-hide img').attr('src', 'img/arrow_black_right.png');
+	// 	codetraceColor = 'black';
+	// }
+	// $('#status').css("background-color", colourTheFourth);
+	// $('#status-hide').css("background-color", colourTheFourth);
+	// if(colourTheFourth == '#fec515' || colourTheFourth == '#a7d41e') {
+	// 	$('#status').css('color', 'black');
+	// 	$('#status-hide img').attr('src', 'img/arrow_black_right.png');
+	// }
 	
 	//mmode menu
 	$('#mode-button').click(function() {
@@ -174,35 +175,31 @@ $( document ).ready(function() {
 			$('#status-hide').show();
 			$('#codetrace-hide').show();
 			$('#actions-hide').show();
+			$('#guide-hide').show();
 			$('#status').show();
 			$('#codetrace').show();
 			$('#actions').show();
+			$('#guide').show();
 			$('.tutorial-dialog').hide();
 			hideStatusPanel();
 			hideCodetracePanel();
 			showActionsPanel();
-		/*} else if(newMode=="Training Mode") {
-			mode = "training";
-			$('#status').hide();
-			$('#codetrace').hide();
-			$('#actions').hide();
-			$('#status-hide').hide();
-			$('#codetrace-hide').hide();
-			$('#actions-hide').hide();
-			*/
 		} else if (newMode=="Tutorial Mode") {
 			mode = "tutorial";
 			$('#status-hide').show();
 			$('#codetrace-hide').show();
 			$('#actions-hide').show();
+			$('#guide-hide').show();
 			$('#current-action').html("");
 			$('#status').show();
 			$('#codetrace').show();
 			$('#actions').show();
+			$('#guide').show();
 			if(isPlaying) {	stop(); }
 			hideEntireActionsPanel();
 			hideStatusPanel();
 			hideCodetracePanel();
+			hideGuidePanel();
 			$('.tutorial-dialog').first().fadeIn(500);
 		}
 	});
@@ -227,6 +224,13 @@ $( document ).ready(function() {
 			hideEntireActionsPanel(); //must define hideEntireActionsPanel() function in vizname_actions.js file
 		} else {
 			showActionsPanel();
+		}
+	});
+	$('#guide-hide').click(function() {
+		if(isGuideOpen) {
+			hideGuidePanel(); 
+		} else {
+			showGuidePanel();
 		}
 	});
 	

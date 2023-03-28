@@ -2,7 +2,7 @@ function run_graph() {
 	// set the dimensions and margins of the graph
 	var width = 1000;
 	var height = 450;
-  var radius = 20;
+  	var radius = 20;
 
 	// append the svg object to the body of the page
 	var svg = d3
@@ -12,12 +12,12 @@ function run_graph() {
 		.attr("height", height)
     // .attr("x", "100")
     ;
-    $("svg").css({top: 60, left: 60, position:'absolute'});
+    $("svg").css({top: 100, left: 60, position:'absolute'});
 
 	// Features of the forces applied to the nodes:
 	var simulation = d3
 		.forceSimulation(data.nodes)
-		.force("center", d3.forceCenter(width / 2, height / 2)) // Attraction to the center of the svg area
+		.force("center", d3.forceCenter(width / 3, height / 2)) // Attraction to the center of the svg area
 		.force("charge", d3.forceManyBody().strength(-50)) // Nodes are attracted one each other of value is > 0
 		.force("collide", d3.forceCollide().strength(0.1).radius(30).iterations(1)) // Force that avoids circle overlapping
 		.force(

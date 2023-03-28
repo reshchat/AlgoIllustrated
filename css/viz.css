@@ -167,27 +167,6 @@ html {
 	margin-left: 195px;
 	opacity: 1;
 }
-#progress-bar.ui-slider {
-	bottom: 17px;
-	left: 50%;
-	margin-left: -175px;
-	background-color: #777;
-	height: 6px;
-	width: 350px;
-	opacity: 1;
-}
-#progress-bar .ui-slider-handle {
-	position: absolute;
-	border: none;
-	outline: none;
-	background-color: #fff;
-	height: 6px;
-	width: 1px;
-}
-#progress-bar .ui-slider-range {
-	position: absolute;
-	height: 6px;
-}
 
 #viz {
 	width: 100%;
@@ -221,90 +200,6 @@ html {
 	position: fixed;
 	cursor: pointer;
 	background: #777;
-}
-
-#current-action {
-	bottom: 320px;
-	right: 60px;
-	width: 400px;
-	display: none;
-	background: none;
-	overflow: normal;
-	white-space: normal;
-	text-align: right;
-}
-#current-action p {
-	color: black;
-	font-weight: bold;
-	font-size: 20px;
-}
-
-#actions {
-	top: 145px;
-	right: 53px;
-}
-#actions p {
-	padding: 5px 10px;
-	cursor: pointer;
-}
-#actions p:hover {
-	background: black;
-	color: white;
-}
-#actions p:first-of-type {
-	padding-top: 10px;
-}
-#actions p:last-of-type {
-	padding-bottom: 10px;
-}
-#actions-hide {
-	top: 140px;
-	right: 0px;
-	height: 10px;
-	padding-left: 14px;
-	padding-right: 15px;
-	padding-top: 20px;
-	padding-bottom: 20px;
-}
-.action-menu-pullout {
-	display: none;
-	position: fixed;
-}
-.action-menu-pullout input {
-	background: black;
-	color: white;
-}
-.new-menu-option {
-	margin-left: 3px;
-}
-.err {
-	color: red;
-	margin-left: 6px;
-}
-
-#menu {
-	top: 50px;
-	left: 43px;
-	height: 50px;
-	white-space: normal;
-}
-#menu p {
-	padding: 10px;
-}
-#menu-hide {
-	top: 50px;
-	left: 0px;
-	height: 15px;
-	padding: 10px 15px 10px 12px;
-	background-color: black;
-}
-.menu-title {
-	font-weight: bold;
-	font-size: 20px;
-	color: white;
-}
-.menu-item {
-	font-size: 10px;
 }
 
 .overlay {
@@ -360,57 +255,163 @@ html {
 	}
 }
 
-#audio {
+#current-action {
+	bottom: 320px;
+	right: 60px;
+	width: 400px;
+	display: none;
+	background: none;
+	overflow: normal;
+	white-space: normal;
+	text-align: right;
+}
+#current-action p {
+	color: black;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+
+#menu {
 	top: 50px;
-	right: 53px;
+	left: 43px;
+	height: 50px;
 	white-space: normal;
 }
-#audio p {
+#menu p {
 	padding: 10px;
 }
-#audio-hide {
+#menu-hide {
+	top: 50px;
+	left: 0px;
+	height: 15px;
+	padding: 10px 15px 10px 12px;
+	background-color: black;
+}
+.menu-title {
+	font-weight: bold;
+	font-size: 20px;
+	color: white;
+}
+.menu-item {
+	font-size: 10px;
+}
+
+#audio {
 	top: 50px;
 	right: 0px;
-	height: 10px;
-	padding: 10px 14px 20px 14px;
+	height: 15px;
+	padding-top: 15px;
+	padding-bottom: 20px;
+	padding-left: 13px;
+	padding-right: 13px;
+	border-style: solid;
+	border-width: 1px;
+	background-color: #fec515;
 }
 
 #guide {
-	top: 95px;
+	top: 105px;
 	right: 53px;
+	height: 400px;
 	white-space: normal;
+	/* background-color: #9d6adb; */
+	/* background-color: #d9513c; */
+	background-color: #ed5a7d;
 }
 #guide p {
 	padding: 10px;
 }
 #guide-hide {
-	top: 95px;
+	top: 105px;
 	right: 0px;
-	height: 10px;
-	padding: 10px 14px 20px 14px;
+	height: 15px;
+	padding-top: 15px;
+	padding-bottom: 20px;
+	padding-left: 13px;
+	padding-right: 13px;
+	border-style: solid;
+	border-width: 1px;
+	/* background-color: #9d6adb; */
+	background-color: #ed5a7d;
+}
+
+#actions {
+	top: 160px;
+	right: 53px;
+	background-color: #a7d41e;
+}
+#actions p {
+	padding: 5px 10px;
+	cursor: pointer;
+}
+#actions p:hover {
+	background: black;
+	color: white;
+}
+#actions p:first-of-type {
+	padding-top: 10px;
+}
+#actions p:last-of-type {
+	padding-bottom: 10px;
+}
+#actions-hide {
+	top: 160px;
+	right: 0px;
+	height: 20px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	padding-left: 13px;
+	padding-right: 13px;
+	border-style: solid;
+	border-width: 1px;
+	background-color: #a7d41e;
+}
+.action-menu-pullout {
+	display: none;
+	position: fixed;
+}
+.action-menu-pullout input {
+	background: black;
+	color: white;
+}
+.new-menu-option {
+	margin-left: 3px;
+}
+.err {
+	color: red;
+	margin-left: 6px;
 }
 
 #status {
-	bottom: 260px;
+	bottom: 285px;
 	right: 53px;
 	height: 50px;
 	white-space: normal;
+	background-color: #ff8a27;
 }
 #status p {
 	padding: 10px;
 }
 #status-hide {
 	height: 20px;
-	bottom: 260px;
+	bottom: 285px;
 	right: 0px;
-	padding: 15px 14px 15px 15px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	padding-left: 13px;
+	padding-right: 13px;
+	border-style: solid;
+	border-width: 1px;
+	background-color: #ff8a27;
 }
 
 #codetrace {
 	bottom: 90px;
 	right: 53px;
-	height: 165px;
+	height: 190px;
 	font-family: "Courier New", Courier, monospace;
+	background-color: #2ebbd1;
 }
 #codetrace p {
 	padding: 5px 10px;
@@ -421,34 +422,14 @@ html {
 #codetrace-hide {
 	bottom: 90px;
 	right: 0px;
-	padding: 70px 14px 70px 15px;
-}
-
-.rotateRight {
-	transform: rotate(180deg);
-	-ms-transform: rotate(180deg); /* IE 9 */
-	-webkit-transform: rotate(180deg); /* Safari and Chrome */
-	-o-transform: rotate(180deg); /* Opera */
-	-moz-transform: rotate(180deg); /* Firefox */
-
-	/* if you want to do this move with animate use transition */
-	transition: 0.5s;
-	-moz-transition: 0.5s; /* Firefox 4 */
-	-webkit-transition: 0.5s; /* Safari and Chrome */
-	-o-transition: 0.5s; /* Opera */
-}
-.rotateLeft {
-	transform: rotate(0deg);
-	-ms-transform: rotate(0deg); /* IE 9 */
-	-webkit-transform: rotate(0deg); /* Safari and Chrome */
-	-o-transform: rotate(0deg); /* Opera */
-	-moz-transform: rotate(0deg); /* Firefox */
-
-	/* if you want to do this move with animate use transition */
-	transition: 0.5s;
-	-moz-transition: 0.5s; /* Firefox 4 */
-	-webkit-transition: 0.5s; /* Safari and Chrome */
-	-o-transition: 0.5s; /* Opera */
+	height: 50px;
+	padding-top: 70px;
+	padding-bottom: 70px;
+	padding-left: 13px;
+	padding-right: 13px;
+	border-style: solid;
+	border-width: 1px;
+	background-color: #2ebbd1;
 }
 
 /*tutorial stuff*/

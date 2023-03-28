@@ -1,8 +1,5 @@
-//surprise colour!
-//Referenced to in  home.js and viz.js also
 var colourArray = ["#52bc69", "#ed5a7d", "#2ebbd1", "#d9513c", "#fec515", "#4b65ba", "#ff8a27", "#a7d41e"];
-					//green, pink, blue, red, yellow, indigo, orange, lime
-//var colourArray = ["#15a346", "#ed5a7d", "#23b1bf", "#ce5226", "#deb003", "#574882", "#ff8a27", "#a7d41e"];
+// var colourArray = ["#15a346", "#ed5a7d", "#23b1bf", "#ce5226", "#deb003", "#574882", "#ff8a27", "#a7d41e"];
 
 function getColours() {
 	var generatedColours = new Array();
