@@ -47,23 +47,6 @@
 
 	<!-- <div id="viz"></div> -->
 
-	<div id="current-action" class="panel">
-		<p></p>
-	</div>
-
-	<!-- <div id="audio" class="panel"><span class="material-symbols-outlined">audio</span></div> -->
-
-	<div id="actions" class="panel">
-		<p id="search"><b>Edit Menu</b></p>
-		<p id="search" class="execAction" onclick=push()>Push</p>
-		<p id="search">
-		<form><input type="text" id="push_val" placeholder="Value to push"></form>
-		</p>
-		<p id="search" class="execAction" onclick=pop()>Pop</p>
-		<p id="search" class="execAction" onclick=peek()>Peek</p>
-		<p id="search" class="execAction" onclick=clear_scr()>Clear</p>
-	</div>
-
 	<div id="menu-hide" class="panel-hide" onclick="openNav()"><span class="material-symbols-outlined"
 			style="color:rgb(255, 255, 255)">menu</span></div>
 
@@ -83,7 +66,22 @@
 		</div>
 	</div>
 
-	<div id="audio-hide" class="panel-hide"><span class="material-symbols-outlined">volume_up</span></div>
+	<div id="current-action" class="panel">
+		<p></p>
+	</div>
+
+	<div id="actions" class="panel">
+		<p id="search"><b>Edit Menu</b></p>
+		<p id="search" class="execAction" onclick=push()>Push</p>
+		<p id="search">
+		<form><input type="text" id="push_val" placeholder="Value to push"></form>
+		</p>
+		<p id="search" class="execAction" onclick=pop()>Pop</p>
+		<p id="search" class="execAction" onclick=peek()>Peek</p>
+		<p id="search" class="execAction" onclick=clear_scr()>Clear</p>
+	</div>
+
+	<div id="audio" class="panel-hide"><span class="material-symbols-outlined">volume_up</span></div>
 	<div id="guide-hide" class="panel-hide"><span class="material-symbols-outlined">menu_book</span></div>
 	<div id="guide" class="panel">
 		<p></p>
