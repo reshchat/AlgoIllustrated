@@ -308,6 +308,8 @@ function run_graph() {
 			return bfs_indices.slice(0, bfs_i).indexOf(s.id) != -1;
 		})
 		.style("fill", "blue"); //s.id == d.id
+	
+	run_graph_matlist(data);
 }
 
 run_graph();
