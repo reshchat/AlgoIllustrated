@@ -18,23 +18,6 @@ html {
 	padding: 15px 15px;
 	background: black;
 }
-#mode-button img {
-	/*down arrow*/
-	position: absolute;
-	top: 18px;
-	right: 15px;
-	display: inline-block;
-}
-#other-modes {
-	position: absolute;
-	width: 160px;
-	background: black;
-	display: none;
-}
-#other-modes a {
-	display: block;
-	padding: 8px 15px;
-}
 
 #left-bar {
 	position: fixed;

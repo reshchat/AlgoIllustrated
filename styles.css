@@ -119,3 +119,10 @@
   .sub-links a:hover {
   background-color: #444;
   }
+
+  #logo {
+    position: fixed;
+    height:40px;
+    width: auto;
+    top: 5px;
+  }
