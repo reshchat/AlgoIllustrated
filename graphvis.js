@@ -1,7 +1,7 @@
 function run_graph() {
 	// set the dimensions and margins of the graph
 	var width = 1000;
-	var height = 450;
+	var height = 400;
   	var radius = 20;
 
 	// append the svg object to the body of the page

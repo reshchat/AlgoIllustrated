@@ -46,6 +46,8 @@ html {
 	height: 50px;
 	background: rgb(100, 136, 156);
 	z-index: -3;
+	border-style: solid;
+	border-width: 1px;
 }
 #instruction-bar {
 	position: fixed;
@@ -56,6 +58,8 @@ html {
 	padding: 15px;
 	background: rgb(100, 136, 156);
 	z-index: -35;
+	border-style: solid;
+	border-width: 1px;
 }
 #bottom-bar {
 	/*overwrite common.css*/
