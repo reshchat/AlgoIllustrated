@@ -220,10 +220,9 @@ function run_graph() {
 		}
 		if (bfs_en == true) {
 			if (prev.indexOf(d.id) != -1) {
-				console.log("-1-1-1");
-				console.log("ERROR");
+				changeText("Error")
 			} else if (cur.length == 0) {
-				console.log("0000000000000000");
+
 				node
 					.filter(function (s) {
 						return s.id == d.id;
@@ -238,10 +237,10 @@ function run_graph() {
 						cur.push(data.links[i].source.id);
 					}
 				}
+				changeText(prev.toString())
 			} else {
-				console.log("1111111111111");
 				if (cur.indexOf(d.id) == -1) {
-					console.log("ERROR");
+					changeText("error")
 				} else {
 					console.log("222222");
 					var temp = [];
@@ -257,6 +256,7 @@ function run_graph() {
 						})
 						.style("fill", "red");
 					prev.push(d.id);
+					changeText(prev.toString())
 					for (var i = 0; i < data.links.length; i++) {
 						if (
 							d.id == data.links[i].source.id &&
@@ -310,7 +310,10 @@ function run_graph() {
 			return bfs_indices.slice(0, bfs_i).indexOf(s.id) != -1;
 		})
 		.style("fill", "blue"); //s.id == d.id
-	
+	if (bfs_i>0){
+		changeText(bfs_i.toString())
+	}
+
 	run_graph_matlist(data);
 }
 
