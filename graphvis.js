@@ -160,15 +160,15 @@ function run_graph() {
 				})
 				.style("fill", "red");
 
-			var links = [];
+			var nodes = [];
 			for (var i = 0; i < data.nodes.length; i++) {
 				if (i != d.index) {
-					links.push(data.nodes[i]);
+					nodes.push(data.nodes[i]);
 				}
 			}
-			data.nodes = links;
+			data.nodes = nodes;
 
-			links = [];
+			var links = [];
 			for (var i = 0; i < data.links.length; i++) {
 				if (
 					d.id != data.links[i].source.id &&
