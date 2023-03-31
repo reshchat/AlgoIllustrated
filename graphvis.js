@@ -93,20 +93,21 @@ function run_graph() {
 	node.call(drag);
 
 	function ticked() {
-		texts.attr("x", (d) => d.x);
-		texts.attr("y", (d) => d.y);
+		texts
+			.attr("x", (d) => Math.max(radius, Math.min(width - radius, d.x)))
+			.attr("y", (d) => Math.max(radius, Math.min(height - radius, d.y)));
 		link
 			.attr("x1", function (d) {
-				return d.source.x;
+				return Math.max(radius, Math.min(width - radius, d.source.x));
 			})
 			.attr("y1", function (d) {
-				return d.source.y;
+				return Math.max(radius, Math.min(height - radius, d.source.y));
 			})
 			.attr("x2", function (d) {
-				return d.target.x;
+				return Math.max(radius, Math.min(width - radius, d.target.x));
 			})
 			.attr("y2", function (d) {
-				return d.target.y;
+				return Math.max(radius, Math.min(height - radius, d.target.y));
 			});
 		node
 			.attr("cx", function (d) {
@@ -115,8 +116,8 @@ function run_graph() {
 			.attr("cy", function (d) {
 				return d.y;
 			})
-      .attr("cx", d => Math.max(radius, Math.min(width - radius, d.x)))
-      .attr("cy", d => Math.max(radius, Math.min(height - radius, d.y)));
+			.attr("cx", d => Math.max(radius, Math.min(width - radius, d.x)))
+			.attr("cy", d => Math.max(radius, Math.min(height - radius, d.y)));
 	}
 
 	// What happens when a circle is dragged?
