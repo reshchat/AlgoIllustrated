@@ -4,6 +4,11 @@ function run_graph() {
 	var height = 400;
   	var radius = 20;
 
+var pseudo= "create a queue Q \n <br>" +
+	"mark current node as visited and put it into Q \n<br>" +
+	"while Q is non-empty \n<br>" +
+	"    remove the head node of Q \n<br>" +
+	"    mark and enqueue all (unvisited) neighbours<br> of this node\n <br><br>"
 	// append the svg object to the body of the page
 	var svg = d3
 		.select("#graphsvg")
@@ -221,7 +226,7 @@ function run_graph() {
 		}
 		if (bfs_en == true) {
 			if (prev.indexOf(d.id) != -1) {
-				changeText("Error")
+				changeText("Error:" +d.id.toString() + "not the correct neighbour <br> <br>" + pseudo)
 			} else if (cur.length == 0) {
 
 				node
@@ -238,10 +243,10 @@ function run_graph() {
 						cur.push(data.links[i].source.id);
 					}
 				}
-				changeText(prev.toString())
+				changeText(pseudo + "visited: " +prev.toString())
 			} else {
 				if (cur.indexOf(d.id) == -1) {
-					changeText("error")
+					changeText("Error:" +d.id.toString() + "not the correct neighbour <br> <br>" + pseudo)
 				} else {
 					console.log("222222");
 					var temp = [];
@@ -257,17 +262,18 @@ function run_graph() {
 						})
 						.style("fill", "red");
 					prev.push(d.id);
-					changeText(prev.toString())
+
+					changeText(pseudo + "visited: " +prev.toString())
 					for (var i = 0; i < data.links.length; i++) {
 						if (
 							d.id == data.links[i].source.id &&
-							prev.indexOf(data.links[i].target.id) == -1
+							prev.indexOf(data.links[i].target.id) == -1 && cur.indexOf(data.links[i].target.id) == -1
 						) {
 							next.push(data.links[i].target.id);
 						}
 						if (
 							d.id == data.links[i].target.id &&
-							prev.indexOf(data.links[i].source.id) == -1
+							prev.indexOf(data.links[i].source.id) == -1 && cur.indexOf(data.links[i].target.id) == -1
 						) {
 							next.push(data.links[i].source.id);
 						}
@@ -276,14 +282,15 @@ function run_graph() {
 			}
 			if (cur.length == 0 && next.length > 0) {
 				console.log("33");
+
 				cur = next;
 				next = [];
 			}
 			if (cur.length == 0 && next.length == 0) {
 				if (prev.length == data.nodes.length) {
-					console.log("444");
 					bfs_en = false;
 					console.log("SUCCESS");
+					changeText("BFS DONE! <br> <br>" + pseudo )
 				}
 			}
 		}
@@ -312,7 +319,10 @@ function run_graph() {
 		})
 		.style("fill", "blue"); //s.id == d.id
 	if (bfs_i>0){
-		changeText(bfs_i.toString())
+		console.log("hello")
+		console.log(qss)
+		console.log(qss[bfs_i])
+		changeText(pseudo + "visited :" + bfs_indices.slice(0, bfs_i).toString() +"<br>queue: " + qss[bfs_i].toString())
 	}
 
 	run_graph_matlist(data);

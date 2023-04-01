@@ -7,5 +7,5 @@ function changeText(ss) {
     // Change the text content of the paragraph element
     //para.textContent = "New text";
 
-    para.textContent = ss;
+    para.innerHTML  = ss;
 }

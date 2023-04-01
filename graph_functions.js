@@ -5,6 +5,7 @@ var node_del = false;
 var bfs_en = false;
 var selected_nodes = [];
 var bfs_indices = [];
+var qss =[];
 var bfs_i = 0;
 
 var add_node = function add_node() {
@@ -56,9 +57,15 @@ class Queue {
 		this.backIndex = 0;
 	}
 	enqueue(item) {
-		this.items[this.backIndex] = item;
-		this.backIndex++;
-		return item + " inserted";
+		var ss=[]
+		for (let i = this.frontIndex; i < this.backIndex; i++) {
+			ss.push(this.items[i])
+		}
+		if (ss.indexOf(item)==-1) {
+			this.items[this.backIndex] = item;
+			this.backIndex++;
+			return item + " inserted";
+		}
 	}
 	dequeue() {
 		const item = this.items[this.frontIndex];
@@ -72,14 +79,22 @@ class Queue {
 	printQueue() {
 		return this.items;
 	}
+	printQueues() {
+		var ss=[]
+		for (let i = this.frontIndex; i < this.backIndex; i++) {
+			ss.push(this.items[i])
+		}
+		return ss;
+	}
 }
 
 const q = new Queue();
+
 var sim_bfs = function sim_bfs() {
 	bfs_indices=[]
 	console.log(Object.keys(q.items).length);
 	while (bfs_indices.length < data.nodes.length) {
-		console.log(Object.keys(q.items).length);
+		console.log(q.items);
 		if (Object.keys(q.items).length === 0) {
 			for (var i = 0; i < data.nodes.length; i++) {
 				if (bfs_indices.indexOf(data.nodes[i].id) == -1) {
@@ -108,6 +123,7 @@ var sim_bfs = function sim_bfs() {
 			}
 		}
 		}
+        qss.push(q.printQueues());
 	}
 	console.log(bfs_indices);
 };
