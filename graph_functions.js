@@ -11,7 +11,6 @@ var add_node = function add_node() {
 	node_ctr += 1;
 	var new_node = {
 		id: node_ctr,
-		name: "K",
 	};
 	console.log(data.nodes);
 	data.nodes.push(new_node);
