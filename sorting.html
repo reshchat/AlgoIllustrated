@@ -72,10 +72,12 @@
 
 	<div id="actions" class="panel">
 		<p id="search"><b>Edit Menu</b></p>
-		<p id="search" class="execAction" onclick=add_node()>Add Node</p>
-		<p id="remove" class="execAction" onclick=del_node()>Delete Node</p>
-		<p id="search" class="execAction" onclick=add_edge()>Add Edge</p>
-		<p id="remove" class="execAction" onclick=del_edge()>Delete Edge</p>
+		<p id="search" class="execAction" onclick=push()>Push</p>
+		<p id="search">
+		<form><input type="text" id="push_val" placeholder="Value to push"></form>
+		</p>
+		<p id="search" class="execAction" onclick=pop()>Pop</p>
+		<p id="search" class="execAction" onclick=peek()>Peek</p>
 		<p id="search" class="execAction" onclick=clear_scr()>Clear</p>
 	</div>
 
@@ -86,21 +88,22 @@
 	</div>
 	<div id="actions-hide" class="panel-hide"><span class="material-symbols-outlined">edit</span></div>
 	<div id="status" class="panel">
-		<p>yoo try2</p>
+		<p></p>
 	</div>
 	<div id="status-hide" class="panel-hide"><span class="material-symbols-outlined">short_text</span></div>
 	<div id="codetrace" class="panel">
-		<p id="pseudocode">yoo try</p>
+		<p></p>
 	</div>
 	<div id="codetrace-hide" class="panel-hide"><span class="material-symbols-outlined">code</span></div>
 
 	<div id="left-bar"></div>
 	<div id="right-bar"></div>
-	<div id="instruction-bar">Use the edit menu on the right to ADD and DELETE nodes and edges, and CLEAR screen.</div>
-	<div id="selection-bar">
-		<div id="start-bfs" class="media-control-button" title="start bfs" onclick=sim_bfs()><span
-				class="material-symbols-outlined">BFS</span></div>
-	</div>
+	<div id="instruction-bar">Use the edit menu on the right to PUSH, POP, PEEK and CLEAR.</div>
+	<div id="selection-bar"></div>
+	<!-- <div id="selection-bar" class="btn-group" style="grid-auto-flow: column;">
+	<button id="start-bfs" data-inline="true" class="media-control-button" title="start bfs" style="width: 50%" onclick=clear_scr()>Clear</button>
+	<button id="start-bfs" data-inline="true" class="media-control-button" title="start bfs" style="width: 50%" onclick=peek()>Peek</button>
+</div> -->
 	<div id="bottom-bar"></div>
 
 	<div id="graphsvg"></div>
@@ -138,11 +141,110 @@
 <script src="js/graph_library/GraphEdgeWidget.js"></script> -->
 	<!-- <script src="js/widgets/ListWidget.js"></script> -->
 
-	<script src="code_expl.js"></script>
-	<script src="graph_data.js"></script>
-	<script src="graph_functions.js"></script>
-	<script src="graph_matlist.js"></script>
-	<script src="graphvis.js"></script>
+	<script type="text/javascript">
+		// $('#play').hide();
+
+		//playback controls might fit better in viz.js, but put here in case some viz does not use GraphWidgetNew.js
+		var isPaused = false;
+		function isAtEnd() {
+			return (gw.getCurrentIteration() == (gw.getTotalIteration() - 1));
+		}
+
+		function pause() {
+			if (isPlaying) {
+				isPaused = true;
+				gw.pause();
+				$('#play').show();
+				$('#pause').hide();
+			}
+		}
+		function play() {
+			if (isPlaying) {
+				isPaused = false;
+				$('#pause').show();
+				$('#play').hide();
+				if (isAtEnd()) {
+					gw.replay();
+				} else {
+					gw.play();
+				}
+			}
+		}
+		function stepForward() {
+			if (isPlaying) {
+				pause();
+				gw.forceNext(250);
+			}
+		}
+		function stepBackward() {
+			if (isPlaying) {
+				pause();
+				gw.forcePrevious(250);
+			}
+		}
+		function goToBeginning() {
+			if (isPlaying) {
+				gw.jumpToIteration(0, 0);
+				pause();
+			}
+		}
+		function goToEnd() {
+			if (isPlaying) {
+				gw.jumpToIteration(gw.getTotalIteration() - 1, 0);
+				pause();
+			}
+		}
+		function stop() {
+			gw.stop();
+			isPaused = false;
+			isPlaying = false;
+			$('#pause').show();
+			$('#play').hide();
+			$('#current-action').hide();
+		}
+
+		//shortcut keys for playback controls
+		$(document).keydown(function (event) {
+			if (event.which == 32) { //spacebar
+				if (isPaused) { play(); } else { pause(); }
+			} else if (event.which == 37) { //left arrow
+				stepBackward();
+			} else if (event.which == 39) { //right arrow
+				stepForward();
+			} else if (event.which == 35) { //end
+				stop();
+			} else if (event.which == 189) { //minus
+				var d = (2200 - gw.getAnimationDuration()) - 100;
+				if (d > 0) {
+					$("#speed-input").slider("value", d);
+				} else {
+					$("#speed-input").slider("value", 0);
+				}
+			} else if (event.which == 187) { //plus
+				var d = (2200 - gw.getAnimationDuration()) + 100;
+				if (d <= 2000) {
+					$("#speed-input").slider("value", d);
+				} else {
+					$("#speed-input").slider("value", 2000);
+				}
+			}
+		});
+
+		//sliders
+		$("#speed-input").slider({
+			min: 200,
+			max: 2000,
+			value: 1700,
+			change: function (event, ui) {
+				gw.setAnimationDuration(2200 - ui.value);
+			}
+		});
+
+	</script>
+
+	<script src="sorting.js"></script>
+	<script src="stack_functions.js"></script>
+	<script src="stack.js"></script>
 
 </body>
 

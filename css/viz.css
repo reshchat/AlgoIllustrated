@@ -305,6 +305,7 @@ html {
 	/* background-color: #9d6adb; */
 	/* background-color: #d9513c; */
 	background-color: #ed5a7d;
+	z-index: 1001;
 }
 #guide p {
 	padding: 10px;
@@ -327,6 +328,7 @@ html {
 	top: 160px;
 	right: 53px;
 	background-color: #a7d41e;
+	z-index: 1010;
 }
 #actions p {
 	padding: 5px 10px;
@@ -376,6 +378,7 @@ html {
 	height: 50px;
 	white-space: normal;
 	background-color: #ff8a27;
+	z-index: 1005;
 }
 #status p {
 	padding: 10px;
@@ -399,6 +402,7 @@ html {
 	height: 190px;
 	font-family: "Courier New", Courier, monospace;
 	background-color: #2ebbd1;
+	z-index: 1005;
 }
 #codetrace p {
 	padding: 5px 10px;
