@@ -1,6 +1,8 @@
 var graph_data_matrix;
 var graph_data_list;
 
+var nodes_list = [];
+
 var run_graph_matlist = function run_graph_matlist(data) {
 	graph_data_matrix = create_adj_matrix(data);
 	graph_data_list = create_adj_list(data);
@@ -11,15 +13,19 @@ var run_graph_matlist = function run_graph_matlist(data) {
 
 var create_adj_matrix = function (data) {
 	var matrix = [];
+	nodes_list = [];
 	for (var i = 0; i < data.nodes.length; i++) {
 		matrix.push([]);
+		nodes_list.push(data.nodes[i].id);
 		for (var j = 0; j < data.nodes.length; j++) {
 			matrix[i].push(0);
 		}
 	}
 	for (var i = 0; i < data.links.length; i++) {
-		matrix[data.links[i].source.id - 1][data.links[i].target.id - 1] = 1;
-		matrix[data.links[i].target.id - 1][data.links[i].source.id - 1] = 1;
+		source = nodes_list.indexOf(data.links[i].source.id);
+		target = nodes_list.indexOf(data.links[i].target.id);
+		matrix[source][target] = 1;
+		matrix[target][source] = 1;
 	}
 	graph_data_matrix = matrix;
 	return matrix;
@@ -27,12 +33,18 @@ var create_adj_matrix = function (data) {
 
 var create_adj_list = function (data) {
 	var data_list = [];
+	nodes_list = [];
+
 	for (var i = 0; i < data.nodes.length; i++) {
 		data_list.push([]);
+		nodes_list.push(data.nodes[i].id);
 	}
 	for (var i = 0; i < data.links.length; i++) {
-		data_list[data.links[i].source.id - 1].push(data.links[i].target.id);
-		data_list[data.links[i].target.id - 1].push(data.links[i].source.id);
+		source = nodes_list.indexOf(data.links[i].source.id);
+		target = nodes_list.indexOf(data.links[i].target.id);
+
+		data_list[source].push(target);
+		data_list[target].push(source);
 	}
 	console.log("data_list", data_list);
 	graph_data_list = data_list;
@@ -40,18 +52,21 @@ var create_adj_list = function (data) {
 };
 
 var highlight_edge = function (link) {
-	var rowIndex = link.source.id;
-	var colIndex = link.target.id;
+	// var rowIndex = link.source.id;
+	// var colIndex = link.target.id;
+	var rowIndex = nodes_list.indexOf(link.source.id);
+	var colIndex = nodes_list.indexOf(link.target.id);
+
 	var duration = 5000; // in milliseconds
 	console.log(rowIndex, colIndex);
 
 	// Select the cell using its row and column index
 	var cell1 = d3
-		.select(".row:nth-child(" + (rowIndex + 1) + ")")
-		.select(".cell:nth-child(" + colIndex + ")");
+		.select(".row:nth-child(" + (rowIndex + 2) + ")")
+		.select(".cell:nth-child(" + (colIndex + 1) + ")");
 	var cell2 = d3
-		.select(".row:nth-child(" + (colIndex + 1) + ")")
-		.select(".cell:nth-child(" + rowIndex + ")");
+		.select(".row:nth-child(" + (colIndex + 2) + ")")
+		.select(".cell:nth-child(" + (rowIndex + 1) + ")");
 
 	// Set the fill attribute of the cell to the desired color and transition it
 	cell1
@@ -76,16 +91,21 @@ var highlight_edge = function (link) {
 	var edge_pos = -1;
 	for (let i = 0; i < graph_data_list.length; i++) {
 		for (let j = 0; j < graph_data_list[i].length; j++) {
-			if (i == link.source.id - 1 && graph_data_list[i][j] == link.target.id) {
+			// if (i == link.source.id - 1 && graph_data_list[i][j] == link.target.id) {
+			if (i == (rowIndex) && graph_data_list[i][j] == (colIndex)) {
 				console.log(i, graph_data_list[i][j]);
 				edge_pos = j;
 			}
 		}
 	}
-	console.log("edge_pos", edge_pos, "index", link.source.id - 1);
+	// console.log("edge_pos", edge_pos, "index", link.source.id - 1);
+	console.log("edge_pos", edge_pos, "index", colIndex);
 	var list_elem1 = d3
-		.select(".item_label:nth-child(" + link.source.id + ")")
+		// .select(".item_label:nth-child(" + link.source.id + ")")
+		// .select(".tspan:nth-child(" + (edge_pos + 1) + ")");
+		.select(".item_label:nth-child(" + (colIndex + 1) + ")")
 		.select(".tspan:nth-child(" + (edge_pos + 1) + ")");
+
 	console.log("item", list_elem1);
 	list_elem1
 		.transition()
@@ -120,12 +140,14 @@ var run_graph_matrix = function run_graph_matrix(graph_data_matrix) {
 
 	var rowLabels = new Array(numrows);
 	for (var i = 0; i < numrows; i++) {
-		rowLabels[i] = i + 1;
+		// rowLabels[i] = i + 1;
+		rowLabels[i] = nodes_list[i]
 	}
 
 	var columnLabels = new Array(numcols);
 	for (var i = 0; i < numcols; i++) {
-		columnLabels[i] = i + 1;
+		// columnLabels[i] = i + 1;
+		columnLabels[i] = nodes_list[i];
 	}
 
 	var x = d3
@@ -262,7 +284,8 @@ var run_graph_list = function run_graph_list(graph_data_list) {
 		})
 		.attr("dy", ".35em")
 		.text(function (d, i) {
-			return i + 1;
+			// return i + 1;
+			return nodes_list[i];
 		})
 		.style("fill", "white");
 
@@ -333,7 +356,8 @@ var run_graph_list = function run_graph_list(graph_data_list) {
 		.enter()
 		.append("tspan")
 		.text(function (d) {
-			return d + " ";
+			// return d + " ";
+			return nodes_list[d] + " ";
 		});
 
 	svg.selectAll("tspan").attr("dx", "0.5em");
