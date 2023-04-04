@@ -1,7 +1,7 @@
-var values = [10, 20, 30, 40];
-var weights = [30, 10, 40, 20];
-var capacity = 40;
-var labs = ["value","weight","capacity"]
+var values = [1, 2, 3, 4];
+var weights = [3, 1, 4, 2];
+var capacity = 4;
+var labs = ["item index","value","weight","capacity"]
 var data = {
 	nodes: [
 		{
