@@ -1,6 +1,7 @@
 var values = [10, 20, 30, 40];
 var weights = [30, 10, 40, 20];
 var capacity = 40;
+var labs = ["value","weight","capacity"]
 var data = {
 	nodes: [
 		{

@@ -325,7 +325,7 @@ var pseudo= "create a queue Q \n <br>" +
 		changeText(pseudo + "visited :" + bfs_indices.slice(0, bfs_i).toString() +"<br>queue: " + qss[bfs_i].toString())
 	}
 
-	run_graph_matlist(data);
+	run_graph_matlist(data,labs,values, weights,capacity);
 }
 
 run_graph();

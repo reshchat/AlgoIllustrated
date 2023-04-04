@@ -1,12 +1,12 @@
 var graph_data_matrix;
 var graph_data_list;
 
-var run_graph_matlist = function run_graph_matlist(data) {
+var run_graph_matlist = function run_graph_matlist(data,labs,values, weights,capacity) {
 	graph_data_matrix = create_adj_matrix(data);
 	graph_data_list = create_adj_list(data);
 
 	run_graph_matrix(graph_data_matrix);
-	run_graph_list(graph_data_list);
+	run_graph_list(graph_data_list,labs,values, weights,capacity);
 };
 
 var create_adj_matrix = function (data) {
@@ -215,8 +215,12 @@ var run_graph_matrix = function run_graph_matrix(graph_data_matrix) {
 		});
 };
 
-var run_graph_list = function run_graph_list(graph_data_list) {
-	var margin = { top: 200, right: 100, bottom: 100, left: 800 },
+var run_graph_list = function run_graph_list(graph_data_list,labs,values, weights,capacity) {
+	graph_data_list=[]
+	graph_data_list.push(values)
+	graph_data_list.push(weights)
+	graph_data_list.push([capacity])
+	var margin = { top: 70, right: 100, bottom: 100, left: 200 },
 		width = 150,
 		height = 150;
 
@@ -232,7 +236,7 @@ var run_graph_list = function run_graph_list(graph_data_list) {
 		.attr("height", height)
 		.attr("fill", "transparent");
 
-	var rect_width = 20;
+	var rect_width = 40;
 	var rect_height = 20;
 
 	var index_rect = svg
@@ -245,13 +249,13 @@ var run_graph_list = function run_graph_list(graph_data_list) {
 		.attr("y", function (d, i) {
 			return i * rect_height;
 		})
-		.attr("width", rect_width)
+		.attr("width", rect_width*2)
 		.attr("height", rect_height)
 		.style("fill", "#b3a2c8");
 
 	var index_label = svg
 		.selectAll(".index_label")
-		.data(graph_data_list)
+		.data(labs)
 		.enter()
 		.append("text")
 		.attr("class", "index_label")
@@ -262,7 +266,7 @@ var run_graph_list = function run_graph_list(graph_data_list) {
 		})
 		.attr("dy", ".35em")
 		.text(function (d, i) {
-			return i + 1;
+			return d;
 		})
 		.style("fill", "white");
 

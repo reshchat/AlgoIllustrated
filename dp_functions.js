@@ -6,24 +6,46 @@ function closePopup() {
 	var popup = document.getElementById("popup");
 	popup.style.display = "none";
 }
+
+function openPopupi() {
+	var popup = document.getElementById("popup_i");
+	popup.style.display = "block";
+}
+function closePopupi() {
+	var popup = document.getElementById("popup_i");
+	popup.style.display = "none";
+}
+function openPopupc() {
+	var popup = document.getElementById("popup_cap");
+	popup.style.display = "block";
+}
+function closePopupc() {
+	var popup = document.getElementById("popup_cap");
+	popup.style.display = "none";
+}
 var add_item = function add_item(){
-values.push(Number(document.getElementById("value")));
-weights.push(Number(document.getElementById("weight")));
+values.push(Number(document.getElementById("value").value));
+weights.push(Number(document.getElementById("weight").value));
 	closePopup();
 }
 
 var del_item = function del_item(){
-	var i = Number(document.getElementById("indexi"))
+	console.log("DELSH")
+	var i = Number(document.getElementById("indexi").value)
+	console.log(document.getElementById("indexi").value)
 	if(i>-1){
 		values.splice(i,1);
 		weights.splice(i,1);
 	}
-
+	closePopupi();
 }
 
 var edit_cap = function edit_cap(){
-	var c = Number(document.getElementById("cap"))
+	console.log("cPPPP")
+	console.log(document.getElementById("cap").value)
+	var c = Number(document.getElementById("cap").value)
 	capacity=c;
+	closePopupc();
 }
 
 var clear_items = function clear_items(){
