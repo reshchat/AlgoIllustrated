@@ -1,43 +1,14 @@
 var graph_data_matrix;
 var graph_data_list;
 
-var run_graph_matlist = function run_graph_matlist(data) {
-	graph_data_matrix = create_adj_matrix(data);
-	graph_data_list = create_adj_list(data);
+var run_graph_matlist = function run_graph_matlist(matrix,labs,values, weights,capacity) {
+	graph_data_matrix = matrix;
+	graph_data_list = matrix;
 
 	run_graph_matrix(graph_data_matrix);
-	run_graph_list(graph_data_list);
+	run_graph_list(graph_data_list,labs,values, weights,capacity);
 };
 
-var create_adj_matrix = function (data) {
-	var matrix = [];
-	for (var i = 0; i < data.nodes.length; i++) {
-		matrix.push([]);
-		for (var j = 0; j < data.nodes.length; j++) {
-			matrix[i].push(0);
-		}
-	}
-	for (var i = 0; i < data.links.length; i++) {
-		matrix[data.links[i].source.id - 1][data.links[i].target.id - 1] = 1;
-		matrix[data.links[i].target.id - 1][data.links[i].source.id - 1] = 1;
-	}
-	graph_data_matrix = matrix;
-	return matrix;
-};
-
-var create_adj_list = function (data) {
-	var data_list = [];
-	for (var i = 0; i < data.nodes.length; i++) {
-		data_list.push([]);
-	}
-	for (var i = 0; i < data.links.length; i++) {
-		data_list[data.links[i].source.id - 1].push(data.links[i].target.id);
-		data_list[data.links[i].target.id - 1].push(data.links[i].source.id);
-	}
-	console.log("data_list", data_list);
-	graph_data_list = data_list;
-	return data_list;
-};
 
 var highlight_edge = function (link) {
 	var rowIndex = link.source.id;
@@ -116,16 +87,16 @@ var run_graph_matrix = function run_graph_matrix(graph_data_matrix) {
 		.attr("stroke", "black");
 
 	var numrows = graph_data_matrix.length;
-	var numcols = graph_data_matrix[0].length;
-
+	//var numcols = graph_data_matrix[0].length;
+	var numcols = capacity+1;
 	var rowLabels = new Array(numrows);
 	for (var i = 0; i < numrows; i++) {
-		rowLabels[i] = i + 1;
+		rowLabels[i] = i ;
 	}
 
 	var columnLabels = new Array(numcols);
 	for (var i = 0; i < numcols; i++) {
-		columnLabels[i] = i + 1;
+		columnLabels[i] = i ;
 	}
 
 	var x = d3
@@ -215,8 +186,18 @@ var run_graph_matrix = function run_graph_matrix(graph_data_matrix) {
 		});
 };
 
-var run_graph_list = function run_graph_list(graph_data_list) {
-	var margin = { top: 200, right: 100, bottom: 100, left: 800 },
+var run_graph_list = function run_graph_list(graph_data_list,labs,values, weights,capacity) {
+	var ind = [];
+
+	for (var i = 1; i <= values.length; i++) {
+		ind.push(i);
+	}
+	graph_data_list=[]
+	graph_data_list.push(ind)
+	graph_data_list.push(values)
+	graph_data_list.push(weights)
+	graph_data_list.push([capacity])
+	var margin = { top: 70, right: 100, bottom: 100, left: 200 },
 		width = 150,
 		height = 150;
 
@@ -232,7 +213,7 @@ var run_graph_list = function run_graph_list(graph_data_list) {
 		.attr("height", height)
 		.attr("fill", "transparent");
 
-	var rect_width = 20;
+	var rect_width = 40;
 	var rect_height = 20;
 
 	var index_rect = svg
@@ -245,13 +226,13 @@ var run_graph_list = function run_graph_list(graph_data_list) {
 		.attr("y", function (d, i) {
 			return i * rect_height;
 		})
-		.attr("width", rect_width)
+		.attr("width", rect_width*2)
 		.attr("height", rect_height)
 		.style("fill", "#b3a2c8");
 
 	var index_label = svg
 		.selectAll(".index_label")
-		.data(graph_data_list)
+		.data(labs)
 		.enter()
 		.append("text")
 		.attr("class", "index_label")
@@ -262,7 +243,7 @@ var run_graph_list = function run_graph_list(graph_data_list) {
 		})
 		.attr("dy", ".35em")
 		.text(function (d, i) {
-			return i + 1;
+			return d;
 		})
 		.style("fill", "white");
 
