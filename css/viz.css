@@ -118,13 +118,15 @@ html {
 	margin-left: -205px; /*20px space*/
 }
 #start-bfs {
-	bottom: 55px;
-	left: 300px;
+	bottom: 10px;
+	left: 200px;
 	cursor: pointer;
 	/* padding: 15px 15px; */
 	/* margin-left: -150px; 20px space */
 	font-family: "Courier New", Courier, monospace;
 	font-size: 20px;
+	color: white;
+	z-index: 1000;
 }
 #next {
 	bottom: 10px;
