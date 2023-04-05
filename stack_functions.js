@@ -10,7 +10,7 @@ var peek = function peek() {
 	}
 	else{
 		peek_en = false
-		color_change(data.value[data.value.length - 1].id, "red")
+		color_change(data.value[data.value.length - 1].id, "#7700b3")
 	}
 };
 

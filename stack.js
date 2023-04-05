@@ -6,8 +6,8 @@ function run_graph() {
 	var top_sc = 120
 	var left_sc = 300
 	// set the dimensions and margins of the graph
-	var width = 1000;
-	var height = 450;
+	var width = 1200;
+	var height = 800;
 
 	// append the svg object to the body of the page
 	var svg = d3
@@ -25,7 +25,7 @@ function run_graph() {
 			.attr("y", top_sc)
 			.attr("width", 80)
 			.attr("height", 20)
-			.style("fill", "red")
+			.style("fill", "#7700b3")
 			.attr("stroke", "black")
 			.style("stroke-width", 1)
 			.attr("id", data.value[i].id);
@@ -54,6 +54,8 @@ function run_graph() {
 		
 		top_sc = top_sc + 25
 	}
+
+	run_graph_matlist(data);
 }
 
 run_graph();
