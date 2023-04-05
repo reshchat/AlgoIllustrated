@@ -1,4 +1,4 @@
-var width = 1000;
+var width = 1100;
 var height = 500;
 var nodeWidth = 30;
 var canvas;
@@ -72,6 +72,35 @@ var sorting_divide = function sorting_divide() {
 		});
 	}
 };
+
+// var sorting_divide = function sorting_divide() {
+// 	var margin = { top: 20, right: 100, bottom: 100, left: width / 2 };
+// 	var diff = 50;
+//     l=lists_down.length
+//     for (let i =0; i<l; i++) {
+
+//     }
+//     initi= width/2 - tosortlist.length*nodeWidth/2; 
+//     niti= prevmargin - width/(i+2) - tosortlist.length*nodeWidth/(i+2); 
+// 	for (let level in lists_down) {
+// 		var num_elements = lists_down[level].length;
+//         lists_down[level].forEach(function (list) {
+//             num_elements += list.length;
+// 		});
+// 		var total_width = num_elements * nodeWidth;
+// 		var initial_margin_left = (width - total_width) / 2;
+// 		margin.left = initial_margin_left;
+// 		margin.top += diff;
+//         var prevlen = 0;
+// 		lists_down[level].forEach(function (list, i) {
+//             var element_width = prevlen*nodeWidth;
+//             margin.left += (element_width + 2* nodeWidth);
+//             prevlen = list.length;
+//             console.log("list", list, "margin", margin);
+// 			create_array(list, margin);
+// 		});
+// 	}
+// };
 
 var run_sortingvis = function run_sortingvis() {
 	canvas = d3

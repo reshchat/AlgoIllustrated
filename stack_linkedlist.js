@@ -4,7 +4,7 @@ var run_graph_matlist = function run_graph_matlist(data) {
 };
 
 var run_graph_list = function run_graph_list(data) {
-	var margin = { top: 200, right: 100, bottom: 100, left: 800 },
+	var margin = { top: 200, right: 100, bottom: 100, left: 500 },
 		width = 150,
 		height = 150;
 
@@ -60,7 +60,9 @@ var run_graph_list = function run_graph_list(data) {
                 return "#d580ff";
             else
                 return "#aa00ff";
-        });
+        })
+		.attr("stroke", "black")
+		.style("stroke-width", 1);
 
 	var label = svg
 		.selectAll(".index_label")
@@ -77,7 +79,9 @@ var run_graph_list = function run_graph_list(data) {
 		.text(function (d, i) {
 			return lis[i].name;
 		})
-		.style("fill", "white");
+		.attr("stroke", "white")		
+		.attr("font-size", "10px")
+		.attr("font-family", "Comic Sans MS");
 
 	var arrow = svg
 		.selectAll(".arrow")

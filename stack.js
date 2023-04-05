@@ -6,8 +6,8 @@ function run_graph() {
 	var top_sc = 120
 	var left_sc = 300
 	// set the dimensions and margins of the graph
-	var width = 1200;
-	var height = 800;
+	var width = 1100;
+	var height = 500;
 
 	// append the svg object to the body of the page
 	var svg = d3
@@ -17,6 +17,18 @@ function run_graph() {
 		.attr("height", height)
     ;
     $("svg").css({top: 60, left: 60, position:'absolute'});
+	
+	var topmarker = svg
+	.append("text")	
+	.text("TOP")
+	.attr("x", left_sc - 30)
+	.attr("y", top_sc + 5)
+	.attr("font-size", "12px")
+	.attr("font-family", "Comic Sans MS")
+	.attr("fill", "black")
+	.attr("font-weight", "bold")
+	.attr("text-anchor", "middle")
+	.attr("alignment-baseline", "middle");
 
 	for(var i = data.value.length-1; i >= 0; i--){
 		block = svg
@@ -36,7 +48,10 @@ function run_graph() {
 			.append("text")
 			.text(data.value[i].name)
 			.attr("x", left_sc + 36)
-			.attr("y", top_sc + 14)
+			.attr("y", top_sc + 14)	
+			.attr("stroke", "white")		
+			.attr("font-size", "10px")
+			.attr("font-family", "Comic Sans MS");			
 	
 		// if(data.next[i].target != null){
 		// 	var next = svg
