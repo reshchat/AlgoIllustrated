@@ -10,19 +10,19 @@ var run_graph_matlist = function run_graph_matlist(matrix,labs,values, weights,c
 };
 
 
-var highlight_edge = function (link) {
-	var rowIndex = link.source.id;
-	var colIndex = link.target.id;
+var highlight_edge = function (a) {
+	var rowIndex = a[0];
+	var colIndex = a[1];
 	var duration = 5000; // in milliseconds
 	console.log(rowIndex, colIndex);
 
 	// Select the cell using its row and column index
 	var cell1 = d3
-		.select(".row:nth-child(" + (rowIndex + 1) + ")")
-		.select(".cell:nth-child(" + colIndex + ")");
-	var cell2 = d3
-		.select(".row:nth-child(" + (colIndex + 1) + ")")
-		.select(".cell:nth-child(" + rowIndex + ")");
+		.select(".row:nth-child(" + (rowIndex + 2) + ")")
+		.select(".cell:nth-child(" + (colIndex+1) + ")");
+	// var cell2 = d3
+	// 	.select(".row:nth-child(" + (colIndex + 1) + ")")
+	// 	.select(".cell:nth-child(" + rowIndex + ")");
 
 	// Set the fill attribute of the cell to the desired color and transition it
 	cell1
@@ -33,14 +33,14 @@ var highlight_edge = function (link) {
 		.transition()
 		.attr("fill", null)
 		.style("font-weight", "normal");
-	cell2
-		.transition()
-		.duration(duration)
-		.attr("fill", "blue")
-		.style("font-weight", "bold")
-		.transition()
-		.attr("fill", null)
-		.style("font-weight", "normal"); // reset
+	// cell2
+	// 	.transition()
+	// 	.duration(duration)
+	// 	.attr("fill", "blue")
+	// 	.style("font-weight", "bold")
+	// 	.transition()
+	// 	.attr("fill", null)
+	// 	.style("font-weight", "normal"); // reset
 
 	// find the edge element in adjacency list graph_data_list using the source and target id
 	console.log("graph_data_list", graph_data_list);

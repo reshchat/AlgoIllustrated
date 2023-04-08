@@ -74,6 +74,7 @@ var pseudo= "create a queue Q \n <br>" +
 	}
 
 	run_graph_matlist(qss[bfs_i],labs,values, weights,capacity);
+	highlight_edge(highlight[bfs_i])
 }
 
 run_graph();

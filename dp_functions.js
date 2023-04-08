@@ -72,6 +72,7 @@ var bfs_en = false;
 var selected_nodes = [];
 var bfs_indices = [];
 var qss =[arr];
+var highlight=[];
 var bfs_i = 0;
 
 var bfs = function bfs() {
@@ -113,6 +114,7 @@ arr=[]
 				}
 				arr2.push(arr3);
 			}
+			highlight.push([i,j])
 			qss.push(arr2);
 		}
 	}
