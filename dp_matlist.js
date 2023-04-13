@@ -254,9 +254,9 @@ var run_graph_list = function run_graph_list(graph_data_list,labs,values, weight
 		.append("path")
 		.attr("class", "arrow")
 		.attr("d", function (d, i) {
-			var x1 = rect_width + rect_width / 2;
+			var x1 = rect_width * 2.25 ;
 			var y1 = i * rect_height + rect_height / 2;
-			var x2 = x1 + rect_width;
+			var x2 = x1 + rect_width/2;
 			var y2 = y1;
 			return "M" + x1 + "," + y1 + "L" + x2 + "," + y2;
 		})
