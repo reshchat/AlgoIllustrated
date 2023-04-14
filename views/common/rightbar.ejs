@@ -6,12 +6,12 @@
         <p id="remove" class="execAction" onclick=del_node()>Delete Node</p>
         <p id="search" class="execAction" onclick=add_edge()>Add Edge</p>
         <p id="remove" class="execAction" onclick=del_edge()>Delete Edge</p>
-        <p id="search" class="execAction" onclick=clear_scr()>Clear</p>
         <% if(page == 'graph_simulation'){ %>
             <p id="search" class="execAction" onclick=sim_bfs()>Simulate BFS</p>
         <% } else if(page == 'graph_interaction'){ %>
             <p id="search" class="execAction" onclick=bfs()>Interact BFS</p>
         <% } %>
+        <p id="search" class="execAction" onclick=clear_scr()>Clear</p>
     <% } else if(page.includes('dp_')){ %>
         <div id="popup_cap">
             <h2>Edit Capacity</h2>
@@ -42,6 +42,7 @@
             <p id="search" class="execAction" onclick="del_item()">Delete </p>
         </div>
         <p id="remove" class="execAction" onclick=openPopupi()>Delete Item</p>
+        <p id="search" class="execAction" onclick=sim_bfs()>Simulate DP</p>
         <p id="search" class="execAction" onclick=clear_items()>Clear</p>
     <% } else if(page.includes('stacks')){ %>
         <p id="search" class="execAction" onclick=push()>Push</p>
@@ -51,6 +52,12 @@
         <p id="search" class="execAction" onclick=pop()>Pop</p>
         <p id="search" class="execAction" onclick=peek()>Peek</p>
         <p id="search" class="execAction" onclick=clear_scr()>Clear</p>
+    <% } else if(page.includes('sorting')){ %>
+        <p id="search" class="execAction" onclick=parse_data()>Sort</p>
+		<p id="search">
+		<form><input type="text" id="sort_list" placeholder="Elements to sort" value="4,1,2,5,3"></form>
+		</p>
+		<p id="search" class="execAction" onclick=clear_scr()>Clear</p>
     <% } %>
 </div>
 

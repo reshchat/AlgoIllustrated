@@ -1,9 +1,9 @@
-<% var page='graph_simulation' ; %>
+<% var page='sorting_interaction' ; %>
 <%- include('../common/head') %>
 
 <body>
 
-	<%- include('../common/head', {page: page}) %>
+    <%- include('../common/head', {page: page}) %>
 	<%- include('../common/topbar', {page: page}) %>
 	<%- include('../common/leftbar', {page: page}) %>
 	<%- include('../common/rightbar', {page: page}) %>
@@ -11,9 +11,6 @@
 
 	<div id="graphsvg"></div>
 
-	<script src="graph_data.js"></script>
-	<script src="graph_functions.js"></script>
-	<script src="graph_matlist.js"></script>
-	<script src="graphvis.js"></script>
-
+	<script src="sorting_functions.js"></script>
+	<script src="sortingvis.js"></script>
 </body>
