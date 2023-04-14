@@ -71,34 +71,6 @@ html {
 	height: 50px;
 }
 
-#speed-control {
-	position: fixed;
-	right: 200px;
-	bottom: 20px;
-	color: white;
-	font-size: 11px;
-	line-height: 100%;
-}
-#speed-control .ui-slider {
-	position: relative;
-	display: inline-block;
-	margin: 0px 10px;
-	border-left: 5px solid #777;
-	border-right: 5px solid #777;
-	background-color: #777;
-	height: 6px;
-	width: 70px;
-}
-#speed-control .ui-slider-handle {
-	position: absolute;
-	margin-left: -5px;
-	border: none;
-	outline: none;
-	background-color: white;
-	height: 6px;
-	width: 10px;
-}
-
 #media-controls {
 }
 .media-control-button {
@@ -135,13 +107,6 @@ html {
 	left: 50%;
 	margin-left: -237px;
 }
-#pause,
-#play {
-	bottom: 8px;
-	left: 50%;
-	margin-left: -273px;
-	opacity: 1;
-}
 #previous {
 	bottom: 10px;
 	left: 50%;
@@ -151,12 +116,6 @@ html {
 	bottom: 10px;
 	left: 50%;
 	margin-left: -335px;
-}
-#stop {
-	bottom: 10px;
-	left: 50%;
-	margin-left: 195px;
-	opacity: 1;
 }
 
 #viz {

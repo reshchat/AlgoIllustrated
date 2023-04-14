@@ -1,0 +1,32 @@
+<div id="right-bar"></div>
+<div id="actions" class="panel">
+    <p id="search"><b>Edit Menu</b></p>
+    <p id="search" class="execAction" onclick=add_node()>Add Node</p>
+    <p id="remove" class="execAction" onclick=del_node()>Delete Node</p>
+    <p id="search" class="execAction" onclick=add_edge()>Add Edge</p>
+    <p id="remove" class="execAction" onclick=del_edge()>Delete Edge</p>
+    <p id="search" class="execAction" onclick=clear_scr()>Clear</p>
+    <% if(page == 'graph_simulation'){ %>
+        <p id="search" class="execAction" onclick=sim_bfs()>Simulate BFS</p>
+    <% } else if(page == 'graph_interaction'){ %>
+        <p id="search" class="execAction" onclick=bfs()>Interact BFS</p>
+    <% } %>
+</div>
+
+<div id="audio" class="panel-hide"><span class="material-symbols-outlined">volume_up</span></div>
+<div id="guide-hide" class="panel-hide"><span class="material-symbols-outlined">menu_book</span></div>
+<div id="guide" class="panel">
+    <p></p>
+</div>
+<div id="actions-hide" class="panel-hide"><span class="material-symbols-outlined">edit</span></div>
+<div id="status" class="panel">
+    <p>yoo try2</p>
+</div>
+<div id="status-hide" class="panel-hide"><span class="material-symbols-outlined">short_text</span></div>
+<div id="codetrace" class="panel">
+    <p id="pseudocode">yoo try</p>
+</div>
+<div id="codetrace-hide" class="panel-hide"><span class="material-symbols-outlined">code</span></div>
+
+
+<script src="../../code_expl.js"></script>

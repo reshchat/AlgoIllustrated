@@ -1,0 +1,16 @@
+<div id="bottom-bar"></div>
+<% if(page == 'graph_simulation'){ %>
+    <div id="media-controls">
+        <span id="go-to-beginning" class="media-control-button" title="go to beginning" onclick=goToBeginning()><span
+                class="material-symbols-outlined" bottom="5px" style="color:rgb(255, 255, 255)">first_page</span></span>
+        <span id="previous" class="media-control-button" title="step backward" onclick=prev_bfs()><span
+                class="material-symbols-outlined" bottom="5px"
+                style="color:rgb(255, 255, 255); transform: rotate(180deg);">play_arrow</span></span>
+        <span id="next" class="media-control-button" title="step forward" onclick=next_bfs1()><span
+                class="material-symbols-outlined" bottom="5px"
+                style="color:rgb(255, 255, 255)">play_arrow</span></span>
+        <span id="go-to-end" class="media-control-button" title="go to end" onclick=goToEnd()><span
+                class="material-symbols-outlined" bottom="5px" style="color:rgb(255, 255, 255)">last_page</span></span>
+    </div>
+<!-- <% } else if(page == 'stacks'){ %>
+<% } %> -->
