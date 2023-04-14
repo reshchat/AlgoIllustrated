@@ -1,15 +1,48 @@
 <div id="right-bar"></div>
 <div id="actions" class="panel">
     <p id="search"><b>Edit Menu</b></p>
-    <p id="search" class="execAction" onclick=add_node()>Add Node</p>
-    <p id="remove" class="execAction" onclick=del_node()>Delete Node</p>
-    <p id="search" class="execAction" onclick=add_edge()>Add Edge</p>
-    <p id="remove" class="execAction" onclick=del_edge()>Delete Edge</p>
-    <p id="search" class="execAction" onclick=clear_scr()>Clear</p>
-    <% if(page == 'graph_simulation'){ %>
-        <p id="search" class="execAction" onclick=sim_bfs()>Simulate BFS</p>
-    <% } else if(page == 'graph_interaction'){ %>
-        <p id="search" class="execAction" onclick=bfs()>Interact BFS</p>
+    <% if(page.includes('graph_')){ %>
+        <p id="search" class="execAction" onclick=add_node()>Add Node</p>
+        <p id="remove" class="execAction" onclick=del_node()>Delete Node</p>
+        <p id="search" class="execAction" onclick=add_edge()>Add Edge</p>
+        <p id="remove" class="execAction" onclick=del_edge()>Delete Edge</p>
+        <p id="search" class="execAction" onclick=clear_scr()>Clear</p>
+        <% if(page == 'graph_simulation'){ %>
+            <p id="search" class="execAction" onclick=sim_bfs()>Simulate BFS</p>
+        <% } else if(page == 'graph_interaction'){ %>
+            <p id="search" class="execAction" onclick=bfs()>Interact BFS</p>
+        <% } %>
+    <% } else if(page.includes('dp_')){ %>
+        <div id="popup_cap">
+            <h2>Edit Capacity</h2>
+            <form>
+                <label for="cap" >Capacity:</label>
+                <input type="number" id="cap" name="cap"><br><br>
+            </form>
+            <p id="search" class="execAction" onclick="edit_cap()">Edit </p>
+        </div>
+        <p id="search" class="execAction" onclick=openPopupc()>Edit Capacity</p>
+        <div id="popup">
+            <h2>Add Item</h2>
+            <form>
+                <label for="weight" >Weight:</label>
+                <input type="number" id="weight" name="weight"><br><br>
+                <label for="value">Value:</label>
+                <input type="number" id="value" name="value"><br><br>
+            </form>
+            <p id="search" class="execAction" onclick="add_item()">Add </p>
+        </div>
+        <p id="search" class="execAction" onclick="openPopup()">Add Item</p>
+        <div id="popup_i">
+            <h2>Edit Capacity</h2>
+            <form>
+                <label for="indexi" >Item index:</label>
+                <input type="number" id="indexi" name="indexi"><br><br>
+            </form>
+            <p id="search" class="execAction" onclick="del_item()">Delete </p>
+        </div>
+        <p id="remove" class="execAction" onclick=openPopupi()>Delete Item</p>
+        <p id="search" class="execAction" onclick=clear_items()>Clear</p>
     <% } %>
 </div>
 

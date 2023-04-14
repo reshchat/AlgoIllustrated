@@ -3,13 +3,18 @@
             class="logo me-auto me-lg-0"></a>
     <div id="mode-menu" style="width: fit-content;">
         <% if(page == 'graph_simulation'){ %>
-            <div id="mode-button" onclick="window.location.href='graph_interaction.html'">Switch to Interaction Mode</div>
+            <div id="mode-button" onclick="window.location.href='/graph_interaction'">Switch to Interaction Mode</div>
         <% } else if(page == 'graph_interaction'){ %>
-            <div id="mode-button" onclick="window.location.href='graph_simulation.html'">Switch to Simulation Mode</div>
+            <div id="mode-button" onclick="window.location.href='/graph_simulation'">Switch to Simulation Mode</div>
+        <% } else if(page == 'dp_simulation'){ %>
+            <div id="mode-button" onclick="window.location.href='/dp_interaction'">Switch to Interaction Mode</div>
+        <% } else if(page == 'dp_interaction'){ %>
+            <div id="mode-button" onclick="window.location.href='/dp_simulation'">Switch to Simulation Mode</div>
         <% } %>
     </div>
 </div>
 <% if(page == 'graph_simulation' || page == 'graph_interaction'){ %>
     <div id="instruction-bar">Use the edit menu on the right to ADD and DELETE nodes and edges, CLEAR screen and use BFS.</div>
-<!-- <% } else if(page == 'stacks'){ %>
-<% } %>    -->
+<% } else if(page == 'dp_simulation' || page == 'dp_interaction'){ %>
+    <div id="instruction-bar">Use the edit menu on the right to ADD and DELETE items, edit capacity, and CLEAR screen.</div>
+<% } %>   
