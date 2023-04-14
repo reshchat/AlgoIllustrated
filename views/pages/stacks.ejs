@@ -1,0 +1,19 @@
+<% var page='stacks' ; %>
+<%- include('../common/head') %>
+
+<body>
+
+	<%- include('../common/head', {page: page}) %>
+	<%- include('../common/topbar', {page: page}) %>
+	<%- include('../common/leftbar', {page: page}) %>
+	<%- include('../common/rightbar', {page: page}) %>
+	<%- include('../common/bottombar', {page: page}) %>
+
+	<div id="graphsvg"></div>
+
+	<script src="stack_data.js"></script>
+	<script src="stack_functions.js"></script>
+	<script src="stack_linkedlist.js"></script>
+	<script src="stack.js"></script>
+
+</body>

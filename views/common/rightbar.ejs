@@ -43,6 +43,14 @@
         </div>
         <p id="remove" class="execAction" onclick=openPopupi()>Delete Item</p>
         <p id="search" class="execAction" onclick=clear_items()>Clear</p>
+    <% } else if(page.includes('stacks')){ %>
+        <p id="search" class="execAction" onclick=push()>Push</p>
+        <p id="search">
+        <form><input type="text" id="push_val" placeholder="Value to push"></form>
+        </p>
+        <p id="search" class="execAction" onclick=pop()>Pop</p>
+        <p id="search" class="execAction" onclick=peek()>Peek</p>
+        <p id="search" class="execAction" onclick=clear_scr()>Clear</p>
     <% } %>
 </div>
 

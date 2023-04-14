@@ -13,8 +13,10 @@
         <% } %>
     </div>
 </div>
-<% if(page == 'graph_simulation' || page == 'graph_interaction'){ %>
+<% if(page.includes('graph_')){ %>
     <div id="instruction-bar">Use the edit menu on the right to ADD and DELETE nodes and edges, CLEAR screen and use BFS.</div>
-<% } else if(page == 'dp_simulation' || page == 'dp_interaction'){ %>
+<% } else if(page.includes('dp_')){ %>
     <div id="instruction-bar">Use the edit menu on the right to ADD and DELETE items, edit capacity, and CLEAR screen.</div>
+<% } else if(page == 'stacks'){ %>    
+    <div id="instruction-bar">Use the edit menu on the right to PUSH, POP, PEEK and CLEAR.</div>
 <% } %>   
