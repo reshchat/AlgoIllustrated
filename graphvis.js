@@ -3,7 +3,7 @@ function run_graph() {
 	var width = 1000;
 	var height = 400;
   	var radius = 20;
-
+	var duration = 3000; // in milliseconds
 var pseudo= "create a queue Q \n <br>" +
 	"mark current node as visited and put it into Q \n<br>" +
 	"while Q is non-empty \n<br>" +
@@ -152,11 +152,6 @@ var pseudo= "create a queue Q \n <br>" +
 
 	node.on("click", function (d) {
 		console.log(d);
-		// node
-		// 	.filter(function (s) {
-		// 		return s.id == d.id;
-		// 	})
-		// 	.style("fill", "red");
 
 		if (node_del == true) {
 			node
@@ -227,13 +222,26 @@ var pseudo= "create a queue Q \n <br>" +
 		if (bfs_en == true) {
 			if (prev.indexOf(d.id) != -1) {
 				changeText("Error:" +d.id.toString() + "not the correct neighbour <br> <br>" + pseudo)
+				node.filter(function(s) {
+					return s.id == d.id;
+				})
+					.transition()
+					.duration(duration)
+					.style("fill", "red")
+					.on("end", function() {
+						d3.select(this)
+							.transition()
+							.duration(duration)
+							.style("fill", "#A5EEDB");
+					});
+
 			} else if (cur.length == 0) {
 
 				node
 					.filter(function (s) {
 						return s.id == d.id;
 					})
-					.style("fill", "red");
+					.style("fill", "#9340c0");
 				prev.push(d.id);
 				for (var i = 0; i < data.links.length; i++) {
 					if (d.id == data.links[i].source.id) {
@@ -247,8 +255,21 @@ var pseudo= "create a queue Q \n <br>" +
 			} else {
 				if (cur.indexOf(d.id) == -1) {
 					changeText("Error:" +d.id.toString() + "not the correct neighbour <br> <br>" + pseudo)
+					node.filter(function(s) {
+						return s.id == d.id;
+					})
+						.transition()
+						.duration(duration)
+						.style("fill", "red")
+						.on("end", function() {
+							d3.select(this)
+								.transition()
+								.duration(duration)
+								.style("fill", "#A5EEDB");
+						});
+
 				} else {
-					console.log("222222");
+					//console.log("222222");
 					var temp = [];
 					for (var i = 0; i < cur.length; i++) {
 						if (d.id != cur[i]) {
@@ -260,7 +281,9 @@ var pseudo= "create a queue Q \n <br>" +
 						.filter(function (s) {
 							return s.id == d.id;
 						})
-						.style("fill", "red");
+						.style("fill", "#9340c0");
+
+
 					prev.push(d.id);
 
 					changeText(pseudo + "visited: " +prev.toString())
