@@ -1,5 +1,20 @@
 var arr=[[0,1],[1,0]]
-
+arr=[]
+for (var i = 0; i < values.length+1; i++) {
+    arr.push([]);
+    for (var j = 0; j < capacity+1; j++) {
+        arr[i].push(0);
+    }
+}
+function refresh_arr(){
+    arr=[]
+    for (var i = 0; i < values.length+1; i++) {
+        arr.push([]);
+        for (var j = 0; j < capacity+1; j++) {
+            arr[i].push(0);
+        }
+    }
+}
 function openPopup() {
 	var popup = document.getElementById("popup");
 	popup.style.display = "block";
@@ -24,11 +39,13 @@ function openPopupc() {
 function closePopupc() {
 	var popup = document.getElementById("popup_cap");
 	popup.style.display = "none";
+    refresh_arr();
 }
 var add_item = function add_item(){
 values.push(Number(document.getElementById("value").value));
 weights.push(Number(document.getElementById("weight").value));
 	closePopup();
+    refresh_arr();
 	d3.select("svg").remove();
 	run_graph();
 }
@@ -41,6 +58,7 @@ var del_item = function del_item(){
 		values.splice(i,1);
 		weights.splice(i,1);
 	}
+    refresh_arr();
 	closePopupi();
 	d3.select("svg").remove();
 	run_graph();

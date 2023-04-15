@@ -9,6 +9,60 @@ var run_graph_matlist = function run_graph_matlist(matrix,labs,values, weights,c
 	run_graph_list(graph_data_list,labs,values, weights,capacity);
 };
 
+var text_box = function (a) {
+	var rowIndex = a[0];
+	var colIndex = a[1];
+	var duration = 5000; // in milliseconds
+	console.log(rowIndex, colIndex);
+
+	// Select the cell using its row and column index
+	var cell1 = d3
+		.select(".row:nth-child(" + (rowIndex + 2) + ")")
+		.select(".cell:nth-child(" + (colIndex+1) + ")");
+
+	// Set the fill attribute of the cell to the desired color and transition it
+	cell1
+		.transition()
+		.duration(duration)
+		.attr("fill", "blue")
+		.style("font-weight", "bold")
+		.transition()
+		.attr("fill", null)
+		.style("font-weight", "normal");
+	// cell2
+	// 	.transition()
+	// 	.duration(duration)
+	// 	.attr("fill", "blue")
+	// 	.style("font-weight", "bold")
+	// 	.transition()
+	// 	.attr("fill", null)
+	// 	.style("font-weight", "normal"); // reset
+
+	// find the edge element in adjacency list graph_data_list using the source and target id
+	console.log("graph_data_list", graph_data_list);
+	var edge_pos = -1;
+	for (let i = 0; i < graph_data_list.length; i++) {
+		for (let j = 0; j < graph_data_list[i].length; j++) {
+			if (i == link.source.id - 1 && graph_data_list[i][j] == link.target.id) {
+				console.log(i, graph_data_list[i][j]);
+				edge_pos = j;
+			}
+		}
+	}
+	console.log("edge_pos", edge_pos, "index", link.source.id - 1);
+	var list_elem1 = d3
+		.select(".item_label:nth-child(" + link.source.id + ")")
+		.select(".tspan:nth-child(" + (edge_pos + 1) + ")");
+	console.log("item", list_elem1);
+	list_elem1
+		.transition()
+		.duration(duration)
+		.attr("fill", "blue")
+		.style("font-weight", "bold")
+		.transition()
+		.attr("fill", null)
+		.style("font-weight", "normal"); // reset
+};
 
 var highlight_edge = function (a) {
 	var rowIndex = a[0];
@@ -158,9 +212,6 @@ var run_graph_matrix = function run_graph_matrix(graph_data_matrix) {
 		.attr("dx", "-.32em")
 		.attr("dy", ".32em")
 		.attr("text-anchor", "end")
-		// .text(function (d, i) {
-		//     return i;
-		// });
 		.text(function (d, i) {
 			return d;
 		});

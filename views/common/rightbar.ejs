@@ -42,7 +42,13 @@
             <p id="search" class="execAction" onclick="del_item()">Delete </p>
         </div>
         <p id="remove" class="execAction" onclick=openPopupi()>Delete Item</p>
-        <p id="search" class="execAction" onclick=sim_bfs()>Simulate DP</p>
+        <% if(page == 'dp_simulation'){ %>
+            <p id="search" class="execAction" onclick=sim_bfs()>Simulate DP</p>
+        <% } else if(page == 'dp_interaction'){ %>
+            <p id="search" class="execAction" onclick=bfs()>Interact DP</p>
+            <p id="toggle-button">Toggle </p>
+
+        <% } %>
         <p id="search" class="execAction" onclick=clear_items()>Clear</p>
     <% } else if(page.includes('stacks')){ %>
         <p id="search" class="execAction" onclick=push()>Push</p>
