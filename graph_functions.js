@@ -48,6 +48,8 @@ var clear_scr = function clear_scr() {
 var prev = []; // visited
 var cur = [];
 var next = [];
+var curli = [];
+var ncurl = [];
 
 class Queue {
 	constructor() {

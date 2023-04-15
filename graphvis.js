@@ -246,9 +246,11 @@ var pseudo= "create a queue Q \n <br>" +
 				for (var i = 0; i < data.links.length; i++) {
 					if (d.id == data.links[i].source.id) {
 						cur.push(data.links[i].target.id);
+						curli.push(i)
 					}
 					if (d.id == data.links[i].target.id) {
 						cur.push(data.links[i].source.id);
+						curli.push(i)
 					}
 				}
 				changeText(pseudo + "visited: " +prev.toString())
@@ -283,6 +285,14 @@ var pseudo= "create a queue Q \n <br>" +
 						})
 						.style("fill", "#9340c0");
 
+					link.filter(function (s) {
+						console.log(s.index)
+						console.log(curli.indexOf(s.index)!=-1)
+
+						return curli.indexOf(s.index)!=-1 && (d.id == data.links[s.index].source.id || d.id == data.links[s.index].target.id);
+						//return s.id == d.id;
+					})
+						.style("stroke", "#c75c19");
 
 					prev.push(d.id);
 
@@ -293,12 +303,15 @@ var pseudo= "create a queue Q \n <br>" +
 							prev.indexOf(data.links[i].target.id) == -1 && cur.indexOf(data.links[i].target.id) == -1
 						) {
 							next.push(data.links[i].target.id);
+							ncurl.push(i);
+
 						}
 						if (
 							d.id == data.links[i].target.id &&
 							prev.indexOf(data.links[i].source.id) == -1 && cur.indexOf(data.links[i].target.id) == -1
 						) {
 							next.push(data.links[i].source.id);
+							ncurl.push(i)
 						}
 					}
 				}
@@ -308,6 +321,8 @@ var pseudo= "create a queue Q \n <br>" +
 
 				cur = next;
 				next = [];
+				curli=ncurl;
+				ncurl=[];
 			}
 			if (cur.length == 0 && next.length == 0) {
 				if (prev.length == data.nodes.length) {
