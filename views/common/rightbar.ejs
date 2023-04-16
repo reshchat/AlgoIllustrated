@@ -9,6 +9,11 @@
         <% if(page == 'graph_simulation'){ %>
             <p id="search" class="execAction" onclick=sim_bfs()>Simulate BFS</p>
         <% } else if(page == 'graph_interaction'){ %>
+            <div id="popup">
+                <h2>Error!</h2>
+                <p id="err">yoo try</p>
+                <p id="search" class="execAction" onclick="closePopup()">Ok </p>
+            </div>
             <p id="search" class="execAction" onclick=bfs()>Interact BFS</p>
         <% } %>
         <p id="search" class="execAction" onclick=clear_scr()>Clear</p>

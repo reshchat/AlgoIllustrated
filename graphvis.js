@@ -221,7 +221,9 @@ var pseudo= "create a queue Q \n <br>" +
 		}
 		if (bfs_en == true) {
 			if (prev.indexOf(d.id) != -1) {
-				changeText("Error:" +d.id.toString() + "not the correct neighbour <br> <br>" + pseudo)
+				changeError("Error:   " +d.id.toString() + "   not the correct neighbour <br> <br>")
+				openPopup()
+				changeText("Error:   " +d.id.toString() + "  not the correct neighbour <br> <br>" + pseudo)
 				node.filter(function(s) {
 					return s.id == d.id;
 				})
@@ -256,7 +258,9 @@ var pseudo= "create a queue Q \n <br>" +
 				changeText(pseudo + "visited: " +prev.toString())
 			} else {
 				if (cur.indexOf(d.id) == -1) {
-					changeText("Error:" +d.id.toString() + "not the correct neighbour <br> <br>" + pseudo)
+					changeError("Error:   " +d.id.toString() + "  not the correct neighbour <br> <br>")
+					openPopup()
+					changeText("Error:  " +d.id.toString() + "  not the correct neighbour <br> <br>" + pseudo)
 					node.filter(function(s) {
 						return s.id == d.id;
 					})
@@ -327,7 +331,8 @@ var pseudo= "create a queue Q \n <br>" +
 			if (cur.length == 0 && next.length == 0) {
 				if (prev.length == data.nodes.length) {
 					bfs_en = false;
-					console.log("SUCCESS");
+					changeError("BFS DONE! <br> <br>")
+					openPopup()
 					changeText("BFS DONE! <br> <br>" + pseudo )
 				}
 			}

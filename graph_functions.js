@@ -7,6 +7,14 @@ var selected_nodes = [];
 var bfs_indices = [];
 var qss =[];
 var bfs_i = 0;
+function openPopup() {
+	var popup = document.getElementById("popup");
+	popup.style.display = "block";
+}
+function closePopup() {
+	var popup = document.getElementById("popup");
+	popup.style.display = "none";
+}
 
 var add_node = function add_node() {
 	node_ctr += 1;
