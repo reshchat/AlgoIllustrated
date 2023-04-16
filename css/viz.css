@@ -221,7 +221,6 @@ html {
 	font-size: 20px;
 }
 
-
 #menu {
 	top: 50px;
 	left: 43px;
@@ -384,39 +383,4 @@ html {
 	border-style: solid;
 	border-width: 1px;
 	background-color: #2ebbd1;
-}
-
-/*tutorial stuff*/
-.tutorial-dialog {
-	position: fixed;
-	background: black;
-	color: white;
-	padding: 12px;
-	border-radius: 3px;
-	display: none;
-	line-height: 150%;
-}
-.tutorial-dialog:before {
-	content: " ";
-	position: absolute;
-	height: 0px;
-	width: 0px;
-	border-style: solid;
-	border-width: 10px;
-	border-color: transparent;
-}
-.tutorial-next {
-	position: absolute;
-	bottom: -10px;
-	right: -10px;
-	padding: 3px 8px;
-	background: #999;
-	color: white;
-	cursor: pointer;
-	border-radius: 2px;
-}
-.tutorial-next img {
-	display: inline-block;
-	height: 9px;
-	margin-left: 8px;
 }
