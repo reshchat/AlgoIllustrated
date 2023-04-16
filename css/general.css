@@ -32,12 +32,12 @@ ul, li {
 }
 
 form {
-	margin: 0px;
-	padding: 0px;
+	margin: 1px;
+	padding: 1px;
 }
 
 input {
 	border: none;
 	outline: none;
-	margin: 0px;
+	margin: 1px;
 }
