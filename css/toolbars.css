@@ -140,8 +140,8 @@ body {
 	text-decoration: underline;
 }
 
-#media-controls {
-}
+/* #media-controls {
+} */
 .media-control-button {
 	cursor: pointer;
 	position: fixed;
@@ -341,6 +341,33 @@ body {
 	border-width: 1px;
 	/* background-color: #9d6adb; */
 	background-color: #ed5a7d;
+}
+
+#instruction {
+	top: 215px;
+	right: 53px;
+	height: 200px;
+	white-space: normal;
+	/* background-color: #9d6adb; */
+	/* background-color: #d9513c; */
+	background-color: #bfb7b9;
+	z-index: 1001;
+}
+#instruction p {
+	padding: 10px;
+}
+#instruction-hide {
+	top: 215px;
+	right: 0px;
+	height: 15px;
+	padding-top: 15px;
+	padding-bottom: 20px;
+	padding-left: 13px;
+	padding-right: 13px;
+	border-style: solid;
+	border-width: 1px;
+	/* background-color: #9d6adb; */
+	background-color: #bfb7b9;
 }
 
 #actions {

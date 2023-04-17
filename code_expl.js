@@ -1,6 +1,6 @@
-
-
 function changeText(ss) {
+    console.log("PRINTING PC");
+    console.log(ss);
     // Get the paragraph element using its id attribute
     var para = document.getElementById("pseudocode");
 

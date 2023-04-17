@@ -10,11 +10,13 @@ var mode = "interaction";
 var codetraceColor = 'white';
 
 var actionsWidth = 150;
+var statusInstructionWidth = 300;
 var statusCodetraceWidth = 420;
 
 // opening and closing panels
 var isActionsOpen = true;
 var isGuideOpen = false;
+var isInstructionOpen = false;
 var isStatusOpen = false;
 var isCodetraceOpen = false;
 
@@ -84,6 +86,22 @@ function hideGuidePanel() {
 		isGuideOpen = false;
 	}
 }
+function showInstructionPanel() {
+	if(!isInstructionOpen) {
+		$('#instruction').animate({
+			width: "+="+statusInstructionWidth,
+		});
+		isInstructionOpen = true;
+	}
+}
+function hideInstructionPanel() {
+	if(isInstructionOpen) {
+		$('#instruction').animate({
+			width: "-="+statusInstructionWidth,
+		});
+		isInstructionOpen = false;
+	}
+}
 
 $( document ).ready(function() {	
 	$('#current-action').hide();	
@@ -149,6 +167,13 @@ $( document ).ready(function() {
 			hideGuidePanel(); 
 		} else {
 			showGuidePanel();
+		}
+	});
+	$('#instruction-hide').click(function() {
+		if(isInstructionOpen) {
+			hideInstructionPanel(); 
+		} else {
+			showInstructionPanel();
 		}
 	});
 	
