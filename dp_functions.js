@@ -15,6 +15,63 @@ function refresh_arr(){
         }
     }
 }
+const n = 5; // number of rows
+const m = 3; // number of columns
+
+function createInputTable() {
+    const inputTable = document.createElement("div");
+    inputTable.id = "inputTable";
+
+    const h2 = document.createElement("h2");
+    h2.textContent = "Enter Numbers";
+    inputTable.appendChild(h2);
+
+    const table = document.createElement("table");
+    for (let i = 0; i < n; i++) {
+        const tr = document.createElement("tr");
+        for (let j = 0; j < m; j++) {
+            const td = document.createElement("td");
+            const input = document.createElement("input");
+            input.type = "number";
+            input.name = "number";
+            input.id = `${i}-${j}`;
+			input.style.width = "60px";
+            td.appendChild(input);
+            tr.appendChild(td);
+        }
+        table.appendChild(tr);
+    }
+    inputTable.appendChild(table);
+
+    const p = document.createElement("p");
+    p.id = "submit";
+    p.className = "execAction";
+    p.textContent = "Submit";
+    p.onclick = submitNumbers;
+    inputTable.appendChild(p);
+
+    return inputTable;
+}
+
+function submitNumbers() {
+    // retrieve values from inputs
+    let numbers = [];
+    for(let i=0; i<n; i++) {
+        let row = [];
+        for(let j=0; j<m; j++) {
+            let input = document.getElementById(`${i}-${j}`);
+            row.push(Number(input.value));
+        }
+        numbers.push(row);
+    }
+
+    // do something with numbers array
+    console.log(numbers);
+}
+
+// attach the input table to the DOM
+const container = document.getElementById("dp_i");
+container.appendChild(createInputTable());
 function openPopup() {
 	var popup = document.getElementById("popup");
 	popup.style.display = "block";
