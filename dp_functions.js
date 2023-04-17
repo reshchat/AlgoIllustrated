@@ -27,9 +27,9 @@ function createInputTable() {
     inputTable.appendChild(h2);
 
     const table = document.createElement("table");
-    for (let i = 0; i < n; i++) {
+    for (let i = 0; i < values.length+1; i++) {
         const tr = document.createElement("tr");
-        for (let j = 0; j < m; j++) {
+        for (let j = 0; j < capacity+1; j++) {
             const td = document.createElement("td");
             const input = document.createElement("input");
             input.type = "number";
@@ -56,17 +56,23 @@ function createInputTable() {
 function submitNumbers() {
     // retrieve values from inputs
     let numbers = [];
-    for(let i=0; i<n; i++) {
+    for(let i=0; i<values.length+1; i++) {
         let row = [];
-        for(let j=0; j<m; j++) {
+        for(let j=0; j<capacity+1; j++) {
             let input = document.getElementById(`${i}-${j}`);
             row.push(Number(input.value));
         }
         numbers.push(row);
     }
+	arr=numbers;
 
     // do something with numbers array
-    console.log(numbers);
+    console.log(arr);
+	var popup = document.getElementById("dp_i");
+	popup.style.display = "none";
+
+	d3.select("svg").remove();
+	run_graph();
 }
 
 // attach the input table to the DOM
@@ -152,6 +158,9 @@ var bfs_i = 0;
 
 var bfs = function bfs() {
 	bfs_en = true;
+	var popup = document.getElementById("dp_i");
+	popup.style.display = "block";
+
 };
 
 

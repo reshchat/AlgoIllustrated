@@ -131,7 +131,7 @@ main {
 
 #popup,
 #popup_i,
-#popup_cap {
+#popup_cap, #dp_i {
 	position: fixed;
 	top: 50%;
 	left: 50%;
@@ -145,19 +145,7 @@ main {
 	display: none;
 }
 
-#dp_i {
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	width: 300px;
-	padding: 20px;
-	background-color: #160d42;
-	border-radius: 5px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-	z-index: 999;
-	display: block;
-}
+
 
 #popup h2,
 #popup_i h2,
