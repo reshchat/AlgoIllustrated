@@ -134,7 +134,7 @@ main {
 #popup_strrev,
 #popup_par,
 #popup_out,
-#popup_cap {
+#popup_cap, #dp_i, #popup_e {
 	position: fixed;
 	top: 50%;
 	left: 50%;
@@ -147,6 +147,8 @@ main {
 	z-index: 999;
 	display: none;
 }
+
+
 
 #popup h2,
 #popup_i h2,

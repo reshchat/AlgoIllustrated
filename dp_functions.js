@@ -15,6 +15,85 @@ function refresh_arr(){
         }
     }
 }
+const n = 5; // number of rows
+const m = 3; // number of columns
+
+function createInputTable() {
+    const inputTable = document.createElement("div");
+    inputTable.id = "inputTable";
+
+    const h2 = document.createElement("h2");
+    h2.textContent = "Enter Numbers";
+    inputTable.appendChild(h2);
+
+    const table = document.createElement("table");
+    for (let i = 0; i < values.length+1; i++) {
+        const tr = document.createElement("tr");
+        for (let j = 0; j < capacity+1; j++) {
+            const td = document.createElement("td");
+            const input = document.createElement("input");
+            input.type = "number";
+            input.name = "number";
+            input.id = `${i}-${j}`;
+			input.style.width = "30px";
+            td.appendChild(input);
+            tr.appendChild(td);
+        }
+        table.appendChild(tr);
+    }
+    inputTable.appendChild(table);
+
+    const p = document.createElement("p");
+    p.id = "submit";
+    p.className = "execAction";
+    p.textContent = "Submit";
+    p.onclick = submitNumbers;
+    inputTable.appendChild(p);
+
+    return inputTable;
+}
+
+function submitNumbers() {
+    // retrieve values from inputs
+    let numbers = [];
+    for(let i=0; i<values.length+1; i++) {
+        let row = [];
+        for(let j=0; j<capacity+1; j++) {
+            let input = document.getElementById(`${i}-${j}`);
+            row.push(Number(input.value));
+        }
+        numbers.push(row);
+    }
+	arr=numbers;
+
+    // do something with numbers array
+    console.log(arr);
+	console.log(JSON.stringify(arr))
+	var popup = document.getElementById("dp_i");
+	popup.style.display = "none";
+	console.log(qss[(capacity+1)*values.length-1]);
+	if(JSON.stringify(arr)==JSON.stringify(qss[(capacity+1)*values.length-1])){
+		changeError("" + "DP matrix filled correctly    <br> <br>")
+	}
+	else{
+		changeError("DP matrix filled incorrectly    <br> <br>")
+	}
+	openPopup_e();
+	d3.select("svg").remove();
+	run_graph();
+}
+
+// attach the input table to the DOM
+const container = document.getElementById("dp_i");
+container.appendChild(createInputTable());
+function openPopup_e() {
+	var popup = document.getElementById("popup_e");
+	popup.style.display = "block";
+}
+function closePopup_e() {
+	var popup = document.getElementById("popup_e");
+	popup.style.display = "none";
+}
 function openPopup() {
 	var popup = document.getElementById("popup");
 	popup.style.display = "block";
@@ -82,7 +161,6 @@ var clear_items = function clear_items(){
 	run_graph();
 }
 
-var node_ctr = data.nodes.at(data.nodes.length - 1).id;
 var edge_click = false;
 var edge_del = false;
 var node_del = false;
@@ -94,17 +172,17 @@ var highlight=[];
 var bfs_i = 0;
 
 var bfs = function bfs() {
+	sim_bfs();
 	bfs_en = true;
+	var popup = document.getElementById("dp_i");
+	popup.style.display = "block";
+
 };
 
 
 var sim_bfs = function sim_bfs() {
 	qss=[]
-	// arr = new Array(values.length + 1);
-	// for (let i = 0; i < arr.length; i++){
-	// 	arr[i] = new Array(capacity + 1).fill(0);
-	// }
-arr=[]
+	arr=[]
 	for (var i = 0; i < values.length+1; i++) {
 		arr.push([]);
 		for (var j = 0; j < capacity+1; j++) {
@@ -136,7 +214,7 @@ arr=[]
 			qss.push(arr2);
 		}
 	}
-	console.log(qss);
+	//console.log(qss);
 };
 var prev_bfs = function prev_bfs() {
 	if (bfs_i > 0) {

@@ -50,9 +50,15 @@
         <% if(page == 'dp_simulation'){ %>
             <p id="search" class="execAction" onclick=sim_bfs()>Simulate DP</p>
         <% } else if(page == 'dp_interaction'){ %>
+            <div id="popup_e">
+                <h2>Error!</h2>
+                <p id="err">yoo try</p>
+                <p id="search" class="execAction" onclick="closePopup_e()">Ok </p>
+            </div>
             <p id="search" class="execAction" onclick=bfs()>Interact DP</p>
-            <p id="toggle-button">Toggle </p>
 
+            <div id="dp_i">
+            </div>
         <% } %>
         <p id="search" class="execAction" onclick=clear_items()>Clear</p>
     <% } else if(page.includes('stacks')){ %>

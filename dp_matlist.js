@@ -6,63 +6,11 @@ var run_graph_matlist = function run_graph_matlist(matrix,labs,values, weights,c
 	graph_data_list = matrix;
 
 	run_graph_matrix(graph_data_matrix);
+	//run_graph_matrix_input(graph_data_matrix);
 	run_graph_list(graph_data_list,labs,values, weights,capacity);
 };
 
-var text_box = function (a) {
-	var rowIndex = a[0];
-	var colIndex = a[1];
-	var duration = 5000; // in milliseconds
-	console.log(rowIndex, colIndex);
 
-	// Select the cell using its row and column index
-	var cell1 = d3
-		.select(".row:nth-child(" + (rowIndex + 2) + ")")
-		.select(".cell:nth-child(" + (colIndex+1) + ")");
-
-	// Set the fill attribute of the cell to the desired color and transition it
-	cell1
-		.transition()
-		.duration(duration)
-		.attr("fill", "blue")
-		.style("font-weight", "bold")
-		.transition()
-		.attr("fill", null)
-		.style("font-weight", "normal");
-	// cell2
-	// 	.transition()
-	// 	.duration(duration)
-	// 	.attr("fill", "blue")
-	// 	.style("font-weight", "bold")
-	// 	.transition()
-	// 	.attr("fill", null)
-	// 	.style("font-weight", "normal"); // reset
-
-	// find the edge element in adjacency list graph_data_list using the source and target id
-	console.log("graph_data_list", graph_data_list);
-	var edge_pos = -1;
-	for (let i = 0; i < graph_data_list.length; i++) {
-		for (let j = 0; j < graph_data_list[i].length; j++) {
-			if (i == link.source.id - 1 && graph_data_list[i][j] == link.target.id) {
-				console.log(i, graph_data_list[i][j]);
-				edge_pos = j;
-			}
-		}
-	}
-	console.log("edge_pos", edge_pos, "index", link.source.id - 1);
-	var list_elem1 = d3
-		.select(".item_label:nth-child(" + link.source.id + ")")
-		.select(".tspan:nth-child(" + (edge_pos + 1) + ")");
-	console.log("item", list_elem1);
-	list_elem1
-		.transition()
-		.duration(duration)
-		.attr("fill", "blue")
-		.style("font-weight", "bold")
-		.transition()
-		.attr("fill", null)
-		.style("font-weight", "normal"); // reset
-};
 
 var highlight_edge = function (a) {
 	var rowIndex = a[0];
@@ -122,6 +70,235 @@ var highlight_edge = function (a) {
 		.style("font-weight", "normal"); // reset
 };
 
+var run_graph_matrix_input = function run_graph_matrix_input(graph_data_matrix) {
+	var margin = { top: 40, right: 100, bottom: 100, left: 800 },
+		width = 125,
+		height = 125;
+
+	var svg = d3
+		.select("svg")
+		.append("g")
+		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+	svg
+		.append("rect")
+		.attr("class", "background")
+		.attr("width", width)
+		.attr("height", height)
+		.attr("fill", "#b3a2c8")
+		.attr("stroke", "black");
+
+	var numrows = graph_data_matrix.length;
+	//var numcols = graph_data_matrix[0].length;
+	var numcols = capacity+1;
+	var rowLabels = new Array(numrows);
+	for (var i = 0; i < numrows; i++) {
+		rowLabels[i] = i ;
+	}
+
+	var columnLabels = new Array(numcols);
+	for (var i = 0; i < numcols; i++) {
+		columnLabels[i] = i ;
+	}
+
+	var x = d3
+		.scaleBand()
+		.domain(d3.range(numcols))
+		.range([0, width])
+		.padding(0.1);
+
+	var y = d3
+		.scaleBand()
+		.domain(d3.range(numrows))
+		.range([0, height])
+		.padding(0.1);
+
+	var text = svg
+		.selectAll(".row")
+		.data(graph_data_matrix)
+		.enter()
+		.append("g")
+		.attr("class", "row")
+		.attr("transform", function (d, i) {
+			return "translate(0," + y(i) + ")";
+		});
+
+	text
+		.selectAll(".cell")
+		.data(function (d) {
+			return d;
+		})
+		.enter()
+		.append("text")
+		.attr("class", "cell")
+		.attr("x", function (d, i) {
+			return x(i) + x.bandwidth() / 2;
+		})
+		.attr("y", function (d, i) {
+			return y.bandwidth() / 2;
+		})
+		.attr("dy", ".35em")
+		.attr("text-anchor", "middle")
+		.text(function (d) {
+			return prompt("Enter text here:", d);
+		});
+
+
+	var row = svg
+		.selectAll(".column")
+		.data(rowLabels)
+		.enter()
+		.append("g")
+		.attr("class", "row")
+		.attr("transform", function (d, i) {
+			return "translate(0," + y(i) + ")";
+		});
+
+	row
+		.append("text")
+		.attr("x", 0)
+		.attr("y", y.bandwidth() / 2)
+		.attr("dx", "-.32em")
+		.attr("dy", ".32em")
+		.attr("text-anchor", "end")
+		.text(function (d, i) {
+			return d;
+		});
+
+	var column = svg
+		.selectAll(".column")
+		.data(columnLabels)
+		.enter()
+		.append("g")
+		.attr("class", "column")
+		.attr("transform", function (d, i) {
+			return "translate(" + x(i) + ")rotate(-90)";
+		});
+
+	column
+		.append("text")
+		.attr("x", 6)
+		.attr("y", y.bandwidth() / 2)
+		.attr("dy", ".32em")
+		.attr("text-anchor", "start")
+		.text(function (d, i) {
+			return d;
+		});
+};
+var run_graph_matrix_i = function run_graph_matrix_i(graph_data_matrix) {
+	var margin = { top: 40, right: 100, bottom: 100, left: 800 },
+		width = 125,
+		height = 125;
+
+	var svg = d3
+		.select("svg")
+		.append("g")
+		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+	svg
+		.append("rect")
+		.attr("class", "background")
+		.attr("width", width)
+		.attr("height", height)
+		.attr("fill", "#b3a2c8")
+		.attr("stroke", "black");
+
+	var numrows = graph_data_matrix.length;
+	//var numcols = graph_data_matrix[0].length;
+	var numcols = capacity+1;
+	var rowLabels = new Array(numrows);
+	for (var i = 0; i < numrows; i++) {
+		rowLabels[i] = i ;
+	}
+
+	var columnLabels = new Array(numcols);
+	for (var i = 0; i < numcols; i++) {
+		columnLabels[i] = i ;
+	}
+
+	var x = d3
+		.scaleBand()
+		.domain(d3.range(numcols))
+		.range([0, width])
+		.padding(0.1);
+
+	var y = d3
+		.scaleBand()
+		.domain(d3.range(numrows))
+		.range([0, height])
+		.padding(0.1);
+
+	var text = svg
+		.selectAll(".row")
+		.data(graph_data_matrix)
+		.enter()
+		.append("g")
+		.attr("class", "row")
+		.attr("transform", function (d, i) {
+			return "translate(0," + y(i) + ")";
+		});
+
+	text
+		.selectAll(".cell")
+		.data(function (d) {
+			return d;
+		})
+		.enter()
+		.append("text")
+		.attr("class", "cell")
+		.attr("x", function (d, i) {
+			return x(i) + x.bandwidth() / 2;
+		})
+		.attr("y", function (d, i) {
+			return y.bandwidth() / 2;
+		})
+		.attr("dy", ".35em")
+		.attr("text-anchor", "middle")
+		.text(function (d) {
+			return d;
+		});
+
+	var row = svg
+		.selectAll(".column")
+		.data(rowLabels)
+		.enter()
+		.append("g")
+		.attr("class", "row")
+		.attr("transform", function (d, i) {
+			return "translate(0," + y(i) + ")";
+		});
+
+	row
+		.append("text")
+		.attr("x", 0)
+		.attr("y", y.bandwidth() / 2)
+		.attr("dx", "-.32em")
+		.attr("dy", ".32em")
+		.attr("text-anchor", "end")
+		.text(function (d, i) {
+			return d;
+		});
+
+	var column = svg
+		.selectAll(".column")
+		.data(columnLabels)
+		.enter()
+		.append("g")
+		.attr("class", "column")
+		.attr("transform", function (d, i) {
+			return "translate(" + x(i) + ")rotate(-90)";
+		});
+
+	column
+		.append("text")
+		.attr("x", 6)
+		.attr("y", y.bandwidth() / 2)
+		.attr("dy", ".32em")
+		.attr("text-anchor", "start")
+		.text(function (d, i) {
+			return d;
+		});
+};
 var run_graph_matrix = function run_graph_matrix(graph_data_matrix) {
 	var margin = { top: 40, right: 100, bottom: 100, left: 800 },
 		width = 125,
@@ -236,7 +413,6 @@ var run_graph_matrix = function run_graph_matrix(graph_data_matrix) {
 			return d;
 		});
 };
-
 var run_graph_list = function run_graph_list(graph_data_list,labs,values, weights,capacity) {
 	var ind = [];
 

@@ -73,8 +73,20 @@ var pseudo= "create a queue Q \n <br>" +
 		changeText(pseudo + "visited :" + bfs_indices.slice(0, bfs_i).toString() +"<br>queue: " + qss[bfs_i].toString())
 	}
 
-	run_graph_matlist(qss[bfs_i],labs,values, weights,capacity);
-	highlight_edge(highlight[bfs_i])
+	//run_graph_matlist(qss[bfs_i],labs,values, weights,capacity);
+
+	if (bfs_en){
+		console.log(arr)
+		run_graph_matlist(arr,labs,values, weights,capacity);
+	}
+	else{
+		run_graph_matlist(qss[bfs_i],labs,values, weights,capacity);
+
+	}
+	if(bfs_en == false){
+		highlight_edge(highlight[bfs_i])
+	}
+
 }
 
 run_graph();
