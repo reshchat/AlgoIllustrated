@@ -131,7 +131,7 @@ main {
 
 #popup,
 #popup_i,
-#popup_cap, #dp_i {
+#popup_cap, #dp_i, #popup_e {
 	position: fixed;
 	top: 50%;
 	left: 50%;
