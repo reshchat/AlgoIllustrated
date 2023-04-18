@@ -102,6 +102,8 @@ function closeOutPop() {
 }
 
 var strrev = function strrev(){
+	changeText("reverseString(string)&emsp;create an empty stack<br>&emsp;for all characters i in string<br>&emsp;&emsp;push i to stack<br>&emsp;while stack is not empty<br>&emsp;&emsp;pop from stack and append to output");
+	
 	algo1 = true;
 	closeRevPop();
 	clear_scr();
@@ -116,6 +118,8 @@ var strrev = function strrev(){
 }
 
 var parcheck = function parcheck(){
+	changeText("checkParantheses(string)&emsp;create an empty stack<br>&emsp;for all characters i in string<br>&emsp;&emsp;if the current character is a starting bracket ( \'(\') or \'{\'  or \'[\' )<br>&emsp;&emsp;&emsp;push i to stack<br>&emsp;&emsp;if the current character is a closing bracket ( \')\' or \'}\' or \']\' )<br>&emsp;&emsp;&emsp;pop from stack<br>&emsp;&emsp;&emsp;if the popped character is the matching starting bracket, continue<br>&emsp;&emsp;&emsp;else brackets are Not Balanced<br>&emsp;if there is some starting bracket left in stack then Not balanced, else Balanced");
+
 	algo2 = true;
 	closeParPop();
 	clear_scr();
