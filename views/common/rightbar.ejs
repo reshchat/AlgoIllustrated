@@ -63,9 +63,10 @@
         <p id="search" class="execAction" onclick=clear_items()>Clear</p>
     <% } else if(page.includes('stacks')){ %>
         <p id="search" class="execAction" onclick=push()>Push</p>
-        <p id="search">
+        <div style="text-align: center;"><input type="text" id="push_val" style="vertical-align: middle; width: 130px; background-color:#729117;"></div>
+        <!-- <p id="search">
         <form><input type="text" id="push_val" placeholder="Value to push"></form>
-        </p>
+        </p> -->
         <p id="search" class="execAction" onclick=pop()>Pop</p>
         <p id="search" class="execAction" onclick=peek()>Peek</p>
         <p id="search" class="execAction" onclick=openRevPop()>String Reversal</p>

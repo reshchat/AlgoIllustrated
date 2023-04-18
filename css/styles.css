@@ -179,7 +179,7 @@ main {
 #popup_out input,
 #popup_cap input[type="number"] {
 	display: block;
-	width: 100%;
+	width: 92%;
 	padding: 10px;
 	border: 1px solid #1b3dba;
 	border-radius: 3px;

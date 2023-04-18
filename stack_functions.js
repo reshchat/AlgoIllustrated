@@ -22,6 +22,8 @@ var peek = function peek() {
 };
 
 var push = function push(){
+	if(inp = document.getElementById("push_val").value == "")
+		return;
 	node_ctr = node_ctr + 1
 	inp = document.getElementById("push_val").value
 	var new_node = {
