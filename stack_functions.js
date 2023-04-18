@@ -6,6 +6,8 @@ var cur = -1;
 var rev = "";
 var algo1 = false;
 var algo2 = false;
+var algo3 = false;
+var algo4 = false;
 
 var peek = function peek() {
 	if(peek_en == false){
@@ -19,6 +21,11 @@ var peek = function peek() {
 		peek_en = false
 		color_change(data.value[data.value.length - 1].id, "#7700b3")
 	}
+};
+
+var peek_val = function peek_val() {
+	top_val = data.value[data.value.length - 1].name
+	return top_val;
 };
 
 var push = function push(){
@@ -110,6 +117,7 @@ var strrev = function strrev(){
 	closeRevPop();
 	clear_scr();
 	string = String(document.getElementById("string").value);
+	arr = [];
 	for(var i = 0; i<string.length; i++){
 		arr.push({func: "push", val: string.charAt(i)});
 	}
@@ -119,6 +127,112 @@ var strrev = function strrev(){
 	cur = 0;
 }
 
+var strrevint = function strrevint(){
+	changeText("reverseString(string)&emsp;create an empty stack<br>&emsp;for all characters i in string<br>&emsp;&emsp;push i to stack<br>&emsp;while stack is not empty<br>&emsp;&emsp;pop from stack and append to output");
+	
+	algo3 = true;
+	closeRevPop();
+	clear_scr();
+	string = String(document.getElementById("string").value);
+	arr = [];
+	for(var i = 0; i<string.length; i++){
+		arr.push({func: "push", val: string.charAt(i)});
+	}
+	for(var i = string.length-1; i>=0; i--){
+		arr.push({func: "pop", val: string.charAt(i)});
+	}
+	cur = 0;
+	rev = "";
+	document.getElementById("push_btn").style.visibility = "visible";
+	document.getElementById("pushed").style.visibility = "visible";
+	document.getElementById("pop_btn").style.visibility = "visible";
+	document.getElementById("rev_btn").style.visibility = "visible";
+}
+
+function highlight(obj, color){
+	var orig = obj.style.color;
+	obj.style.color = color;
+	setTimeout(function(){
+		 obj.style.color = orig;
+	}, 2000);
+ }
+
+var pushalg = function pushalg(){
+	if(algo4 == true){
+		var hi = "";
+		for(var i = 0; i<string.length; i++){
+			if(i == cur)
+				hi += "-";
+			else 
+				hi += "&nbsp;";
+		}
+		document.getElementById("output_hi").innerHTML = hi;
+	}
+	if(cur>=0 && cur<arr.length && arr[cur].func == "push" && document.getElementById("pushed").value == arr[cur].val){
+		push_val(arr[cur].val);
+		cur += 1;
+		highlight(document.getElementById("push_btn"), 'green')
+	}
+	else{
+		highlight(document.getElementById("push_btn"), 'red')
+	}
+}
+
+var popalg = function popalg(){
+	if(algo4 == true){
+		var hi = "";
+		for(var i = 0; i<string.length; i++){
+			if(i == cur)
+				hi += "-";
+			else 
+				hi += "&nbsp;";
+		}
+		document.getElementById("output_hi").innerHTML = hi;
+	}
+	if(cur>=0 && cur<arr.length && arr[cur].func == "pop"){
+		rev += peek_val();
+		pop();
+		cur += 1;
+		highlight(document.getElementById("pop_btn"), 'green')
+		if(algo3 == true){
+			document.getElementById("output").innerHTML = String("Popped Characters: " + rev);
+		}
+	}
+	else{
+		highlight(document.getElementById("pop_btn"), 'red')
+	}
+}
+
+var reversed = function reversed(){
+	if(algo3 == true && rev == string.split("").reverse().join("")){
+		document.getElementById("rev_btn").style.color = 'green';
+		algo3 = false;
+	}
+	else{
+		highlight(document.getElementById("rev_btn"), 'red')
+	}
+}
+
+var balanced = function balanced(){
+	if(algo4 == true && arr[cur].func == "status" && arr[cur].val == "Balanced"){
+		document.getElementById("bal_btn").style.color = 'green';
+		algo4 = false;
+	}
+	else{
+		highlight(document.getElementById("bal_btn"), 'red')
+	}
+}
+
+var unbalanced = function unbalanced(){
+	if(algo4 == true && arr[cur].func == "status" && arr[cur].val == "Unbalanced"){
+		document.getElementById("unbal_btn").style.color = 'green';
+		algo4 = false;
+	}
+	else{
+		highlight(document.getElementById("unbal_btn"), 'red')
+	}
+}
+
 var parcheck = function parcheck(){
 	changeText("checkParantheses(string)&emsp;create an empty stack<br>&emsp;for all characters i in string<br>&emsp;&emsp;if the current character is a starting bracket ( \'(\') or \'{\'  or \'[\' )<br>&emsp;&emsp;&emsp;push i to stack<br>&emsp;&emsp;if the current character is a closing bracket ( \')\' or \'}\' or \']\' )<br>&emsp;&emsp;&emsp;pop from stack<br>&emsp;&emsp;&emsp;if the popped character is the matching starting bracket, continue<br>&emsp;&emsp;&emsp;else brackets are Not Balanced<br>&emsp;if there is some starting bracket left in stack then Not balanced, else Balanced");
 
@@ -126,6 +240,7 @@ var parcheck = function parcheck(){
 	closeParPop();
 	clear_scr();
 	string = String(document.getElementById("par").value);
+	arr = [];
 	document.getElementById("output").innerHTML = string;
 	var stack = [];
 	var len = 0;
@@ -176,6 +291,71 @@ var parcheck = function parcheck(){
 		arr.push({func: "status", val: "Unbalanced"});
 	}
 	cur = 0;
+}
+
+var parcheckint = function parcheckint(){
+	changeText("checkParantheses(string)&emsp;create an empty stack<br>&emsp;for all characters i in string<br>&emsp;&emsp;if the current character is a starting bracket ( \'(\') or \'{\'  or \'[\' )<br>&emsp;&emsp;&emsp;push i to stack<br>&emsp;&emsp;if the current character is a closing bracket ( \')\' or \'}\' or \']\' )<br>&emsp;&emsp;&emsp;pop from stack<br>&emsp;&emsp;&emsp;if the popped character is the matching starting bracket, continue<br>&emsp;&emsp;&emsp;else brackets are Not Balanced<br>&emsp;if there is some starting bracket left in stack then Not balanced, else Balanced");
+
+	algo4 = true;
+	closeParPop();
+	clear_scr();
+	string = String(document.getElementById("par").value);
+	arr = [];
+	document.getElementById("output").innerHTML = string;
+	var stack = [];
+	var len = 0;
+	for(var i = 0; i<string.length; i++){
+		if(string.charAt(i) == '(' || string.charAt(i) == '[' || string.charAt(i) == '{')
+		{
+			arr.push({func: "push", val: string.charAt(i)});
+			stack[len] = string.charAt(i);
+			len++;
+		}
+		else if(string.charAt(i) == ')' || string.charAt(i) == ']' || string.charAt(i) == '}')
+		{
+			if(len == 0)
+			{
+				arr.push({func: "status", val: "Unbalanced"});
+				break;
+			}
+			else if(string.charAt(i) == ')' && stack[len - 1] == '(')
+			{
+				arr.push({func: "pop", val: '('});
+				stack[len - 1] = null;
+				len = len - 1
+			}
+			else if(string.charAt(i) == ']' && stack[len - 1] == '[')
+			{
+				arr.push({func: "pop", val: '['});
+				stack[len - 1] = null;
+				len = len - 1
+			}
+			else if(string.charAt(i) == '}' && stack[len - 1] == '{')
+			{	
+				arr.push({func: "pop", val: '{'});
+				stack[len - 1] = null;
+				len = len - 1
+			}
+			else
+			{
+				arr.push({func: "status", val: "Unbalanced"});
+				break;
+			}
+		}
+	}
+	if(len == 0)
+	{
+		arr.push({func: "status", val: "Balanced"});
+	}
+	else{
+		arr.push({func: "status", val: "Unbalanced"});
+	}
+	cur = 0;
+	document.getElementById("push_btn").style.visibility = "visible";
+	document.getElementById("pushed").style.visibility = "visible";
+	document.getElementById("pop_btn").style.visibility = "visible";
+	document.getElementById("bal_btn").style.visibility = "visible";
+	document.getElementById("unbal_btn").style.visibility = "visible";
 }
 
 var prev_bfs = function prev_bfs(){
