@@ -131,6 +131,9 @@ main {
 
 #popup,
 #popup_i,
+#popup_strrev,
+#popup_par,
+#popup_out,
 #popup_cap {
 	position: fixed;
 	top: 50%;
@@ -147,7 +150,10 @@ main {
 
 #popup h2,
 #popup_i h2,
-#popup_cap h2 {
+#popup_cap h2,
+#popup_strrev h2,
+#popup_par h2,
+#popup_out h2 {
 	margin-top: 0;
 	margin-bottom: 20px;
 	font-size: 24px;
@@ -155,7 +161,10 @@ main {
 
 #popup label,
 #popup_i label,
-#popup_cap label {
+#popup_cap label, 
+#popup_strrev label,
+#popup_par label,
+#popup_out label{
 	display: block;
 	margin-bottom: 10px;
 	font-size: 16px;
@@ -163,6 +172,9 @@ main {
 
 #popup input[type="number"],
 #popup_i input[type="number"],
+#popup_strrev input,
+#popup_par input,
+#popup_out input,
 #popup_cap input[type="number"] {
 	display: block;
 	width: 100%;
@@ -175,6 +187,9 @@ main {
 
 #popup p,
 #popup_i p,
+#popup_strrev p,
+#popup_par p,
+#popup_out p,
 #popup_cap p {
 	display: block;
 	background-color: #1e88e5;
@@ -188,6 +203,9 @@ main {
 
 #popup p:hover,
 #popup_i p:hover,
+#popup_strrev p:hover,
+#popup_par p:hover,
+#popup_out p:hover,
 #popup_cap p:hover {
 	background-color: #0d47a1;
 }

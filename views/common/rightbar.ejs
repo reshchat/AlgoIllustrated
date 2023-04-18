@@ -62,6 +62,24 @@
         </p>
         <p id="search" class="execAction" onclick=pop()>Pop</p>
         <p id="search" class="execAction" onclick=peek()>Peek</p>
+        <p id="search" class="execAction" onclick=openRevPop()>String Reversal</p>
+        <div id="popup_strrev">
+            <h2>Input</h2>
+            <form>
+                <label for="string" >String to Reverse:</label>
+                <input id="string" name="string"><br><br>
+            </form>
+            <p id="search" class="execAction" onclick="strrev()">Reverse</p>
+        </div>
+        <p id="search" class="execAction" onclick=openParPop()>Parantheses Check</p>
+        <div id="popup_par">
+            <h2>Input</h2>
+            <form>
+                <label for="par" >String to Check:</label>
+                <input id="par" name="par"><br><br>
+            </form>
+            <p id="search" class="execAction" onclick="parcheck()">Check</p>
+        </div>
         <p id="search" class="execAction" onclick=clear_scr()>Clear</p>
     <% } else if(page.includes('sorting')){ %>
         <p id="search" class="execAction" onclick=parse_data()>Sort</p>

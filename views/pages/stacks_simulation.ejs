@@ -1,0 +1,26 @@
+<% var page='stacks_simulation' ; %>
+<%- include('../common/head') %>
+
+<body>
+
+	<%- include('../common/head', {page: page}) %>
+	<%- include('../common/topbar', {page: page}) %>
+	<%- include('../common/leftbar', {page: page}) %>
+	<%- include('../common/rightbar', {page: page}) %>
+	<%- include('../common/bottombar', {page: page}) %>
+
+	<div id="graphsvg"></div>
+	<div id="popup_out">
+		<h2 style="color: aliceblue;">Output</h2>
+		<p id="status_out"></p>
+		<p id="search" class="execAction" onclick="location.href='/stacks_simulation';">Close</p>
+	</div>
+	<div id="output_div" style="position: absolute; top: 580px; left: 350px; width: fit-content; background-color: rgb(143, 217, 217);"><p id="output" style="font-size:x-large; font-family: 'Courier New', Courier, monospace;"></p></div>
+	<div id="output_div" style="position: absolute; top: 600px; left: 350px; width: fit-content;"><p id="output_hi" style="font-size:x-large; font-family: 'Courier New', Courier, monospace; color: red;"></p></div>
+
+	<script src="stack_data.js"></script>
+	<script src="stack_functions.js"></script>
+	<script src="stack_linkedlist.js"></script>
+	<script src="stack.js"></script>
+
+</body>
