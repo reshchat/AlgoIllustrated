@@ -328,7 +328,7 @@ var pseudo= "create a queue Q \n <br>" +
 				curli=ncurl;
 				ncurl=[];
 			}
-			if (cur.length == 0 && next.length == 0) {
+			if ((cur.length == 0 && next.length == 0) ||  prev.length==data.nodes.length) {
 				if (prev.length == data.nodes.length) {
 					bfs_en = false;
 					changeError("BFS DONE! <br> <br>")
