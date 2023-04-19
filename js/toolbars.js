@@ -6,7 +6,6 @@ function closeNav() {
 	document.getElementById("myNav").style.width = "0%";
 }
 
-var mode = "interaction";
 var codetraceColor = 'white';
 
 var actionsWidth = 150;
@@ -105,42 +104,22 @@ function hideInstructionPanel() {
 
 $( document ).ready(function() {	
 	$('#current-action').hide();	
-	// $('#actions').css('width', actionsWidth);
 	showActionsPanel();
 	
 	$('#mode-menu a').click(function() {
-		var currentMode = $('#mode-button').html().split("<")[0];
-		
-		if(currentMode == "Simulation Mode") {
-			mode = "simulation";
-			$('#status-hide').show();
-			$('#codetrace-hide').show();
-			$('#actions-hide').show();
-			$('#guide-hide').show();
-			$('#status').show();
-			$('#codetrace').show();
-			$('#actions').show();
-			$('#guide').show();
-			hideStatusPanel();
-			hideCodetracePanel();
-			hideGuidePanel();
-			showActionsPanel();
-		} else if (currentMode == "Interaction Mode") {
-			mode = "interaction";
-			$('#status-hide').show();
-			$('#codetrace-hide').show();
-			$('#actions-hide').show();
-			$('#guide-hide').show();
-			$('#current-action').html("");
-			$('#status').show();
-			$('#codetrace').show();
-			$('#actions').show();
-			$('#guide').show();
-			hideStatusPanel();
-			hideCodetracePanel();
-			hideGuidePanel();
-			showActionsPanel();
-		}
+		$('#status-hide').show();
+		$('#codetrace-hide').show();
+		$('#actions-hide').show();
+		$('#guide-hide').show();
+		$('#current-action').html("");
+		$('#status').show();
+		$('#codetrace').show();
+		$('#actions').show();
+		$('#guide').show();
+		hideStatusPanel();
+		hideCodetracePanel();
+		hideGuidePanel();
+		showActionsPanel();
 	});
 	
 	$('#status-hide').click(function() {
