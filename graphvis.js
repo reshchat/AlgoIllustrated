@@ -328,10 +328,10 @@ var pseudo= "create a queue Q \n <br>" +
 				curli=ncurl;
 				ncurl=[];
 			}
-			if (cur.length == 0 && next.length == 0) {
+			if ((cur.length == 0 && next.length == 0) ||  prev.length==data.nodes.length) {
 				if (prev.length == data.nodes.length) {
 					bfs_en = false;
-					changeError("BFS DONE! <br> <br>")
+					changeError("BFS DONE! <br> <br>", "Success")
 					openPopup()
 					changeText("BFS DONE! <br> <br>" + pseudo )
 				}
@@ -356,16 +356,31 @@ var pseudo= "create a queue Q \n <br>" +
 		edge_del = false;
 	});
 
-	node
+	if(!bfs_en){
+		node
 		.filter(function (s) {
 			return bfs_indices.slice(0, bfs_i).indexOf(s.id) != -1;
 		})
 		.style("fill", "blue"); //s.id == d.id
+	}
+	if(!dfs_en){
+		node
+		.filter(function (s) {
+			return dfs_indices.slice(0, dfs_i).indexOf(s.id) != -1;
+		})
+		.style("fill", "blue"); //s.id == d.id
+	}
 	if (bfs_i>0){
 		console.log("hello")
 		console.log(qss)
 		console.log(qss[bfs_i])
 		changeText(pseudo + "visited :" + bfs_indices.slice(0, bfs_i).toString() +"<br>queue: " + qss[bfs_i].toString())
+	}
+	if (dfs_i>0){
+		console.log("hello")
+		console.log(qss)
+		console.log(qss[dfs_i])
+		changeText(pseudo + "visited :" + dfs_indices.slice(0, dfs_i).toString() +"<br>queue: " + qss[dfs_i].toString())
 	}
 
 	run_graph_matlist(data);

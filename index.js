@@ -23,6 +23,14 @@ app.get('/graph_interaction', (req, res) => {
     res.render('pages/graph_interaction');    
                                                        
 });
+app.get('/shortpath_simulation', (req, res) => {
+    res.render('pages/shortpath_simulation');
+
+});
+app.get('/shortpath_interaction', (req, res) => {
+    res.render('pages/shortpath_interaction');
+
+});
 app.get('/dp_simulation', (req, res) => {       
     res.render('pages/dp_simulation');    
                                                        

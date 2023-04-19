@@ -106,23 +106,7 @@ $( document ).ready(function() {
 	$('#current-action').hide();	
 	showActionsPanel();
 	
-	$('#mode-menu a').click(function() {
-		$('#status-hide').show();
-		$('#codetrace-hide').show();
-		$('#actions-hide').show();
-		$('#guide-hide').show();
-		$('#current-action').html("");
-		$('#status').show();
-		$('#codetrace').show();
-		$('#actions').show();
-		$('#guide').show();
-		hideStatusPanel();
-		hideCodetracePanel();
-		hideGuidePanel();
-		showActionsPanel();
-	});
-	
-	$('#status-hide').click(function() {
+	$('#status-hide').unbind().click(function() {
 		if(isStatusOpen) {
 			hideStatusPanel();
 		} else {
@@ -132,41 +116,43 @@ $( document ).ready(function() {
 			hideInstructionPanel();
 		}
 	});
-	$('#codetrace-hide').click(function() {
-		if(isCodetraceOpen) {
-			hideCodetracePanel();
-		} else {
-			showCodetracePanel();
-			hideActionsPanel();
-			hideGuidePanel();
-			hideInstructionPanel();
-		}
-	});
-	$('#actions-hide').click(function() {
+	$('#actions-hide').unbind().click(function() {
+		console.log("click")
 		if(isActionsOpen) {
 			hideActionsPanel();
+
 		} else {
 			showActionsPanel();
-			hideActionsPanel();
+			//hideActionsPanel();
 			hideGuidePanel();
 			hideInstructionPanel();
 		}
 	});
-	$('#guide-hide').click(function() {
+	$('#guide-hide').unbind().click(function() {
 		if(isGuideOpen) {
-			hideGuidePanel(); 
+			hideGuidePanel();
 		} else {
 			showGuidePanel();
 			hideActionsPanel();
-			hideGuidePanel();
+			//hideGuidePanel();
 			hideInstructionPanel();
 		}
 	});
-	$('#instruction-hide').click(function() {
+	$('#instruction-hide').unbind().click(function() {
 		if(isInstructionOpen) {
 			hideInstructionPanel(); 
 		} else {
 			showInstructionPanel();
+			hideActionsPanel();
+			hideGuidePanel();
+			//hideInstructionPanel();
+		}
+	});
+	$('#codetrace-hide').unbind().click(function() {
+		if(isCodetraceOpen) {
+			hideCodetracePanel();
+		} else {
+			showCodetracePanel();
 			hideActionsPanel();
 			hideGuidePanel();
 			hideInstructionPanel();
