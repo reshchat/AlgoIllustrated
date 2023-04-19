@@ -14,7 +14,7 @@ var statusInstructionWidth = 300;
 var statusCodetraceWidth = 420;
 
 // opening and closing panels
-var isActionsOpen = true;
+var isActionsOpen = false;
 var isGuideOpen = false;
 var isInstructionOpen = false;
 var isStatusOpen = false;
@@ -105,6 +105,8 @@ function hideInstructionPanel() {
 
 $( document ).ready(function() {	
 	$('#current-action').hide();	
+	// $('#actions').css('width', actionsWidth);
+	showActionsPanel();
 	
 	$('#mode-menu a').click(function() {
 		var currentMode = $('#mode-button').html().split("<")[0];
@@ -146,6 +148,9 @@ $( document ).ready(function() {
 			hideStatusPanel();
 		} else {
 			showStatusPanel();
+			hideActionsPanel();
+			hideGuidePanel();
+			hideInstructionPanel();
 		}
 	});
 	$('#codetrace-hide').click(function() {
@@ -153,6 +158,9 @@ $( document ).ready(function() {
 			hideCodetracePanel();
 		} else {
 			showCodetracePanel();
+			hideActionsPanel();
+			hideGuidePanel();
+			hideInstructionPanel();
 		}
 	});
 	$('#actions-hide').click(function() {
@@ -160,6 +168,9 @@ $( document ).ready(function() {
 			hideActionsPanel();
 		} else {
 			showActionsPanel();
+			hideActionsPanel();
+			hideGuidePanel();
+			hideInstructionPanel();
 		}
 	});
 	$('#guide-hide').click(function() {
@@ -167,6 +178,9 @@ $( document ).ready(function() {
 			hideGuidePanel(); 
 		} else {
 			showGuidePanel();
+			hideActionsPanel();
+			hideGuidePanel();
+			hideInstructionPanel();
 		}
 	});
 	$('#instruction-hide').click(function() {
@@ -174,6 +188,9 @@ $( document ).ready(function() {
 			hideInstructionPanel(); 
 		} else {
 			showInstructionPanel();
+			hideActionsPanel();
+			hideGuidePanel();
+			hideInstructionPanel();
 		}
 	});
 	

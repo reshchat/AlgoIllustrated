@@ -39,6 +39,10 @@ var del_edge = function del_edge() {
 var bfs = function bfs() {
 	changeText("BFS (Graph, Source)<br>&emsp;tlet Q be a queue<br>&emsp;Q.enqueue(Source)<br>&emsp;mark Source as visited<br>&emsp;while (Q is not empty)<br>&emsp;&emsp;v  =  Q.dequeue()<br>&emsp;&emsp;for all neighbours w of v in Graph<br>&emsp;&emsp;&emsp;if w is not visited<br>&emsp;&emsp;&emsp;&emsp;Q.enqueue(w)<br>&emsp;&emsp;&emsp;&emsp;mark w as visited");
 	bfs_en = true;
+	showCodetracePanel();
+	hideActionsPanel();
+	hideGuidePanel();
+	hideInstructionPanel();
 };
 var clear_scr = function clear_scr() {
     console.log("clear")
@@ -102,7 +106,10 @@ const q = new Queue();
 
 var sim_bfs = function sim_bfs() {
 	changeText("BFS (Graph, Source)<br>&emsp;tlet Q be a queue<br>&emsp;Q.enqueue(Source)<br>&emsp;mark Source as visited<br>&emsp;while (Q is not empty)<br>&emsp;&emsp;v  =  Q.dequeue()<br>&emsp;&emsp;for all neighbours w of v in Graph<br>&emsp;&emsp;&emsp;if w is not visited<br>&emsp;&emsp;&emsp;&emsp;Q.enqueue(w)<br>&emsp;&emsp;&emsp;&emsp;mark w as visited");
-
+	showCodetracePanel();
+	hideActionsPanel();
+	hideGuidePanel();
+	hideInstructionPanel();
 	bfs_indices=[]
 	console.log(Object.keys(q.items).length);
 	while (bfs_indices.length < data.nodes.length) {
