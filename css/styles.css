@@ -155,18 +155,24 @@ main {
 #popup_cap h2,
 #popup_strrev h2,
 #popup_par h2,
-#popup_out h2,
-#popup_instr h2 {
+#popup_out h2 {
 	margin-top: 0;
 	margin-bottom: 20px;
 	font-size: 24px;
 	text-align: center;
 }
 
+#popup_instr h2 {
+	margin-top: 0;
+	margin-bottom: 20px;
+	font-size: 18px;
+	text-align: center;
+}
+
 #popup_instr h4 {
 	margin-top: 0;
 	margin-bottom: 20px;
-	font-size: 16px;
+	font-size: 14.7px;
 }
 
 #popup label,
