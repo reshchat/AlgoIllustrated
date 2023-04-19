@@ -65,6 +65,11 @@
         <p id="remove" class="execAction" onclick=openPopupi()>Delete Item</p>
         <% if(page == 'dp_simulation'){ %>
             <p id="search" class="execAction" onclick=sim_bfs()>Simulate DP</p>
+            <div id="popup_s">
+                <h2 id="popup_heading">Error!</h2>
+                <p id="err">yoo try</p>
+                <p id="search" class="execAction" onclick="closePopup_s()">Ok </p>
+            </div>
         <% } else if(page == 'dp_interaction'){ %>
             <div id="popup_e">
                 <h2>Error!</h2>

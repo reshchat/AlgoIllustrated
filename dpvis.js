@@ -66,9 +66,9 @@ var pseudo= "create a queue Q \n <br>" +
 
 
 	if (bfs_i>0){
-		console.log("hello")
-		console.log(qss)
-		console.log(qss[bfs_i])
+		//console.log("hello")
+		//console.log(qss)
+		//console.log(qss[bfs_i])
 		//data=qss[bfs_i]
 		changeText(pseudo + "visited :" + bfs_indices.slice(0, bfs_i).toString() +"<br>queue: " + qss[bfs_i].toString())
 	}

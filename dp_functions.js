@@ -18,7 +18,18 @@ function refresh_arr(){
     }
 	qss=[arr]
 }
-
+function openPopup_s() {
+	var popup = document.getElementById("popup_s");
+	changeError("SUCCESS DONE!!", "Success")
+	popup.style.display = "block";
+}
+function closePopup_s() {
+	console.log("gfyftgft")
+	var popup = document.getElementById("popup_s");
+	bfs_i=0;
+	dfs_i=0;
+	popup.style.display = "none";
+}
 function createInputTable() {
     const inputTable = document.createElement("div");
     inputTable.id = "inputTable";
@@ -242,9 +253,15 @@ var prev_bfs = function prev_bfs() {
 }
 var next_bfs1 = function next_bfs1() {
 	//if (bfs_i < (capacity+1)*values.length) {
-	if (bfs_i < qss.length) {
+	if (bfs_i < qss.length-1) {
+		console.log("nexttt222333")
 		bfs_i = bfs_i + 1;
+		if(bfs_i == qss.length-1){
+			console.log("nexttt")
+			openPopup_s()
+		}
 		d3.select("svg").remove();
 		run_graph();
+
 	}
 }
