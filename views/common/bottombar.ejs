@@ -1,16 +1,12 @@
 <div id="bottom-bar"></div>
 <% if(page.includes('simulation')){ %>
-    <div id="media-controls">
-        <span id="go-to-beginning" class="media-control-button" title="go to beginning" onclick=goToBeginning()><span
-                class="material-symbols-outlined" bottom="5px" style="color:rgb(255, 255, 255)">first_page</span></span>
-        <span id="previous" class="media-control-button" title="step backward" onclick=prev_bfs()><span
-                class="material-symbols-outlined" bottom="5px"
-                style="color:rgb(255, 255, 255); transform: rotate(180deg);">play_arrow</span></span>
-        <span id="next" class="media-control-button" title="step forward" onclick=next_bfs1()><span
-                class="material-symbols-outlined" bottom="5px"
-                style="color:rgb(255, 255, 255)">play_arrow</span></span>
-        <span id="go-to-end" class="media-control-button" title="go to end" onclick=goToEnd()><span
-                class="material-symbols-outlined" bottom="5px" style="color:rgb(255, 255, 255)">last_page</span></span>
+    <div id="media-controls" style="position: absolute; top: 580px; visibility: hidden;">
+        <span id="previous" class="media-control-button" style="left: 80px;" title="step backward" onclick=prev_bfs()>
+                <span class="material-symbols-outlined" style="color:gray; font-size: 100px;">arrow_left</span>
+        </span>
+        <span id="next" class="media-control-button" style="left: 130px;" title="step forward" onclick=next_bfs1()>
+                <span class="material-symbols-outlined" style="color: gray; font-size: 100px;">arrow_right</span>
+        </span>
     </div>
 <% } else { %>
 <% } %>

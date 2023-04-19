@@ -30,6 +30,14 @@ function closePopup_s() {
 	dfs_i=0;
 	popup.style.display = "none";
 }
+function openInstr() {
+	var popup = document.getElementById("popup_instr");
+	popup.style.display = "block";
+}
+function closeInstr() {
+	var popup = document.getElementById("popup_instr");
+	popup.style.display = "none";
+}
 function createInputTable() {
     const inputTable = document.createElement("div");
     inputTable.id = "inputTable";
@@ -209,6 +217,9 @@ var sim_bfs = function sim_bfs() {
 	hideActionsPanel();
 	hideGuidePanel();
 	hideInstructionPanel();
+
+	document.getElementById('media-controls').style.visibility = 'visible';
+
 	qss=[]
 	arr=[]
 	for (var i = 0; i < values.length+1; i++) {

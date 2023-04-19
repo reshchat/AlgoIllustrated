@@ -110,12 +110,24 @@ function closeOutPop() {
 	popup.style.display = "none";
 }
 
+function openInstr() {
+	var popup = document.getElementById("popup_instr");
+	popup.style.display = "block";
+}
+
+function closeInstr() {
+	var popup = document.getElementById("popup_instr");
+	popup.style.display = "none";
+}
+
 var strrev = function strrev(){
 	changeText("<b>reverseString(string)</b><br>&emsp;create an empty stack<br>&emsp;for all characters i in string<br>&emsp;&emsp;push i to stack<br>&emsp;while stack is not empty<br>&emsp;&emsp;pop from stack and append to output");
 	showCodetracePanel();
 	hideActionsPanel();
 	hideGuidePanel();
 	hideInstructionPanel();
+
+	document.getElementById('media-controls').style.visibility = 'visible';
 
 	algo1 = true;
 	closeRevPop();
@@ -129,6 +141,7 @@ var strrev = function strrev(){
 		arr.push({func: "pop", val: string.charAt(i)});
 	}
 	cur = 0;
+	document.getElementById("output").innerHTML = String("String: " + string);
 }
 
 var strrevint = function strrevint(){
@@ -155,6 +168,7 @@ var strrevint = function strrevint(){
 	document.getElementById("pushed").style.visibility = "visible";
 	document.getElementById("pop_btn").style.visibility = "visible";
 	document.getElementById("rev_btn").style.visibility = "visible";
+	document.getElementById("output").innerHTML = String("String: " + string);
 }
 
 function highlight(obj, color){
@@ -162,7 +176,7 @@ function highlight(obj, color){
 	obj.style.backgroundColor = color;
 	setTimeout(function(){
 		 obj.style.backgroundColor = orig;
-	}, 2000);
+	}, 500);
  }
 
 var pushalg = function pushalg(){
@@ -251,6 +265,8 @@ var parcheck = function parcheck(){
 	hideActionsPanel();
 	hideGuidePanel();
 	hideInstructionPanel();
+
+	document.getElementById('media-controls').style.visibility = 'visible';
 
 	algo2 = true;
 	closeParPop();
@@ -396,7 +412,7 @@ var prev_bfs = function prev_bfs(){
 			cur = cur - 1;
 		}
 		console.log("Reverse String: " + rev);
-		document.getElementById("output").innerHTML = String("Reverse String: " + rev);
+		document.getElementById("output").innerHTML = String("String: " + string + "<br>Reverse String: " + rev);
 		// openOutPop("Reverse String: " + rev);
 	}
 	else if(algo2 == true){
@@ -451,7 +467,7 @@ var next_bfs1 = function next_bfs1(){
 			openOutPop("Reverse String: " + rev)
 			algo1 = false;
 		}
-		document.getElementById("output").innerHTML = String("Reverse String: " + rev);
+		document.getElementById("output").innerHTML = String("String: " + string + "<br>Reverse String: " + rev);
 	}
 	else if(algo2 == true){
 		var hi = "";

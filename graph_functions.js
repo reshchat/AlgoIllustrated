@@ -23,6 +23,14 @@ function closePopup() {
 	var popup = document.getElementById("popup");
 	popup.style.display = "none";
 }
+function openInstr() {
+	var popup = document.getElementById("popup_instr");
+	popup.style.display = "block";
+}
+function closeInstr() {
+	var popup = document.getElementById("popup_instr");
+	popup.style.display = "none";
+}
 function openPopup_s() {
 	var popup = document.getElementById("popup_s");
 	changeError("SUCCESS DONE!!", "Success")
@@ -180,6 +188,9 @@ var sim_bfs = function sim_bfs() {
 	hideActionsPanel();
 	hideGuidePanel();
 	hideInstructionPanel();
+
+	document.getElementById('media-controls').style.visibility = 'visible';
+
 	bfs_indices=[]
 	console.log(Object.keys(q.items).length);
 	while (bfs_indices.length < data.nodes.length) {
@@ -254,6 +265,9 @@ var sim_dfs = function sim_dfs() {
 	hideActionsPanel();
 	hideGuidePanel();
 	hideInstructionPanel();
+
+	document.getElementById('media-controls').style.visibility = 'visible';
+
 	dfs_indices = [];
 	const S = new Stack();
 	console.log(Object.keys(S.items).length);
