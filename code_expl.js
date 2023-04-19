@@ -22,3 +22,13 @@ function changeError(ss, heading="") {
     //para.textContent = "New text";
     para.innerHTML  = ss;
 }
+
+function changeGuideContent(text) {
+    var para = document.getElementById("guide_content");
+    para.innerHTML  = text;
+}
+
+function changeInstructionsContent(text) {
+    var para = document.getElementById("instructions_content");
+    para.innerHTML  = text;
+}

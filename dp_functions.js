@@ -1,3 +1,6 @@
+changeGuideContent(dp_guide_content);
+changeInstructionsContent(dp_simulation_instructions_content);
+
 var arr=[[0,1],[1,0]]
 arr=[]
 for (var i = 0; i < values.length+1; i++) {

@@ -1,3 +1,6 @@
+changeGuideContent(stack_guide_content);
+changeInstructionsContent(stack_simulation_instructions_content);
+
 var node_ctr = 0;
 var peek_en = false;
 var string = "ABCDEF";
