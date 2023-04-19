@@ -1,6 +1,5 @@
 <% var page='stacks_interaction' ; %>
 <%- include('../common/head') %>
-
 <body>
 
 	<%- include('../common/head', {page: page}) %>
@@ -17,12 +16,12 @@
 	</div>
 	<div id="output_div" style="position: absolute; top: 580px; left: 350px; width: fit-content; background-color: rgb(143, 217, 217);"><p id="output" style="font-size:x-large; font-family: 'Courier New', Courier, monospace;"></p></div>
 	<div id="output_div" style="position: absolute; top: 600px; left: 350px; width: fit-content;"><p id="output_hi" style="font-size:x-large; font-family: 'Courier New', Courier, monospace; color: red;"></p></div>
-	<button id="push_btn" style="position: absolute; top: 100px; left: 800px; background-color: white; color: black; border: 2px solid purple; visibility: hidden; font-size: x-large;" onclick=pushalg()>Push</button>
+	<button id="push_btn" style="left: 800px;" onclick=pushalg()>Push</button>
 	<input id="pushed" style="position: absolute; top: 100px; left: 870px; visibility: hidden; font-size: x-large; width: 45px;">
-	<button id="pop_btn" style="position: absolute; top: 100px; left: 940px; background-color: white; color: black; border: 2px solid purple; visibility: hidden; font-size: x-large;" onclick=popalg()>Pop</button>
-	<button id="rev_btn" style="position: absolute; top: 100px; left: 1000px; background-color: white; color: black; border: 2px solid purple; visibility: hidden; font-size: x-large;" onclick=reversed()>Reversed</button>
-	<button id="bal_btn" style="position: absolute; top: 100px; left: 1000px; background-color: white; color: black; border: 2px solid purple; visibility: hidden; font-size: x-large;" onclick=balanced()>Balanced</button>
-	<button id="unbal_btn" style="position: absolute; top: 100px; left: 1160px; background-color: white; color: black; border: 2px solid purple; visibility: hidden; font-size: x-large;" onclick=unbalanced()>Unbalanced</button>
+	<button id="pop_btn" style="left: 940px;" onclick=popalg()>Pop</button>
+	<button id="rev_btn" style="left: 1000px;" onclick=reversed()>Reversed</button>
+	<button id="bal_btn" style="left: 1000px;" onclick=balanced()>Balanced</button>
+	<button id="unbal_btn" style="left: 1115px;" onclick=unbalanced()>Unbalanced</button>
 	
 	<script src="code_expl.js"></script>
 	<script src="stack_data.js"></script>

@@ -211,3 +211,27 @@ main {
 #popup_cap p:hover {
 	background-color: #0d47a1;
 }
+
+#push_btn,
+#pop_btn,
+#rev_btn,
+#bal_btn,
+#unbal_btn {
+	position: absolute; 
+	top: 100px; 
+	color: black; 
+	border: 2px solid purple; 
+	border-radius: 4px; 
+	visibility: hidden; 
+	font-size: x-large;
+	transition-duration: 0.4s;
+}
+
+#push_btn:hover,
+#pop_btn:hover,
+#rev_btn:hover,
+#bal_btn:hover,
+#unbal_btn:hover {
+	background-color: purple;
+  	color: white;
+}

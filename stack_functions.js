@@ -150,24 +150,14 @@ var strrevint = function strrevint(){
 }
 
 function highlight(obj, color){
-	var orig = obj.style.color;
-	obj.style.color = color;
+	var orig = obj.style.backgroundColor;
+	obj.style.backgroundColor = color;
 	setTimeout(function(){
-		 obj.style.color = orig;
+		 obj.style.backgroundColor = orig;
 	}, 2000);
  }
 
 var pushalg = function pushalg(){
-	if(algo4 == true){
-		var hi = "";
-		for(var i = 0; i<string.length; i++){
-			if(i == cur)
-				hi += "-";
-			else 
-				hi += "&nbsp;";
-		}
-		document.getElementById("output_hi").innerHTML = hi;
-	}
 	if(cur>=0 && cur<arr.length && arr[cur].func == "push" && document.getElementById("pushed").value == arr[cur].val){
 		push_val(arr[cur].val);
 		cur += 1;
@@ -176,9 +166,6 @@ var pushalg = function pushalg(){
 	else{
 		highlight(document.getElementById("push_btn"), 'red')
 	}
-}
-
-var popalg = function popalg(){
 	if(algo4 == true){
 		var hi = "";
 		for(var i = 0; i<string.length; i++){
@@ -187,8 +174,13 @@ var popalg = function popalg(){
 			else 
 				hi += "&nbsp;";
 		}
+		console.log(string);
+		console.log(hi);
 		document.getElementById("output_hi").innerHTML = hi;
 	}
+}
+
+var popalg = function popalg(){
 	if(cur>=0 && cur<arr.length && arr[cur].func == "pop"){
 		rev += peek_val();
 		pop();
@@ -201,11 +193,23 @@ var popalg = function popalg(){
 	else{
 		highlight(document.getElementById("pop_btn"), 'red')
 	}
+	if(algo4 == true){
+		var hi = "";
+		for(var i = 0; i<string.length; i++){
+			if(i == cur)
+				hi += "-";
+			else 
+				hi += "&nbsp;";
+		}
+		console.log(string);
+		console.log(hi);
+		document.getElementById("output_hi").innerHTML = hi;
+	}
 }
 
 var reversed = function reversed(){
 	if(algo3 == true && rev == string.split("").reverse().join("")){
-		document.getElementById("rev_btn").style.color = 'green';
+		document.getElementById("rev_btn").style.backgroundColor = 'green';
 		algo3 = false;
 	}
 	else{
@@ -215,7 +219,7 @@ var reversed = function reversed(){
 
 var balanced = function balanced(){
 	if(algo4 == true && arr[cur].func == "status" && arr[cur].val == "Balanced"){
-		document.getElementById("bal_btn").style.color = 'green';
+		document.getElementById("bal_btn").style.backgroundColor = 'green';
 		algo4 = false;
 	}
 	else{
@@ -225,7 +229,7 @@ var balanced = function balanced(){
 
 var unbalanced = function unbalanced(){
 	if(algo4 == true && arr[cur].func == "status" && arr[cur].val == "Unbalanced"){
-		document.getElementById("unbal_btn").style.color = 'green';
+		document.getElementById("unbal_btn").style.backgroundColor = 'green';
 		algo4 = false;
 	}
 	else{
@@ -302,6 +306,11 @@ var parcheckint = function parcheckint(){
 	string = String(document.getElementById("par").value);
 	arr = [];
 	document.getElementById("output").innerHTML = string;
+	var hi = "-";
+	for(var i = 1; i<string.length; i++){
+		hi += "&nbsp;";
+	}
+	document.getElementById("output_hi").innerHTML = hi;
 	var stack = [];
 	var len = 0;
 	for(var i = 0; i<string.length; i++){
