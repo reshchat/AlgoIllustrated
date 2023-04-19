@@ -4,18 +4,22 @@ function run_graph() {
 	var height = 400;
   	var radius = 20;
 	var duration = 3000; // in milliseconds
-	var pseudo = "create a queue Q \n <br>" +
-	"mark current node as visited and put it into Q \n<br>" +
-	"while Q is non-empty \n<br>" +
-	"    remove the head node of Q \n<br>" +
-	"    mark and enqueue all (unvisited) neighbours<br> of this node\n <br><br>"
-	var pseudo_dfs = "create an empty stack S \n <br>" +
-    "mark current node as visited and push it into S \n<br>" +
-    "while S is non-empty \n<br>" +
-    "    pop a node v from S \n<br>" +
-    "    for each unvisited neighbor w of v \n<br>" +
-    "        mark w as visited \n<br>" +
-    "        push w onto S \n  <br><br>";
+	// var pseudo = "create a queue Q \n <br>" +
+	// "mark current node as visited and put it into Q \n<br>" +
+	// "while Q is non-empty \n<br>" +
+	// "    remove the head node of Q \n<br>" +
+	// "    mark and enqueue all (unvisited) neighbours<br> of this node\n <br><br>"
+	// var pseudo_dfs = "create an empty stack S \n <br>" +
+    // "mark current node as visited and push it into S \n<br>" +
+    // "while S is non-empty \n<br>" +
+    // "    pop a node v from S \n<br>" +
+    // "    for each unvisited neighbor w of v \n<br>" +
+    // "        mark w as visited \n<br>" +
+    // "        push w onto S \n  <br><br>";
+
+	var pseudo = "<b>BFS (Graph, Source)</b><br>&emsp;let Q be a queue<br>&emsp;Q.enqueue(Source)<br>&emsp;mark Source as visited<br>&emsp;while (Q is not empty)<br>&emsp;&emsp;v  =  Q.dequeue()<br>&emsp;&emsp;for all neighbours w of v in Graph<br>&emsp;&emsp;&emsp;if w is not visited<br>&emsp;&emsp;&emsp;&emsp;Q.enqueue(w)<br>&emsp;&emsp;&emsp;&emsp;mark w as visited \n  <br><br>";
+	var pseudo_dfs = "<b>DFS (Graph, Source)</b><br>&emsp;let S be a stack<br>&emsp;S.push(Source)<br>&emsp;mark Source as visited<br>&emsp;while (S is not empty)<br>&emsp;&emsp;v = S.pop()<br>&emsp;&emsp;for all neighbours w of v in Graph<br>&emsp;&emsp;&emsp;if w is not visited<br>&emsp;&emsp;&emsp;&emsp;S.push(w)<br>&emsp;&emsp;&emsp;&emsp;mark w as visited \n  <br><br>";
+
 
 	// append the svg object to the body of the page
 	var svg = d3
