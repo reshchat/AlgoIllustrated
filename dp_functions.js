@@ -8,12 +8,15 @@ for (var i = 0; i < values.length+1; i++) {
 }
 function refresh_arr(){
     arr=[]
+	console.log(values)
+	console.log(weights)
     for (var i = 0; i < values.length+1; i++) {
         arr.push([]);
         for (var j = 0; j < capacity+1; j++) {
             arr[i].push(0);
         }
     }
+	qss=[arr]
 }
 
 function createInputTable() {
@@ -120,6 +123,7 @@ function closePopupc() {
 	var popup = document.getElementById("popup_cap");
 	popup.style.display = "none";
     refresh_arr();
+
 }
 var add_item = function add_item(){
 values.push(Number(document.getElementById("value").value));
@@ -149,6 +153,7 @@ var edit_cap = function edit_cap(){
 	console.log(document.getElementById("cap").value)
 	var c = Number(document.getElementById("cap").value)
 	capacity=c;
+	refresh_arr();
 	closePopupc();
 	d3.select("svg").remove();
 	run_graph();
@@ -158,6 +163,7 @@ var clear_items = function clear_items(){
 	values=[]
 	weights=[]
 	capacity=0
+	refresh_arr();
 	d3.select("svg").remove();
 	run_graph();
 }
