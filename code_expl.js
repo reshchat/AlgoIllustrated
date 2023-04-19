@@ -11,9 +11,9 @@ function changeText(ss) {
 }
 
 function changeError(ss, heading="") {
-    if(heading = "Success") {
-        var heading = document.getElementById("popup_heading");
-        heading.innerHTML  = heading;
+    if(heading == "Success") {
+        var heading2 = document.getElementById("popup_heading");
+        heading2.innerHTML  = heading;
     }
 
     // Get the paragraph element using its id attribute

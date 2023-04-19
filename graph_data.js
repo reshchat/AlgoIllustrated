@@ -18,6 +18,12 @@ var data = {
 		{
 			id: 6,
 		},
+		{
+			id: 7,
+		},
+		{
+			id: 8,
+		},
 	],
 	links: [
 		{
@@ -33,17 +39,21 @@ var data = {
 			target: 2,
 		},
 		{
-			source: 3,
+			source: 2,
 			target: 5,
 		},
 		{
-			source: 1,
+			source: 3,
 			target: 6,
 		},
 		{
-			source: 5,
-			target: 6,
+			source: 4,
+			target: 7,
 		},
+{
+	source: 5,
+		target: 8,
+},
 	],
 };
 

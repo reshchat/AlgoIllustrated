@@ -9,6 +9,11 @@
         <% if(page == 'graph_simulation'){ %>
             <p id="search" class="execAction" onclick=sim_bfs()>Simulate BFS</p>
             <p id="search" class="execAction" onclick=sim_dfs()>Simulate DFS</p>
+            <div id="popup_s">
+                <h2 id="popup_heading">Error!</h2>
+                <p id="err">yoo try</p>
+                <p id="search" class="execAction" onclick="closePopup_s()">Ok </p>
+            </div>
         <% } else if(page == 'graph_interaction'){ %>
             <div id="popup">
                 <h2 id="popup_heading">Error!</h2>

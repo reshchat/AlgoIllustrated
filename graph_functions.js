@@ -19,6 +19,19 @@ function closePopup() {
 	var popup = document.getElementById("popup");
 	popup.style.display = "none";
 }
+function openPopup_s() {
+	var popup = document.getElementById("popup_s");
+	changeError("SUCCESS DONE!!", "Success")
+	popup.style.display = "block";
+}
+function closePopup_s() {
+	var popup = document.getElementById("popup_s");
+	bfs_i=0;
+	dfs_i=0;
+	d3.select("svg").remove();
+	run_graph();
+	popup.style.display = "none";
+}
 
 var add_node = function add_node() {
 	node_ctr += 1;
@@ -214,10 +227,17 @@ var next_bfs1 = function next_bfs1() {
 		d3.select("svg").remove();
 		run_graph();
 	}
+	console.log(bfs_i)
+	console.log(bfs_indices.length)
+	if ((bfs_i == bfs_indices.length && bfs_indices.length>0) || (dfs_i == dfs_indices.length && dfs_indices.length >0 )){
+		openPopup_s()
+
+	}
 }
 
 
 var sim_dfs = function sim_dfs() {
+
 	changeText("DFS (Graph, Source)<br>&emsp;let S be a stack<br>&emsp;S.push(Source)<br>&emsp;mark Source as visited<br>&emsp;while (S is not empty)<br>&emsp;&emsp;v  =  S.pop()<br>&emsp;&emsp;if v is not visited<br>&emsp;&emsp;&emsp;mark v as visited<br>&emsp;&emsp;&emsp;for all neighbours w of v in Graph<br>&emsp;&emsp;&emsp;&emsp;S.push(w)");
 	showCodetracePanel();
 	hideActionsPanel();
