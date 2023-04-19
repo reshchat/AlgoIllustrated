@@ -4,11 +4,19 @@ function run_graph() {
 	var height = 400;
   	var radius = 20;
 	var duration = 3000; // in milliseconds
-var pseudo= "create a queue Q \n <br>" +
+	var pseudo = "create a queue Q \n <br>" +
 	"mark current node as visited and put it into Q \n<br>" +
 	"while Q is non-empty \n<br>" +
 	"    remove the head node of Q \n<br>" +
 	"    mark and enqueue all (unvisited) neighbours<br> of this node\n <br><br>"
+	var pseudo_dfs = "create an empty stack S \n <br>" +
+    "mark current node as visited and push it into S \n<br>" +
+    "while S is non-empty \n<br>" +
+    "    pop a node v from S \n<br>" +
+    "    for each unvisited neighbor w of v \n<br>" +
+    "        mark w as visited \n<br>" +
+    "        push w onto S \n  <br><br>";
+
 	// append the svg object to the body of the page
 	var svg = d3
 		.select("#graphsvg")
@@ -342,7 +350,142 @@ var pseudo= "create a queue Q \n <br>" +
 				}
 			}
 		}
+
+
+		if (dfs_en == true) {
+			if (prev.indexOf(d.id) != -1) {
+				changeError("Error:   " +d.id.toString() + "   not the correct neighbour <br> <br>")
+				openPopup()
+				changeText("Error:   " +d.id.toString() + "  not the correct neighbour <br> <br>" + pseudo_dfs)
+	
+				node.filter(function(s) {
+					return s.id == d.id;
+				})
+					.transition()
+					.duration(duration)
+					.style("fill", "red")
+					.on("end", function() {
+						d3.select(this)
+							.transition()
+							.duration(duration)
+							.style("fill", "#9340c0");
+					});
+	
+			} else if (cur.length == 0) {
+	
+				node
+					.filter(function (s) {
+						return s.id == d.id;
+					})
+					.style("fill", "#9340c0");
+				prev.push(d.id);
+				for (var i = 0; i < data.links.length; i++) {
+					if (d.id == data.links[i].source.id) {
+						cur.push(data.links[i].target.id);
+						curli.push(i)
+					}
+					if (d.id == data.links[i].target.id) {
+						cur.push(data.links[i].source.id);
+						curli.push(i)
+					}
+				}
+				changeText(pseudo_dfs + "visited: " +prev.toString())
+			} else {
+				if (cur.indexOf(d.id) == -1) {
+					changeError("Error:   " +d.id.toString() + "  not the correct neighbour <br> <br>")
+					openPopup()
+					changeText("Error:  " +d.id.toString() + "  not the correct neighbour <br> <br>" + pseudo_dfs)
+					if(prev.indexOf(d.id)==-1){
+						node.filter(function(s) {
+							return s.id == d.id;
+						})
+							.transition()
+							.duration(duration)
+							.style("fill", "red")
+							.on("end", function() {
+								d3.select(this)
+									.transition()
+									.duration(duration)
+									.style("fill", "#A5EEDB");
+							});
+					}
+					else{
+						node.filter(function(s) {
+							return s.id == d.id;
+						})
+							.transition()
+							.duration(duration)
+							.style("fill", "red")
+							.on("end", function() {
+								d3.select(this)
+									.transition()
+									.duration(duration)
+									.style("fill", "#9340c0");
+							});
+					}
+	
+	
+				} else {
+					var temp = [];
+					for (var i = 0; i < cur.length; i++) {
+						if (d.id != cur[i]) {
+							temp.push(cur[i]);
+						}
+					}
+					cur = temp;
+					node
+						.filter(function (s) {
+							return s.id == d.id;
+						})
+						.style("fill", "#9340c0");
+	
+					link.filter(function (s) {
+	
+						return curli.indexOf(s.index)!=-1 && (d.id == data.links[s.index].source.id || d.id == data.links[s.index].target.id);
+						//return s.id == d.id;
+					})
+						.style("stroke", "#c75c19");
+	
+					prev.push(d.id);
+	
+					changeText(pseudo_dfs + "visited: " +prev.toString())
+					for (var i = 0; i < data.links.length; i++) {
+						if (
+							d.id == data.links[i].source.id &&
+							prev.indexOf(data.links[i].target.id) == -1 && cur.indexOf(data.links[i].target.id) == -1
+						) {
+							next.push(data.links[i].target.id);
+							ncurl.push(i);
+	
+						}
+						if (
+							d.id == data.links[i].target.id &&
+							prev.indexOf(data.links[i].source.id) == -1 && cur.indexOf(data.links[i].target.id) == -1
+						) {
+							next.push(data.links[i].source.id);
+							ncurl.push(i)
+						}
+					}
+				}
+			}
+			if (cur.length == 0 && next.length > 0) {
+				cur = next;
+				next = [];
+				curli=ncurl;
+				ncurl=[];
+			}
+			if ((cur.length == 0 && next.length == 0) ||  prev.length==data.nodes.length) {
+				if (prev.length == data.nodes.length) {
+					dfs_en = false;
+					changeError("DFS DONE! <br> <br>", "Success")
+					openPopup()
+					changeText("DFS DONE! <br> <br>" + pseudo_dfs)
+				}
+			}
+		}
+
 	});
+	
 
 	link.on("click", function (d) {
 		if (edge_del == true) {
