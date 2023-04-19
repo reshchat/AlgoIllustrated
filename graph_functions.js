@@ -54,7 +54,7 @@ var del_edge = function del_edge() {
 	edge_del = true;
 };
 var bfs = function bfs() {
-	changeText("BFS (Graph, Source)<br>&emsp;tlet Q be a queue<br>&emsp;Q.enqueue(Source)<br>&emsp;mark Source as visited<br>&emsp;while (Q is not empty)<br>&emsp;&emsp;v  =  Q.dequeue()<br>&emsp;&emsp;for all neighbours w of v in Graph<br>&emsp;&emsp;&emsp;if w is not visited<br>&emsp;&emsp;&emsp;&emsp;Q.enqueue(w)<br>&emsp;&emsp;&emsp;&emsp;mark w as visited");
+	changeText("<b>BFS (Graph, Source)</b><br>&emsp;let Q be a queue<br>&emsp;Q.enqueue(Source)<br>&emsp;mark Source as visited<br>&emsp;while (Q is not empty)<br>&emsp;&emsp;v  =  Q.dequeue()<br>&emsp;&emsp;for all neighbours w of v in Graph<br>&emsp;&emsp;&emsp;if w is not visited<br>&emsp;&emsp;&emsp;&emsp;Q.enqueue(w)<br>&emsp;&emsp;&emsp;&emsp;mark w as visited");
 	bfs_en = true;
 	showCodetracePanel();
 	hideActionsPanel();
@@ -163,7 +163,7 @@ const q = new Queue();
 const st = new Stack();
 
 var sim_bfs = function sim_bfs() {
-	changeText("BFS (Graph, Source)<br>&emsp;tlet Q be a queue<br>&emsp;Q.enqueue(Source)<br>&emsp;mark Source as visited<br>&emsp;while (Q is not empty)<br>&emsp;&emsp;v  =  Q.dequeue()<br>&emsp;&emsp;for all neighbours w of v in Graph<br>&emsp;&emsp;&emsp;if w is not visited<br>&emsp;&emsp;&emsp;&emsp;Q.enqueue(w)<br>&emsp;&emsp;&emsp;&emsp;mark w as visited");
+	changeText("<b>BFS (Graph, Source)</b><br>&emsp;let Q be a queue<br>&emsp;Q.enqueue(Source)<br>&emsp;mark Source as visited<br>&emsp;while (Q is not empty)<br>&emsp;&emsp;v  =  Q.dequeue()<br>&emsp;&emsp;for all neighbours w of v in Graph<br>&emsp;&emsp;&emsp;if w is not visited<br>&emsp;&emsp;&emsp;&emsp;Q.enqueue(w)<br>&emsp;&emsp;&emsp;&emsp;mark w as visited");
 	showCodetracePanel();
 	hideActionsPanel();
 	hideGuidePanel();
@@ -237,8 +237,12 @@ var next_bfs1 = function next_bfs1() {
 
 
 var sim_dfs = function sim_dfs() {
+<<<<<<< HEAD
 
 	changeText("DFS (Graph, Source)<br>&emsp;let S be a stack<br>&emsp;S.push(Source)<br>&emsp;mark Source as visited<br>&emsp;while (S is not empty)<br>&emsp;&emsp;v  =  S.pop()<br>&emsp;&emsp;if v is not visited<br>&emsp;&emsp;&emsp;mark v as visited<br>&emsp;&emsp;&emsp;for all neighbours w of v in Graph<br>&emsp;&emsp;&emsp;&emsp;S.push(w)");
+=======
+	changeText("<b>DFS (Graph, Source)</b><br>&emsp;let S be a stack<br>&emsp;S.push(Source)<br>&emsp;mark Source as visited<br>&emsp;while (S is not empty)<br>&emsp;&emsp;v  =  S.pop()<br>&emsp;&emsp;if v is not visited<br>&emsp;&emsp;&emsp;mark v as visited<br>&emsp;&emsp;&emsp;for all neighbours w of v in Graph<br>&emsp;&emsp;&emsp;&emsp;S.push(w)");
+>>>>>>> c3f140a2a3dfc0979901045d06a2cbe4f7be530d
 	showCodetracePanel();
 	hideActionsPanel();
 	hideGuidePanel();
