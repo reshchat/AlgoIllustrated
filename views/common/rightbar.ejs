@@ -1,7 +1,7 @@
 <div id="right-bar"></div>
 <div id="actions" class="panel">
     <p id="search"><b>Edit Menu</b></p>
-    <% if(page.includes('graph_')){ %>
+    <% if(page.includes('graph_') || page.includes('shortpath_')){ %>
         <p id="search" class="execAction" onclick=add_node()>Add Node</p>
         <p id="remove" class="execAction" onclick=del_node()>Delete Node</p>
         <p id="search" class="execAction" onclick=add_edge()>Add Edge</p>
@@ -15,6 +15,16 @@
                 <p id="search" class="execAction" onclick="closePopup()">Ok </p>
             </div>
             <p id="search" class="execAction" onclick=bfs()>Interact BFS</p>
+        <% } %>
+        <% if(page == 'shortpath_simulation'){ %>
+            <p id="search" class="execAction" onclick=sim_short()>Simulate BFS</p>
+        <% } else if(page == 'shortpath_interaction'){ %>
+            <div id="popup">
+                <h2>Error!</h2>
+                <p id="err">yoo try</p>
+                <p id="search" class="execAction" onclick="closePopup()">Ok </p>
+            </div>
+            <p id="search" class="execAction" onclick=shortp()>Interact BFS</p>
         <% } %>
         <p id="search" class="execAction" onclick=clear_scr()>Clear</p>
     <% } else if(page.includes('dp_')){ %>

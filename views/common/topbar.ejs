@@ -6,6 +6,10 @@
             <div id="mode-button" onclick="window.location.href='/graph_interaction'">Switch to Interaction Mode</div>
         <% } else if(page == 'graph_interaction'){ %>
             <div id="mode-button" onclick="window.location.href='/graph_simulation'">Switch to Simulation Mode</div>
+            <% } else if(page == 'shortpath_simulation'){ %>
+                <div id="mode-button" onclick="window.location.href='/shortpath_interaction'">Switch to Interaction Mode</div>
+            <% } else if(page == 'shortpath_interaction'){ %>
+                <div id="mode-button" onclick="window.location.href='/shortpath_simulation'">Switch to Simulation Mode</div>
         <% } else if(page == 'dp_simulation'){ %>
             <div id="mode-button" onclick="window.location.href='/dp_interaction'">Switch to Interaction Mode</div>
         <% } else if(page == 'dp_interaction'){ %>

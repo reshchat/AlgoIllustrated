@@ -15,8 +15,6 @@ function refresh_arr(){
         }
     }
 }
-const n = 5; // number of rows
-const m = 3; // number of columns
 
 function createInputTable() {
     const inputTable = document.createElement("div");
@@ -85,7 +83,10 @@ function submitNumbers() {
 
 // attach the input table to the DOM
 const container = document.getElementById("dp_i");
-container.appendChild(createInputTable());
+if (bfs_en){
+	container.appendChild(createInputTable());
+}
+
 function openPopup_e() {
 	var popup = document.getElementById("popup_e");
 	popup.style.display = "block";

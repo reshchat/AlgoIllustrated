@@ -1,0 +1,20 @@
+<% var page='graph_simulation' ; %>
+<%- include('../common/head') %>
+
+<body>
+
+	<%- include('../common/head', {page: page}) %>
+	<%- include('../common/topbar', {page: page}) %>
+	<%- include('../common/leftbar', {page: page}) %>
+	<%- include('../common/rightbar', {page: page}) %>
+	<%- include('../common/bottombar', {page: page}) %>
+
+	<div id="graphsvg"></div>
+
+	<script src="code_expl.js"></script>
+	<script src="graph_data.js"></script>
+	<script src="graph_functions.js"></script>
+	<script src="graph_matlist.js"></script>
+	<script src="graphvis.js"></script>
+
+</body>
