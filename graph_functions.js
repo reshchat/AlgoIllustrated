@@ -3,10 +3,14 @@ var edge_click = false;
 var edge_del = false;
 var node_del = false;
 var bfs_en = false;
+var dfs_en = false;
 var selected_nodes = [];
 var bfs_indices = [];
+var dfs_indices = [];
+var qss =[];
 var qss =[];
 var bfs_i = 0;
+var dfs_i = 0;
 function openPopup() {
 	var popup = document.getElementById("popup");
 	popup.style.display = "block";
@@ -102,7 +106,48 @@ class Queue {
 	}
 }
 
+class Stack {
+	constructor() {
+		this.items = {};
+		this.topIndex = 0;
+	}
+	push(item) {
+		if (!(this.topIndex in this.items)) {
+			this.items[this.topIndex] = item;
+			this.topIndex++;
+			return item + " inserted";
+		}
+	}
+	pop() {
+		if (this.topIndex === 0) {
+			return null;
+		}
+		this.topIndex--;
+		const item = this.items[this.topIndex];
+		delete this.items[this.topIndex];
+		return item;
+	}
+	peek() {
+		if (this.topIndex === 0) {
+			return null;
+		}
+		return this.items[this.topIndex - 1];
+	}
+	printStack() {
+		return this.items;
+	}
+	printStacks() {
+		var ss = [];
+		for (let i = this.topIndex - 1; i >= 0; i--) {
+			ss.push(this.items[i]);
+		}
+		return ss;
+	}
+}
+
+
 const q = new Queue();
+const st = new Stack();
 
 var sim_bfs = function sim_bfs() {
 	changeText("BFS (Graph, Source)<br>&emsp;tlet Q be a queue<br>&emsp;Q.enqueue(Source)<br>&emsp;mark Source as visited<br>&emsp;while (Q is not empty)<br>&emsp;&emsp;v  =  Q.dequeue()<br>&emsp;&emsp;for all neighbours w of v in Graph<br>&emsp;&emsp;&emsp;if w is not visited<br>&emsp;&emsp;&emsp;&emsp;Q.enqueue(w)<br>&emsp;&emsp;&emsp;&emsp;mark w as visited");
@@ -152,6 +197,11 @@ var prev_bfs = function prev_bfs() {
 		d3.select("svg").remove();
 		run_graph();
 	}
+	if (dfs_i > 0) {
+		dfs_i = dfs_i - 1;
+		d3.select("svg").remove();
+		run_graph();
+	}
 }
 var next_bfs1 = function next_bfs1() {
 	if (bfs_i < bfs_indices.length) {
@@ -159,4 +209,54 @@ var next_bfs1 = function next_bfs1() {
 		d3.select("svg").remove();
 		run_graph();
 	}
+	if (dfs_i < dfs_indices.length) {
+		dfs_i = dfs_i + 1;
+		d3.select("svg").remove();
+		run_graph();
+	}
 }
+
+
+var sim_dfs = function sim_dfs() {
+	changeText("DFS (Graph, Source)<br>&emsp;let S be a stack<br>&emsp;S.push(Source)<br>&emsp;mark Source as visited<br>&emsp;while (S is not empty)<br>&emsp;&emsp;v  =  S.pop()<br>&emsp;&emsp;if v is not visited<br>&emsp;&emsp;&emsp;mark v as visited<br>&emsp;&emsp;&emsp;for all neighbours w of v in Graph<br>&emsp;&emsp;&emsp;&emsp;S.push(w)");
+	showCodetracePanel();
+	hideActionsPanel();
+	hideGuidePanel();
+	hideInstructionPanel();
+	dfs_indices = [];
+	const S = new Stack();
+	console.log(Object.keys(S.items).length);
+	while (dfs_indices.length < data.nodes.length) {
+		console.log(S.items);
+		if (Object.keys(S.items).length === 0) {
+			for (var i = 0; i < data.nodes.length; i++) {
+				if (dfs_indices.indexOf(data.nodes[i].id) == -1) {
+					//console.log(data.nodes[i].id)
+					S.push(data.nodes[i].id);
+					break;
+				}
+			}
+		} else {
+			var p = S.pop();
+			if (dfs_indices.indexOf(p) == -1) {
+				dfs_indices.push(p);
+				for (var i = data.links.length - 1; i >= 0; i--) {
+					if (
+						p == data.links[i].source.id &&
+						dfs_indices.indexOf(data.links[i].target.id) == -1
+					) {
+						S.push(data.links[i].target.id);
+					}
+					if (
+						p == data.links[i].target.id &&
+						dfs_indices.indexOf(data.links[i].source.id) == -1
+					) {
+						S.push(data.links[i].source.id);
+					}
+				}
+			}
+		}
+		qss.push(S.printStacks());
+	}
+	console.log(dfs_indices);
+};
