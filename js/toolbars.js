@@ -117,22 +117,24 @@ $( document ).ready(function() {
 		}
 	});
 	$('#actions-hide').unbind().click(function() {
+		console.log("click")
 		if(isActionsOpen) {
 			hideActionsPanel();
+
 		} else {
 			showActionsPanel();
-			hideActionsPanel();
+			//hideActionsPanel();
 			hideGuidePanel();
 			hideInstructionPanel();
 		}
 	});
 	$('#guide-hide').unbind().click(function() {
 		if(isGuideOpen) {
-			hideGuidePanel(); 
+			hideGuidePanel();
 		} else {
 			showGuidePanel();
 			hideActionsPanel();
-			hideGuidePanel();
+			//hideGuidePanel();
 			hideInstructionPanel();
 		}
 	});
@@ -143,7 +145,7 @@ $( document ).ready(function() {
 			showInstructionPanel();
 			hideActionsPanel();
 			hideGuidePanel();
-			hideInstructionPanel();
+			//hideInstructionPanel();
 		}
 	});
 	$('#codetrace-hide').unbind().click(function() {
