@@ -11,6 +11,10 @@ var qss =[];
 var qss =[];
 var bfs_i = 0;
 var dfs_i = 0;
+
+var pseudo_bfs = "<b>BFS (Graph, Source)</b><br>&emsp;let Q be a queue<br>&emsp;Q.enqueue(Source)<br>&emsp;mark Source as visited<br>&emsp;while (Q is not empty)<br>&emsp;&emsp;v  =  Q.dequeue()<br>&emsp;&emsp;for all neighbours w of v in Graph<br>&emsp;&emsp;&emsp;if w is not visited<br>&emsp;&emsp;&emsp;&emsp;Q.enqueue(w)<br>&emsp;&emsp;&emsp;&emsp;mark w as visited";
+var pseudo_dfs = "<b>DFS (Graph, Source)</b><br>&emsp;let S be a stack<br>&emsp;S.push(Source)<br>&emsp;mark Source as visited<br>&emsp;while (S is not empty)<br>&emsp;&emsp;v = S.pop()<br>&emsp;&emsp;for all neighbours w of v in Graph<br>&emsp;&emsp;&emsp;if w is not visited<br>&emsp;&emsp;&emsp;&emsp;S.push(w)<br>&emsp;&emsp;&emsp;&emsp;mark w as visited";
+
 function openPopup() {
 	var popup = document.getElementById("popup");
 	popup.style.display = "block";
@@ -62,8 +66,16 @@ var del_edge = function del_edge() {
 	edge_del = true;
 };
 var bfs = function bfs() {
-	changeText("<b>BFS (Graph, Source)</b><br>&emsp;let Q be a queue<br>&emsp;Q.enqueue(Source)<br>&emsp;mark Source as visited<br>&emsp;while (Q is not empty)<br>&emsp;&emsp;v  =  Q.dequeue()<br>&emsp;&emsp;for all neighbours w of v in Graph<br>&emsp;&emsp;&emsp;if w is not visited<br>&emsp;&emsp;&emsp;&emsp;Q.enqueue(w)<br>&emsp;&emsp;&emsp;&emsp;mark w as visited");
+	changeText(pseudo_bfs);
 	bfs_en = true;
+	showCodetracePanel();
+	hideActionsPanel();
+	hideGuidePanel();
+	hideInstructionPanel();
+};
+var dfs = function dfs() {
+	changeText(pseudo_dfs);
+	dfs_en = true;
 	showCodetracePanel();
 	hideActionsPanel();
 	hideGuidePanel();
@@ -171,7 +183,7 @@ const q = new Queue();
 const st = new Stack();
 
 var sim_bfs = function sim_bfs() {
-	changeText("<b>BFS (Graph, Source)</b><br>&emsp;let Q be a queue<br>&emsp;Q.enqueue(Source)<br>&emsp;mark Source as visited<br>&emsp;while (Q is not empty)<br>&emsp;&emsp;v  =  Q.dequeue()<br>&emsp;&emsp;for all neighbours w of v in Graph<br>&emsp;&emsp;&emsp;if w is not visited<br>&emsp;&emsp;&emsp;&emsp;Q.enqueue(w)<br>&emsp;&emsp;&emsp;&emsp;mark w as visited");
+	changeText(pseudo_bfs);
 	showCodetracePanel();
 	hideActionsPanel();
 	hideGuidePanel();
@@ -248,7 +260,7 @@ var next_bfs1 = function next_bfs1() {
 
 
 var sim_dfs = function sim_dfs() {
-	changeText("<b>DFS (Graph, Source)</b><br>&emsp;let S be a stack<br>&emsp;S.push(Source)<br>&emsp;mark Source as visited<br>&emsp;while (S is not empty)<br>&emsp;&emsp;v  =  S.pop()<br>&emsp;&emsp;if v is not visited<br>&emsp;&emsp;&emsp;mark v as visited<br>&emsp;&emsp;&emsp;for all neighbours w of v in Graph<br>&emsp;&emsp;&emsp;&emsp;S.push(w)");
+	changeText(pseudo_dfs);
 	showCodetracePanel();
 	hideActionsPanel();
 	hideGuidePanel();
