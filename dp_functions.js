@@ -86,9 +86,9 @@ function submitNumbers() {
 
 // attach the input table to the DOM
 const container = document.getElementById("dp_i");
-if (bfs_en){
+
 	container.appendChild(createInputTable());
-}
+
 
 function openPopup_e() {
 	var popup = document.getElementById("popup_e");
@@ -241,7 +241,8 @@ var prev_bfs = function prev_bfs() {
 	}
 }
 var next_bfs1 = function next_bfs1() {
-	if (bfs_i < (capacity+1)*values.length) {
+	//if (bfs_i < (capacity+1)*values.length) {
+	if (bfs_i < qss.length) {
 		bfs_i = bfs_i + 1;
 		d3.select("svg").remove();
 		run_graph();
