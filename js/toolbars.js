@@ -123,9 +123,9 @@ $( document ).ready(function() {
 
 		} else {
 			showActionsPanel();
-			//hideActionsPanel();
 			hideGuidePanel();
 			hideInstructionPanel();
+			hideCodetracePanel();
 		}
 	});
 	$('#guide-hide').unbind().click(function() {
@@ -134,8 +134,8 @@ $( document ).ready(function() {
 		} else {
 			showGuidePanel();
 			hideActionsPanel();
-			//hideGuidePanel();
 			hideInstructionPanel();
+			hideCodetracePanel();
 		}
 	});
 	$('#instruction-hide').unbind().click(function() {
@@ -145,7 +145,7 @@ $( document ).ready(function() {
 			showInstructionPanel();
 			hideActionsPanel();
 			hideGuidePanel();
-			//hideInstructionPanel();
+			hideCodetracePanel();
 		}
 	});
 	$('#codetrace-hide').unbind().click(function() {
