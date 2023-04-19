@@ -8,9 +8,10 @@
         <p id="remove" class="execAction" onclick=del_edge()>Delete Edge</p>
         <% if(page == 'graph_simulation'){ %>
             <p id="search" class="execAction" onclick=sim_bfs()>Simulate BFS</p>
+            <p id="search" class="execAction" onclick=sim_dfs()>Simulate DFS</p>
         <% } else if(page == 'graph_interaction'){ %>
             <div id="popup">
-                <h2>Error!</h2>
+                <h2 id="popup_heading">Error!</h2>
                 <p id="err">yoo try</p>
                 <p id="search" class="execAction" onclick="closePopup()">Ok </p>
             </div>

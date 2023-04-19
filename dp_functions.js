@@ -84,8 +84,11 @@ function submitNumbers() {
 }
 
 // attach the input table to the DOM
-const container = document.getElementById("dp_i");
-container.appendChild(createInputTable());
+if(!bfs_en){
+	const container = document.getElementById("dp_i");
+	container.appendChild(createInputTable());
+}
+
 function openPopup_e() {
 	var popup = document.getElementById("popup_e");
 	popup.style.display = "block";
