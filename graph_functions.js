@@ -237,12 +237,7 @@ var next_bfs1 = function next_bfs1() {
 
 
 var sim_dfs = function sim_dfs() {
-<<<<<<< HEAD
-
-	changeText("DFS (Graph, Source)<br>&emsp;let S be a stack<br>&emsp;S.push(Source)<br>&emsp;mark Source as visited<br>&emsp;while (S is not empty)<br>&emsp;&emsp;v  =  S.pop()<br>&emsp;&emsp;if v is not visited<br>&emsp;&emsp;&emsp;mark v as visited<br>&emsp;&emsp;&emsp;for all neighbours w of v in Graph<br>&emsp;&emsp;&emsp;&emsp;S.push(w)");
-=======
 	changeText("<b>DFS (Graph, Source)</b><br>&emsp;let S be a stack<br>&emsp;S.push(Source)<br>&emsp;mark Source as visited<br>&emsp;while (S is not empty)<br>&emsp;&emsp;v  =  S.pop()<br>&emsp;&emsp;if v is not visited<br>&emsp;&emsp;&emsp;mark v as visited<br>&emsp;&emsp;&emsp;for all neighbours w of v in Graph<br>&emsp;&emsp;&emsp;&emsp;S.push(w)");
->>>>>>> c3f140a2a3dfc0979901045d06a2cbe4f7be530d
 	showCodetracePanel();
 	hideActionsPanel();
 	hideGuidePanel();
