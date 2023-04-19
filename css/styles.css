@@ -155,10 +155,18 @@ main {
 #popup_cap h2,
 #popup_strrev h2,
 #popup_par h2,
-#popup_out h2 {
+#popup_out h2,
+#popup_instr h2 {
 	margin-top: 0;
 	margin-bottom: 20px;
 	font-size: 24px;
+	text-align: center;
+}
+
+#popup_instr h4 {
+	margin-top: 0;
+	margin-bottom: 20px;
+	font-size: 16px;
 }
 
 #popup label,
@@ -192,7 +200,8 @@ main {
 #popup_strrev p,
 #popup_par p,
 #popup_out p,
-#popup_cap p {
+#popup_cap p,
+#popup_instr p {
 	display: block;
 	background-color: #1e88e5;
 	color: #fff;
@@ -201,6 +210,7 @@ main {
 	padding: 10px 20px;
 	font-size: 16px;
 	cursor: pointer;
+	text-align: center;
 }
 
 #popup p:hover,
@@ -234,4 +244,18 @@ main {
 #unbal_btn:hover {
 	background-color: purple;
   	color: white;
+}
+
+#popup_instr {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 1200px;
+	height: 500px;
+	padding: 20px;
+	background-color: #dedce9;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+	z-index: 999;
 }
