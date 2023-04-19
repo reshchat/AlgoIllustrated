@@ -39,8 +39,12 @@ app.get('/dp_interaction', (req, res) => {
     res.render('pages/dp_interaction');    
                                                        
 });
-app.get('/stacks', (req, res) => {       
-    res.render('pages/stacks');    
+app.get('/stacks_simulation', (req, res) => {       
+    res.render('pages/stacks_simulation');    
+                                                       
+});
+app.get('/stacks_interaction', (req, res) => {       
+    res.render('pages/stacks_interaction');    
                                                        
 });
 app.get('/sorting_simulation', (req, res) => {       

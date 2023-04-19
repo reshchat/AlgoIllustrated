@@ -173,6 +173,11 @@ var highlight=[];
 var bfs_i = 0;
 
 var bfs = function bfs() {
+	changeText("knapsack(weights, values, capacity)<br>&emsp;n = length(weights)<br>&emsp;dp = new 2D array[n+1][capacity+1]<br>&emsp;for i from 0 to n:<br>&emsp;&emsp;for w from 0 to capacity:<br>&emsp;&emsp;&emsp;if i == 0 or w == 0:<br>&emsp;&emsp;&emsp;&emsp;dp[i][w] = 0<br>&emsp;&emsp;&emsp;else if weights[i-1] <= w:<br>&emsp;&emsp;&emsp;&emsp;dp[i][w] = max(values[i-1] + dp[i-1][w-weights[i-1]], dp[i-1][w])<br>&emsp;&emsp;&emsp;else:<br>&emsp;&emsp;&emsp;&emsp;dp[i][w] = dp[i-1][w]<br>&emsp;dp[n][capacity]");
+	showCodetracePanel();
+	hideActionsPanel();
+	hideGuidePanel();
+	hideInstructionPanel();
 	sim_bfs();
 	bfs_en = true;
 	var popup = document.getElementById("dp_i");
@@ -182,6 +187,11 @@ var bfs = function bfs() {
 
 
 var sim_bfs = function sim_bfs() {
+	changeText("knapsack(weights, values, capacity)<br>&emsp;n = length(weights)<br>&emsp;dp = new 2D array[n+1][capacity+1]<br>&emsp;for i from 0 to n:<br>&emsp;&emsp;for w from 0 to capacity:<br>&emsp;&emsp;&emsp;if i == 0 or w == 0:<br>&emsp;&emsp;&emsp;&emsp;dp[i][w] = 0<br>&emsp;&emsp;&emsp;else if weights[i-1] <= w:<br>&emsp;&emsp;&emsp;&emsp;dp[i][w] = max(values[i-1] + dp[i-1][w-weights[i-1]], dp[i-1][w])<br>&emsp;&emsp;&emsp;else:<br>&emsp;&emsp;&emsp;&emsp;dp[i][w] = dp[i-1][w]<br>&emsp;dp[n][capacity]");
+	showCodetracePanel();
+	hideActionsPanel();
+	hideGuidePanel();
+	hideInstructionPanel();
 	qss=[]
 	arr=[]
 	for (var i = 0; i < values.length+1; i++) {

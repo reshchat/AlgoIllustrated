@@ -73,12 +73,52 @@
         <p id="search" class="execAction" onclick=clear_items()>Clear</p>
     <% } else if(page.includes('stacks')){ %>
         <p id="search" class="execAction" onclick=push()>Push</p>
-        <p id="search">
+        <div style="text-align: center;"><input type="text" id="push_val" style="vertical-align: middle; width: 130px; background-color:#729117;"></div>
+        <!-- <p id="search">
         <form><input type="text" id="push_val" placeholder="Value to push"></form>
-        </p>
+        </p> -->
         <p id="search" class="execAction" onclick=pop()>Pop</p>
         <p id="search" class="execAction" onclick=peek()>Peek</p>
-        <p id="search" class="execAction" onclick=clear_scr()>Clear</p>
+        <% if(page == 'stacks_simulation'){ %>
+            <p id="search" class="execAction" onclick=openRevPop()>Reverse String</p>
+            <div id="popup_strrev">
+                <h2>Input</h2>
+                <form>
+                    <label for="string" >String to Reverse:</label>
+                    <input id="string" name="string"><br><br>
+                </form>
+                <p id="search" class="execAction" onclick="strrev()">Reverse</p>
+            </div>
+            <p id="search" class="execAction" onclick=openParPop()>Check Parantheses</p>
+            <div id="popup_par">
+                <h2>Input</h2>
+                <form>
+                    <label for="par" >String to Check:</label>
+                    <input id="par" name="par"><br><br>
+                </form>
+                <p id="search" class="execAction" onclick="parcheck()">Check</p>
+            </div>
+            <% } else if(page == 'stacks_interaction'){ %>
+                <p id="search" class="execAction" onclick=openRevPop()>Reverse String</p>
+                <div id="popup_strrev">
+                    <h2>Input</h2>
+                    <form>
+                        <label for="string" >String to Reverse:</label>
+                        <input id="string" name="string"><br><br>
+                    </form>
+                    <p id="search" class="execAction" onclick="strrevint()">Reverse</p>
+                </div>
+                <p id="search" class="execAction" onclick=openParPop()>Check Parantheses</p>
+                <div id="popup_par">
+                    <h2>Input</h2>
+                    <form>
+                        <label for="par" >String to Check:</label>
+                        <input id="par" name="par"><br><br>
+                    </form>
+                    <p id="search" class="execAction" onclick="parcheckint()">Check</p>
+                </div>
+                <% } %>
+                <p id="search" class="execAction" onclick=clear_scr()>Clear</p>
     <% } else if(page.includes('sorting')){ %>
         <p id="search" class="execAction" onclick=parse_data()>Sort</p>
 		<p id="search">
