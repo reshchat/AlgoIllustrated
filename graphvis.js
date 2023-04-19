@@ -40,7 +40,6 @@ var pseudo= "create a queue Q \n <br>" +
 		.attr("stroke-width", 3)
 		.style("stroke", "#aaa");
 	link.on("click", function (d) {
-		console.log(d);
 		if (edge_click == true) {
 			console.log(d);
 		}
@@ -151,7 +150,6 @@ var pseudo= "create a queue Q \n <br>" +
 	}
 
 	node.on("click", function (d) {
-		console.log(d);
 
 		if (node_del == true) {
 			node
@@ -184,14 +182,11 @@ var pseudo= "create a queue Q \n <br>" +
 			node_del = false;
 		}
 		if (edge_click == true) {
-			console.log("Adding Edges")
 			if (selected_nodes.length == 1) {
 				var tar = selected_nodes.pop();
 				if (tar != d.id) {
 					node
 						.filter(function (s) {
-							console.log(s.id)
-							console.log(d.id)
 							return s.id == d.id;
 						})
 						.style("fill", "red");
@@ -205,15 +200,12 @@ var pseudo= "create a queue Q \n <br>" +
 					d3.select("svg").remove();
 					run_graph();
 					highlight_edge(new_link);
-					console.log(data.nodes), console.log(data.links);
 					edge_click = false;
 				}
 			} else {
 				selected_nodes.push(d.id);
 				node
 					.filter(function (s) {
-						console.log(s.id)
-						console.log(d.id)
 						return s.id == d.id;
 					})
 					.style("fill", "#F88379");
@@ -224,6 +216,7 @@ var pseudo= "create a queue Q \n <br>" +
 				changeError("Error:   " +d.id.toString() + "   not the correct neighbour <br> <br>")
 				openPopup()
 				changeText("Error:   " +d.id.toString() + "  not the correct neighbour <br> <br>" + pseudo)
+
 				node.filter(function(s) {
 					return s.id == d.id;
 				})
@@ -234,7 +227,7 @@ var pseudo= "create a queue Q \n <br>" +
 						d3.select(this)
 							.transition()
 							.duration(duration)
-							.style("fill", "#A5EEDB");
+							.style("fill", "#9340c0");
 					});
 
 			} else if (cur.length == 0) {
@@ -261,21 +254,37 @@ var pseudo= "create a queue Q \n <br>" +
 					changeError("Error:   " +d.id.toString() + "  not the correct neighbour <br> <br>")
 					openPopup()
 					changeText("Error:  " +d.id.toString() + "  not the correct neighbour <br> <br>" + pseudo)
-					node.filter(function(s) {
-						return s.id == d.id;
-					})
-						.transition()
-						.duration(duration)
-						.style("fill", "red")
-						.on("end", function() {
-							d3.select(this)
-								.transition()
-								.duration(duration)
-								.style("fill", "#A5EEDB");
-						});
+					if(prev.indexOf(d.id)==-1){
+						node.filter(function(s) {
+							return s.id == d.id;
+						})
+							.transition()
+							.duration(duration)
+							.style("fill", "red")
+							.on("end", function() {
+								d3.select(this)
+									.transition()
+									.duration(duration)
+									.style("fill", "#A5EEDB");
+							});
+					}
+					else{
+						node.filter(function(s) {
+							return s.id == d.id;
+						})
+							.transition()
+							.duration(duration)
+							.style("fill", "red")
+							.on("end", function() {
+								d3.select(this)
+									.transition()
+									.duration(duration)
+									.style("fill", "#9340c0");
+							});
+					}
+
 
 				} else {
-					//console.log("222222");
 					var temp = [];
 					for (var i = 0; i < cur.length; i++) {
 						if (d.id != cur[i]) {
@@ -290,8 +299,6 @@ var pseudo= "create a queue Q \n <br>" +
 						.style("fill", "#9340c0");
 
 					link.filter(function (s) {
-						console.log(s.index)
-						console.log(curli.indexOf(s.index)!=-1)
 
 						return curli.indexOf(s.index)!=-1 && (d.id == data.links[s.index].source.id || d.id == data.links[s.index].target.id);
 						//return s.id == d.id;
@@ -321,8 +328,6 @@ var pseudo= "create a queue Q \n <br>" +
 				}
 			}
 			if (cur.length == 0 && next.length > 0) {
-				console.log("33");
-
 				cur = next;
 				next = [];
 				curli=ncurl;
@@ -340,7 +345,6 @@ var pseudo= "create a queue Q \n <br>" +
 	});
 
 	link.on("click", function (d) {
-		console.log("d", d);
 		if (edge_del == true) {
 			var links = [];
 			for (var i = 0; i < data.links.length; i++) {
@@ -371,15 +375,9 @@ var pseudo= "create a queue Q \n <br>" +
 		.style("fill", "blue"); //s.id == d.id
 	}
 	if (bfs_i>0){
-		console.log("hello")
-		console.log(qss)
-		console.log(qss[bfs_i])
 		changeText(pseudo + "visited :" + bfs_indices.slice(0, bfs_i).toString() +"<br>queue: " + qss[bfs_i].toString())
 	}
 	if (dfs_i>0){
-		console.log("hello")
-		console.log(qss)
-		console.log(qss[dfs_i])
 		changeText(pseudo + "visited :" + dfs_indices.slice(0, dfs_i).toString() +"<br>queue: " + qss[dfs_i].toString())
 	}
 
