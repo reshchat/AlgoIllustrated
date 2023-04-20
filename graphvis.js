@@ -3,7 +3,7 @@ function run_graph() {
 	var width = 1000;
 	var height = 400;
   	var radius = 20;
-	var duration = 3000; // in milliseconds
+	var duration = 2000; // in milliseconds
 	// var pseudo = "create a queue Q \n <br>" +
 	// "mark current node as visited and put it into Q \n<br>" +
 	// "while Q is non-empty \n<br>" +
@@ -355,138 +355,250 @@ function run_graph() {
 			}
 		}
 
-
-		if (dfs_en == true) {
-			if (prev.indexOf(d.id) != -1) {
-				changeError("Error:   " +d.id.toString() + "   not the correct neighbour <br> <br>")
-				openPopup()
-				changeText("Error:   " +d.id.toString() + "  not the correct neighbour <br> <br>" + pseudo_dfs)
-	
-				node.filter(function(s) {
-					return s.id == d.id;
-				})
-					.transition()
-					.duration(duration)
-					.style("fill", "red")
-					.on("end", function() {
-						d3.select(this)
-							.transition()
-							.duration(duration)
-							.style("fill", "#9340c0");
-					});
-	
-			} else if (cur.length == 0) {
-	
-				node
+		if(dfs_en == true){
+			// stack is empty
+			console.log(stack, stack.length);
+			console.log(prev);
+			if (stack.length == 0) {
+				if (prev.length == 0) {
+					// prev is empty - push first node					
+					prev.push(d.id);
+					// push all unvisited neighbours of d.id to stack
+					var temp = [];
+					for (var i = 0; i < data.links.length; i++) {
+						if (d.id == data.links[i].source.id && prev.indexOf(data.links[i].target.id) == -1) {
+							stack.push(data.links[i].target.id);
+							temp.push(data.links[i].target.id);
+						}
+						if (d.id == data.links[i].target.id && prev.indexOf(data.links[i].source.id) == -1) {
+							stack.push(data.links[i].source.id);
+							temp.push(data.links[i].source.id);
+						}
+					}
+					// stack.n_items.push(temp);
+					node
 					.filter(function (s) {
 						return s.id == d.id;
 					})
 					.style("fill", "#9340c0");
-				prev.push(d.id);
-				for (var i = 0; i < data.links.length; i++) {
-					if (d.id == data.links[i].source.id) {
-						cur.push(data.links[i].target.id);
-						curli.push(i)
-					}
-					if (d.id == data.links[i].target.id) {
-						cur.push(data.links[i].source.id);
-						curli.push(i)
-					}
-				}
-				changeText(pseudo_dfs + "visited: " +prev.toString())
-			} else {
-				if (cur.indexOf(d.id) == -1) {
-					changeError("Error:   " +d.id.toString() + "  not the correct neighbour <br> <br>")
-					openPopup()
-					changeText("Error:  " +d.id.toString() + "  not the correct neighbour <br> <br>" + pseudo_dfs)
-					if(prev.indexOf(d.id)==-1){
-						node.filter(function(s) {
-							return s.id == d.id;
-						})
-							.transition()
-							.duration(duration)
-							.style("fill", "red")
-							.on("end", function() {
-								d3.select(this)
-									.transition()
-									.duration(duration)
-									.style("fill", "#A5EEDB");
-							});
-					}
-					else{
-						node.filter(function(s) {
-							return s.id == d.id;
-						})
-							.transition()
-							.duration(duration)
-							.style("fill", "red")
-							.on("end", function() {
-								d3.select(this)
-									.transition()
-									.duration(duration)
-									.style("fill", "#9340c0");
-							});
-					}
-	
-	
-				} else {
-					var temp = [];
-					for (var i = 0; i < cur.length; i++) {
-						if (d.id != cur[i]) {
-							temp.push(cur[i]);
-						}
-					}
-					cur = temp;
-					node
-						.filter(function (s) {
-							return s.id == d.id;
-						})
-						.style("fill", "#9340c0");
-	
-					link.filter(function (s) {
-	
-						return curli.indexOf(s.index)!=-1 && (d.id == data.links[s.index].source.id || d.id == data.links[s.index].target.id);
-						//return s.id == d.id;
-					})
-						.style("stroke", "#c75c19");
-	
-					prev.push(d.id);
-	
-					changeText(pseudo_dfs + "visited: " +prev.toString())
-					for (var i = 0; i < data.links.length; i++) {
-						if (
-							d.id == data.links[i].source.id &&
-							prev.indexOf(data.links[i].target.id) == -1 && cur.indexOf(data.links[i].target.id) == -1
-						) {
-							next.push(data.links[i].target.id);
-							ncurl.push(i);
-	
-						}
-						if (
-							d.id == data.links[i].target.id &&
-							prev.indexOf(data.links[i].source.id) == -1 && cur.indexOf(data.links[i].target.id) == -1
-						) {
-							next.push(data.links[i].source.id);
-							ncurl.push(i)
-						}
-					}
-				}
-			}
-			if (cur.length == 0 && next.length > 0) {
-				cur = next;
-				next = [];
-				curli=ncurl;
-				ncurl=[];
-			}
-			if ((cur.length == 0 && next.length == 0) ||  prev.length==data.nodes.length) {
-				if (prev.length == data.nodes.length) {
+					changeText(pseudo_dfs + "visited: " + prev.toString());
+
+				} else if (prev.length == data.nodes.length){
+					// prev has all nodes - DFS is complete
 					dfs_en = false;
 					changeError("DFS DONE! <br> <br>", "Success")
 					openPopup()
 					changeText("DFS DONE! <br> <br>" + pseudo_dfs)
 				}
+			
+			} else {			
+				// selected node is a visited node
+				if (prev.indexOf(d.id) != -1) {
+					node.filter(function(s) {
+						return s.id == d.id;
+					})
+						.transition()
+						.duration(duration)
+						.style("fill", "red")
+						.on("end", function() {
+							d3.select(this)
+								.transition()
+								.duration(duration)
+								.style("fill", "#9340c0");
+						});
+					changeError("Error:   " +d.id.toString() + "   not the correct neighbour <br> <br>")
+					openPopup()
+					changeText("Error:   " +d.id.toString() + "  not the correct neighbour <br> <br>" + pseudo_dfs)
+				}
+				// selected node is not a visited node and is not a valid next node for DFS
+				// else if (next.indexOf(d.id) == -1) {
+				else if (d.id != stack.peek()) {
+					node.filter(function(s) {
+						return s.id == d.id;
+					})
+						.transition()
+						.duration(duration)
+						.style("fill", "red")
+						.on("end", function() {
+							d3.select(this)
+								.transition()
+								.duration(duration)
+								.style("fill", "#A5EEDB");
+						});
+					changeError("Error:   " +d.id.toString() + "   not the correct neighbour <br> <br>")
+					openPopup()
+					changeText("Error:   " +d.id.toString() + "  not the correct neighbour <br> <br>" + pseudo_dfs)
+				}
+				// selected node is a valid next node for DFS
+				// else if (next.indexOf(d.id) != -1) {
+				else if (d.id == stack.peek()) {
+					stack.pop();
+					// stack.pop_topn(d.id);
+					prev.push(d.id);
+					// push all unvisited neighbours of d.id to stack
+					var temp = [];
+					for (var i = 0; i < data.links.length; i++) {
+						if (d.id == data.links[i].source.id && prev.indexOf(data.links[i].target.id) == -1) {
+							stack.push(data.links[i].target.id);
+							temp.push(data.links[i].target.id);
+						}
+						if (d.id == data.links[i].target.id && prev.indexOf(data.links[i].source.id) == -1) {
+							stack.push(data.links[i].source.id);
+							temp.push(data.links[i].source.id);
+						}
+					}
+					// stack.n_items.push(temp);
+					node
+					.filter(function (s) {
+						return s.id == d.id;
+					})
+					.style("fill", "#9340c0");
+					changeText(pseudo_dfs + "visited: " + prev.toString());
+					
+					// console.log(d.id);
+					// console.log("stack", stack);
+					// console.log("peek topn", stack.peek_topn());
+				}
+
 			}
 		}
+
+
+		// if (dfs_en == true) {
+		// 	if (prev.indexOf(d.id) != -1) {
+		// 		changeError("Error:   " +d.id.toString() + "   not the correct neighbour <br> <br>")
+		// 		openPopup()
+		// 		changeText("Error:   " +d.id.toString() + "  not the correct neighbour <br> <br>" + pseudo_dfs)
+	
+		// 		node.filter(function(s) {
+		// 			return s.id == d.id;
+		// 		})
+		// 			.transition()
+		// 			.duration(duration)
+		// 			.style("fill", "red")
+		// 			.on("end", function() {
+		// 				d3.select(this)
+		// 					.transition()
+		// 					.duration(duration)
+		// 					.style("fill", "#9340c0");
+		// 			});
+	
+		// 	} else if (cur.length == 0) {
+	
+		// 		node
+		// 			.filter(function (s) {
+		// 				return s.id == d.id;
+		// 			})
+		// 			.style("fill", "#9340c0");
+		// 		prev.push(d.id);
+		// 		for (var i = 0; i < data.links.length; i++) {
+		// 			if (d.id == data.links[i].source.id) {
+		// 				cur.push(data.links[i].target.id);
+		// 				curli.push(i)
+		// 			}
+		// 			if (d.id == data.links[i].target.id) {
+		// 				cur.push(data.links[i].source.id);
+		// 				curli.push(i)
+		// 			}
+		// 		}
+		// 		changeText(pseudo_dfs + "visited: " +prev.toString())
+		// 	} else {
+		// 		if (cur.indexOf(d.id) == -1) {
+		// 			changeError("Error:   " +d.id.toString() + "  not the correct neighbour <br> <br>")
+		// 			openPopup()
+		// 			changeText("Error:  " +d.id.toString() + "  not the correct neighbour <br> <br>" + pseudo_dfs)
+		// 			if(prev.indexOf(d.id)==-1){
+		// 				node.filter(function(s) {
+		// 					return s.id == d.id;
+		// 				})
+		// 					.transition()
+		// 					.duration(duration)
+		// 					.style("fill", "red")
+		// 					.on("end", function() {
+		// 						d3.select(this)
+		// 							.transition()
+		// 							.duration(duration)
+		// 							.style("fill", "#A5EEDB");
+		// 					});
+		// 			}
+		// 			else{
+		// 				node.filter(function(s) {
+		// 					return s.id == d.id;
+		// 				})
+		// 					.transition()
+		// 					.duration(duration)
+		// 					.style("fill", "red")
+		// 					.on("end", function() {
+		// 						d3.select(this)
+		// 							.transition()
+		// 							.duration(duration)
+		// 							.style("fill", "#9340c0");
+		// 					});
+		// 			}
+	
+	
+		// 		} else {
+		// 			var temp = [];
+		// 			for (var i = 0; i < cur.length; i++) {
+		// 				if (d.id != cur[i]) {
+		// 					temp.push(cur[i]);
+		// 				}
+		// 			}
+		// 			cur = temp;
+		// 			node
+		// 				.filter(function (s) {
+		// 					return s.id == d.id;
+		// 				})
+		// 				.style("fill", "#9340c0");
+	
+		// 			link.filter(function (s) {
+	
+		// 				return curli.indexOf(s.index)!=-1 && (d.id == data.links[s.index].source.id || d.id == data.links[s.index].target.id);
+		// 				//return s.id == d.id;
+		// 			})
+		// 				.style("stroke", "#c75c19");
+	
+		// 			prev.push(d.id);
+	
+		// 			changeText(pseudo_dfs + "visited: " +prev.toString())
+		// 			for (var i = 0; i < data.links.length; i++) {
+		// 				if (
+		// 					d.id == data.links[i].source.id &&
+		// 					prev.indexOf(data.links[i].target.id) == -1 && cur.indexOf(data.links[i].target.id) == -1
+		// 				) {
+		// 					// next.push(data.links[i].target.id);
+		// 					// ncurl.push(i);
+		// 					next.unshift(data.links[i].target.id);
+		// 					ncurl.unshift(i);
+	
+		// 				}
+		// 				if (
+		// 					d.id == data.links[i].target.id &&
+		// 					prev.indexOf(data.links[i].source.id) == -1 && cur.indexOf(data.links[i].target.id) == -1
+		// 				) {
+		// 					// next.push(data.links[i].source.id);
+		// 					// ncurl.push(i)
+		// 					next.unshift(data.links[i].source.id);
+		// 					ncurl.unshift(i)
+		// 				}
+		// 			}
+		// 		}
+		// 	}
+		// 	if (cur.length == 0 && next.length > 0) {
+		// 		cur = next;
+		// 		next = [];
+		// 		curli=ncurl;
+		// 		ncurl=[];
+		// 	}
+		// 	if ((cur.length == 0 && next.length == 0) ||  prev.length==data.nodes.length) {
+		// 		if (prev.length == data.nodes.length) {
+		// 			dfs_en = false;
+		// 			changeError("DFS DONE! <br> <br>", "Success")
+		// 			openPopup()
+		// 			changeText("DFS DONE! <br> <br>" + pseudo_dfs)
+		// 		}
+		// 	}
+		// }
 
 	});
 	

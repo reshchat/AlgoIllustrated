@@ -96,13 +96,6 @@ var clear_scr = function clear_scr() {
 	// $("#graphsvg").selectAll("*").remove();
 };
 
-// BFS
-
-var prev = []; // visited
-var cur = [];
-var next = [];
-var curli = [];
-var ncurl = [];
 
 class Queue {
 	constructor() {
@@ -146,11 +139,21 @@ class Stack {
 	constructor() {
 		this.items = {};
 		this.topIndex = 0;
+		this.length = 0;
+		this.n_items = [];
+		this.n_items_topindex = 0;
+	}
+	peek_topn() {
+		if (this.n_items_topindex === 0) {
+			return null;
+		}
+		return this.n_items[this.n_items_topindex - 1];
 	}
 	push(item) {
 		if (!(this.topIndex in this.items)) {
 			this.items[this.topIndex] = item;
 			this.topIndex++;
+			this.length++;
 			return item + " inserted";
 		}
 	}
@@ -159,9 +162,22 @@ class Stack {
 			return null;
 		}
 		this.topIndex--;
+		this.length--;
 		const item = this.items[this.topIndex];
 		delete this.items[this.topIndex];
 		return item;
+	}
+	pop_topn(val) {
+		console.log("val", val);
+		console.log("peek topn", this.peek_topn());
+		var index = this.peek_topn().indexOf(val);
+		if (index > -1) {
+			this.n_items[n_items_topindex].splice(index, 1);
+			if(this.peek_topn().length==0){
+				this.n_items.pop();
+				this.n_items_topindex--;
+			}
+		}
 	}
 	peek() {
 		if (this.topIndex === 0) {
@@ -308,3 +324,11 @@ var sim_dfs = function sim_dfs() {
 	}
 	console.log(dfs_indices);
 };
+
+
+var prev = []; // visited
+var cur = [];
+var next = [];
+var curli = [];
+var ncurl = [];
+var stack = new Stack();
