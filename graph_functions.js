@@ -312,3 +312,8 @@ var sim_dfs = function sim_dfs() {
 	}
 	console.log(dfs_indices);
 };
+
+// var audio = function audio() {
+// 	var audio = document.getElementById('audio');
+// 	audio.play();
+// }
