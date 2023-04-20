@@ -198,6 +198,7 @@ var sim_bfs = function sim_bfs() {
 
 	document.getElementById('media-controls').style.visibility = 'visible';
 
+
 	bfs_indices=[]
 	console.log(Object.keys(q.items).length);
 	while (bfs_indices.length < data.nodes.length) {

@@ -210,8 +210,9 @@ var bfs = function bfs() {
 	hideActionsPanel();
 	hideGuidePanel();
 	hideInstructionPanel();
-	sim_bfs();
 	bfs_en = true;
+	sim_bfs();
+
 	var popup = document.getElementById("dp_i");
 	popup.style.display = "block";
 
@@ -225,8 +226,10 @@ var sim_bfs = function sim_bfs() {
 	hideGuidePanel();
 	hideInstructionPanel();
 
-	document.getElementById('media-controls').style.visibility = 'visible';
 
+	if(!bfs_en){
+		document.getElementById('media-controls').style.visibility = 'visible';
+	}
 	qss=[]
 	arr=[]
 	for (var i = 0; i < values.length+1; i++) {
