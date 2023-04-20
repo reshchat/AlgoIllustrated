@@ -20,8 +20,8 @@ The menu is composed of the following features:\
 <br><br>\
 The pseudocode panel is enabled whenever an algorithm is selected from the menu, and displays the corresponding pseudocode for your better understanding.\
 </h4>";
-graph_interaction_instructions_content = "<h2>Instructions</h2>\
-<h4>\
+
+graph_interaction_instructions_content = "<h4>\
     The panel on the right includes, in order:\
     <br> - Audio Guide\
     <br> - Visual Guide\
@@ -43,29 +43,89 @@ graph_interaction_instructions_content = "<h2>Instructions</h2>\
     <br><br>\
     The pseudocode panel is enabled whenever an algorithm is selected from the menu, and displays the corresponding pseudocode for your better understanding.\
 </h4>";
-stack_simulation_instructions_content = "Push: to push a new item in the stack. When selected the item value needs to be written in the text box before pushing.\
-Pop: to pop the topmost item of the stack. \
-Peek: to output the topmost item of the stack. \
-Reverse String: to perform string reversal using stacks.\
-Check Parentheses: to check whether the parentheses are balanced or not.\
-Clear: to clear the entire stack.\
-";
-stack_interaction_instructions_content = "Push: to push a new item in the stack. When selected the item value needs to be written in the text box before pushing.\
-Pop: to pop the topmost item of the stack. \
-Peek: to output the topmost item of the stack. \
-Reverse String: to perform string reversal using stacks.\
-Check Parentheses: to check whether the parentheses are balanced or not.\
-Clear: to clear the entire stack.";
-dp_simulation_instructions_content = "Edit Capacity: to edit the capacity of the sack. \
-Add Item: to add a new item with its value and weight to the sack. \
-Delete Item: to delete an item by entering its index number. \
-Simulate DP: to simulate the DP algorithm for the knapsack algorithm. When selected, you will be provided with buttons to go to the next or previous step as valid under the DP algorithm.\
- Interact DP: to interact with the DP algorithm. When selected you will be required to fill the values in the memo according to the DP algorithm.\
-Clear: to clear the sack.\
-";
-dp_interaction_instructions_content = "Edit Capacity: to edit the capacity of the sack. \
-Add Item: to add a new item with its value and weight to the sack. \
-Delete Item: to delete an item by entering its index number. \
-Simulate DP: to simulate the DP algorithm for the knapsack algorithm. When selected, you will be provided with buttons to go to the next or previous step as valid under the DP algorithm.\
- Interact DP: to interact with the DP algorithm. When selected you will be required to fill the values in the memo according to the DP algorithm.\
-Clear: to clear the sack.";
+
+stack_simulation_instructions_content = "<h4>\
+The panel on the right includes, in order:\
+<br> - Audio Guide\
+<br> - Visual Guide\
+<br> - Menu\
+<br> - Instructions Pane\
+<br> - Pseudocode\
+<br>All of the above correspond to the Graph data structure.\
+<br><br>\
+The audio and visual guides provide a brief description of the graph data structure, its working, applications and links to relevant resources.\
+<br><br>\
+The menu is composed of the following features:\
+<br><b>Push</b> To push (add) a new item to the existing stack. The item value needs to be entered in the input box before selection, which then stacks the element on the top. \
+<br><b>Pop</b> To remove the topmost item of the stack. When selected, the top element is popped and returned, while the stack rearranges itself. \
+<br><b>Peek</b> To retrieve the topmost item of the stack. When selected, the top element is highlighted and returned.\
+<br><b>Reverse String</b> To perform string reversal using stacks. When selected, you will be provided with buttons to go to the next or previous step as valid under the stack reversal algorithm.\
+<br><b>Check Parentheses</b> To check whether the parentheses in a string are balanced or not. When selected, you will be provided with buttons to go to the next or previous step as valid under the balanced parantheses algorithm.\
+<br><b>Clear</b> To reset the existing stack and start from scratch. When selected, the screen is rid of all its contents.\
+<br><br>\
+The pseudocode panel is enabled whenever an algorithm is selected from the menu, and displays the corresponding pseudocode for your better understanding.\
+</h4>";
+
+stack_interaction_instructions_content = "<h4>\
+The panel on the right includes, in order:\
+<br> - Audio Guide\
+<br> - Visual Guide\
+<br> - Menu\
+<br> - Instructions Pane\
+<br> - Pseudocode\
+<br>All of the above correspond to the Graph data structure.\
+<br><br>\
+The audio and visual guides provide a brief description of the graph data structure, its working, applications and links to relevant resources.\
+<br><br>\
+The menu is composed of the following features:\
+<br><b>Push</b> To push (add) a new item to the existing stack. The item value needs to be entered in the input box before selection, which then stacks the element on the top. \
+<br><b>Pop</b> To remove the topmost item of the stack. When selected, the top element is popped and returned, while the stack rearranges itself. \
+<br><b>Peek</b> To retrieve the topmost item of the stack. When selected, the top element is highlighted and returned.\
+<br><b>Reverse String</b> To perform string reversal using stacks. When selected, you will be provided with buttons to perform different stack operations as valid under the stack reversal algorithm. Any incorrect steps will be highlighted by the algorithm. You'll have to signify the completion of algorithm via the 'Reversed' button.\
+<br><b>Check Parentheses</b> To check whether the parentheses in a string are balanced or not. When selected, you will be provided with buttons to perform different stack operations as valid under the balanced parantheses algorithm. Any incorrect steps will be highlighted by the algorithm. You'll have to signify the completion of algorithm via the 'Balanced' or 'Unbalanced' button as applicable.\
+<br><b>Clear</b> To reset the existing stack and start from scratch. When selected, the screen is rid of all its contents.\
+<br><br>\
+The pseudocode panel is enabled whenever an algorithm is selected from the menu, and displays the corresponding pseudocode for your better understanding.\
+</h4>";
+
+dp_simulation_instructions_content = "<h4>\
+The panel on the right includes, in order:\
+<br> - Audio Guide\
+<br> - Visual Guide\
+<br> - Menu\
+<br> - Instructions Pane\
+<br> - Pseudocode\
+<br>All of the above correspond to the Graph data structure.\
+<br><br>\
+The audio and visual guides provide a brief description of the graph data structure, its working, applications and links to relevant resources.\
+<br><br>\
+The menu is composed of the following features:\
+<br><b>Edit Capacity</b> To edit the capacity of the sack. \
+<br><b>Add Item</b> To add a new item with its value and weight to the sack. \
+<br><b>Delete Item</b> To delete an item by entering its index number.\
+<br><b>Simulate DP</b> To simulate the DP algorithm for the Knapsack algorithm. When selected, you will be provided with buttons to go to the next or previous step as valid under the DP algorithm.\
+<br><b>Clear</b> To clear the sack.\
+<br><br>\
+The pseudocode panel is enabled whenever an algorithm is selected from the menu, and displays the corresponding pseudocode for your better understanding.\
+</h4>";
+
+dp_interaction_instructions_content = "<h4>\
+The panel on the right includes, in order:\
+<br> - Audio Guide\
+<br> - Visual Guide\
+<br> - Menu\
+<br> - Instructions Pane\
+<br> - Pseudocode\
+<br>All of the above correspond to the Graph data structure.\
+<br><br>\
+The audio and visual guides provide a brief description of the graph data structure, its working, applications and links to relevant resources.\
+<br><br>\
+The menu is composed of the following features:\
+<br><b>Edit Capacity</b> To edit the capacity of the sack. \
+<br><b>Add Item</b> To add a new item with its value and weight to the sack. \
+<br><b>Delete Item</b> To delete an item by entering its index number.\
+<br><b>Interact DP</b> To interact with the DP algorithm for the Knapsack algorithm. When selected you will be required to fill the values in the memo according to the DP algorithm.\
+<br><b>Clear</b> To clear the sack.\
+<br><br>\
+The pseudocode panel is enabled whenever an algorithm is selected from the menu, and displays the corresponding pseudocode for your better understanding.\
+</h4>";

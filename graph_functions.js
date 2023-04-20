@@ -16,7 +16,11 @@ var pseudo_bfs = "<b>BFS (Graph, Source)</b><br>&emsp;let Q be a queue<br>&emsp;
 var pseudo_dfs = "<b>DFS (Graph, Source)</b><br>&emsp;let S be a stack<br>&emsp;S.push(Source)<br>&emsp;mark Source as visited<br>&emsp;while (S is not empty)<br>&emsp;&emsp;v = S.pop()<br>&emsp;&emsp;for all neighbours w of v in Graph<br>&emsp;&emsp;&emsp;if w is not visited<br>&emsp;&emsp;&emsp;&emsp;S.push(w)<br>&emsp;&emsp;&emsp;&emsp;mark w as visited";
 
 changeGuideContent(graph_guide_content);
-changeInstructionsContent(graph_simulation_instructions_content);
+
+if(String(window.location.href).includes('simulation'))
+	changeInstructionsContent(graph_simulation_instructions_content);
+else
+	changeInstructionsContent(graph_interaction_instructions_content);
 
 function openPopup() {
 	var popup = document.getElementById("popup");

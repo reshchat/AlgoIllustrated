@@ -1,5 +1,9 @@
 changeGuideContent(dp_guide_content);
-changeInstructionsContent(dp_simulation_instructions_content);
+
+if(String(window.location.href).includes('simulation'))
+	changeInstructionsContent(dp_simulation_instructions_content);
+else
+	changeInstructionsContent(dp_interaction_instructions_content);
 
 var arr=[[0,1],[1,0]]
 arr=[]

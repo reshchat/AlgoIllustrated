@@ -1,5 +1,9 @@
 changeGuideContent(stack_guide_content);
-changeInstructionsContent(stack_simulation_instructions_content);
+
+if(String(window.location.href).includes('simulation'))
+	changeInstructionsContent(stack_simulation_instructions_content);
+else
+	changeInstructionsContent(stack_interaction_instructions_content);
 
 var node_ctr = 0;
 var peek_en = false;
