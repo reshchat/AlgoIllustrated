@@ -1,10 +1,10 @@
 graph_simulation_instructions_content = "<h4>\
 The panel on the right includes, in order:\
-<br> - Audio Guide\
-<br> - Visual Guide\
-<br> - Menu\
-<br> - Instructions Pane\
-<br> - Pseudocode\
+<li> Audio Guide\
+<li> Visual Guide\
+<li> Menu\
+<li> Instructions Pane\
+<li> Pseudocode\
 <br>All of the above correspond to the Graph data structure.\
 <br><br>\
 The audio and visual guides provide a brief description of the graph data structure, its working, applications and links to relevant resources.\
@@ -23,11 +23,11 @@ The pseudocode panel is enabled whenever an algorithm is selected from the menu,
 
 graph_interaction_instructions_content = "<h4>\
     The panel on the right includes, in order:\
-    <br> - Audio Guide\
-    <br> - Visual Guide\
-    <br> - Menu\
-    <br> - Instructions Pane\
-    <br> - Pseudocode\
+    <li> Audio Guide\
+    <li> Visual Guide\
+    <li> Menu\
+    <li> Instructions Pane\
+    <li> Pseudocode\
     <br>All of the above correspond to the Graph data structure.\
     <br><br>\
     The audio and visual guides provide a brief description of the graph data structure, its working, applications and links to relevant resources.\
@@ -46,12 +46,12 @@ graph_interaction_instructions_content = "<h4>\
 
 stack_simulation_instructions_content = "<h4>\
 The panel on the right includes, in order:\
-<br> - Audio Guide\
-<br> - Visual Guide\
-<br> - Menu\
-<br> - Instructions Pane\
-<br> - Pseudocode\
-<br>All of the above correspond to the Graph data structure.\
+<li> Audio Guide\
+<li> Visual Guide\
+<li> Menu\
+<li> Instructions Pane\
+<li> Pseudocode\
+<br>All of the above correspond to the Stack data structure.\
 <br><br>\
 The audio and visual guides provide a brief description of the graph data structure, its working, applications and links to relevant resources.\
 <br><br>\
@@ -68,12 +68,12 @@ The pseudocode panel is enabled whenever an algorithm is selected from the menu,
 
 stack_interaction_instructions_content = "<h4>\
 The panel on the right includes, in order:\
-<br> - Audio Guide\
-<br> - Visual Guide\
-<br> - Menu\
-<br> - Instructions Pane\
-<br> - Pseudocode\
-<br>All of the above correspond to the Graph data structure.\
+<li> Audio Guide\
+<li> Visual Guide\
+<li> Menu\
+<li> Instructions Pane\
+<li> Pseudocode\
+<br>All of the above correspond to the Stack data structure.\
 <br><br>\
 The audio and visual guides provide a brief description of the graph data structure, its working, applications and links to relevant resources.\
 <br><br>\
@@ -90,12 +90,12 @@ The pseudocode panel is enabled whenever an algorithm is selected from the menu,
 
 dp_simulation_instructions_content = "<h4>\
 The panel on the right includes, in order:\
-<br> - Audio Guide\
-<br> - Visual Guide\
-<br> - Menu\
-<br> - Instructions Pane\
-<br> - Pseudocode\
-<br>All of the above correspond to the Graph data structure.\
+<li> Audio Guide\
+<li> Visual Guide\
+<li> Menu\
+<li> Instructions Pane\
+<li> Pseudocode\
+<br><br>All of the above correspond to the Dynamic Programming algorithm.\
 <br><br>\
 The audio and visual guides provide a brief description of the graph data structure, its working, applications and links to relevant resources.\
 <br><br>\
@@ -111,12 +111,12 @@ The pseudocode panel is enabled whenever an algorithm is selected from the menu,
 
 dp_interaction_instructions_content = "<h4>\
 The panel on the right includes, in order:\
-<br> - Audio Guide\
-<br> - Visual Guide\
-<br> - Menu\
-<br> - Instructions Pane\
-<br> - Pseudocode\
-<br>All of the above correspond to the Graph data structure.\
+<li> Audio Guide\
+<li> Visual Guide\
+<li> Menu\
+<li> Instructions Pane\
+<li> Pseudocode\
+<br>All of the above correspond to the Dynamic Programming algorithm.\
 <br><br>\
 The audio and visual guides provide a brief description of the graph data structure, its working, applications and links to relevant resources.\
 <br><br>\
