@@ -6,7 +6,7 @@ AlgoIllustrated is a Data Structures and Algorithms Visualization Platform. It p
 
 ## Design Process
 The development of this platform involved following the design process to understand user needs through user studies, creating lo-fi and mid-fi prototypes and evaluating the system by taking feedback from target users.
-The design process is documented [here] (https://drive.google.com/file/d/14Yd4kzeWH17ooxN8IOzFckfN52GFYdv_/view).
+The design process is documented [here](https://drive.google.com/file/d/14Yd4kzeWH17ooxN8IOzFckfN52GFYdv_/view).
 
 
 ## Gallery
