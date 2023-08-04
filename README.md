@@ -1,6 +1,7 @@
 # AlgoIllustrated
 
-#### AlgoIllustrated is a Data Structures and Algorithms Visualization Platform. It provides interactive animations and visualizations to learn and understand DSA better. There are two modes, the simulation mode, which provides animations and the interaction modes which allows users to interact with the data structures and algorithms to enhance their understanding through hand-on learning. [Link to demo video](https://drive.google.com/file/d/1f8HEqHGIfufAhYFN20wdOUkS66_UZM1v/view).
+## About the Project
+AlgoIllustrated is a Data Structures and Algorithms Visualization Platform. It provides interactive animations and visualizations to learn and understand DSA better. There are two modes, the simulation mode, which provides animations and the interaction modes which allows users to interact with the data structures and algorithms to enhance their understanding through hand-on learning. [Link to demo video](https://drive.google.com/file/d/1f8HEqHGIfufAhYFN20wdOUkS66_UZM1v/view).
 
 
 ## Design Process
